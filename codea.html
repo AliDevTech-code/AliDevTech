@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Pro - AI Task Management App | AliDevTech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .demo-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .app-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .app-title {
+            color: var(--dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Task Board */
+        .task-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .task-column {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-height: 400px;
+        }
+
+        .column-title {
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-count {
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .task-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .task-item.high-priority {
+            border-left-color: var(--accent);
+        }
+
+        .task-item.completed {
+            border-left-color: var(--secondary);
+        }
+
+        .task-title {
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .task-priority {
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .priority-high {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .priority-medium {
+            background: #fffbeb;
+            color: #d97706;
+        }
+
+        /* AI Features Showcase */
+        .ai-features {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Back to Portfolio */
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .back-link a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1>TaskFlow Pro</h1>
+            <p>AI-Powered Task Management Application - Smart Scheduling & Team Collaboration</p>
+        </div>
+
+        <!-- App Preview -->
+        <div class="app-preview">
+            <div class="app-header">
+                <div class="app-title">TaskFlow Pro Dashboard</div>
+                <div class="user-profile">
+                    <div class="user-avatar">AJ</div>
+                    <div style="color: var(--dark);">Ali Jaan</div>
+                </div>
+            </div>
+
+            <!-- Task Board -->
+            <div class="task-board">
+                <!-- To Do Column -->
+                <div class="task-column">
+                    <div class="column-title">
+                        To Do
+                        <span class="task-count">3</span>
+                    </div>
+                    <div class="task-item high-priority">
+                        <div class="task-title">Design User Dashboard</div>
+                        <div class="task-meta">
+                            <span>Due: Today</span>
+                            <span class="task-priority priority-high">High</span>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-title">API Integration</div>
+                        <div class="task-meta">
+                            <span>Due: Tomorrow</span>
+                            <span class="task-priority priority-medium">Medium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In Progress Column -->
+                <div class="task-column">
+                    <div class="column-title">
+                        In Progress
+                        <span class="task-count">2</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-title">Mobile App Development</div>
+                        <div class="task-meta">
+                            <span>Due: Dec 20</span>
+                            <span>65% Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Column -->
+                <div class="task-column">
+                    <div class="column-title">
+                        Completed
+                        <span class="task-count">5</span>
+                    </div>
+                    <div class="task-item completed">
+                        <div class="task-title">Project Planning</div>
+                        <div class="task-meta">
+                            <span>Completed</span>
+                            <span>✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Features -->
+        <div class="ai-features">
+            <h2>AI-Powered Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Smart Scheduling</h3>
+                    <p>AI algorithms optimize your task schedule based on priorities and deadlines</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Automated Task Sorting</h3>
+                    <p>AI categorizes and prioritizes tasks automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Productivity Analytics</h3>
+                    <p>Get insights into your team's performance and productivity trends</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="margin-bottom: 2rem; font-size: 2.5rem;">Want This App For Your Business?</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem; opacity: 0.9;">
+                I can develop a custom task management solution tailored to your specific needs.
+            </p>
+            <a href="index.html#contact" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Get Custom Quote
+            </a>
+            <a href="index.html#projects" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← Back to AliDevTech Portfolio</a>
+        </div>
+    </div>
+
+    <script>
+        // Simple interactive demo
+        document.querySelectorAll('.task-item').forEach(task => {
+            task.addEventListener('click', function() {
+                this.classList.toggle('completed');
+            });
+        });
+    </script>
+</body>
+</html>

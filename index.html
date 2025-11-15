@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Jaan | Full Stack Developer - AliDevTech.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --darker: #111827;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* VIP Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Programming Languages Scroll */
+        .tech-scroll {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tech-scroll-container {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            gap: 3rem;
+            padding: 1rem 0;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 200px;
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .tech-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-200px * 10 - 3rem * 10)); }
+        }
+
+        /* VIP Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
+            position: relative;
+        }
+
+        .hero-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* VIP Colorful Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .vip-btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Profile Image VIP Style */
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid transparent;
+            background: var(--gradient) border-box;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .image-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .project-description {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1e1e36 0%, #16213e 100%);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 145, 0, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.952);
+        }
+
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+          }
+
+        /* Footer */
+        .footer {
+            background: var(--darker);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-image {
+                width: 280px;
+                height: 280px;
+            }
+
+            .image-glow {
+                width: 300px;
+                height: 300px;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- VIP Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AliDevTech.com</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Hire Me</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+    <!-- VIP Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Ali Jaan</span></h1>
+                <p>Full Stack Developer & AI Specialist crafting digital experiences that drive business growth. Based in Pakistan, serving clients worldwide.</p>
+                
+                <div class="btn-group">
+                    <a href="#projects" class="vip-btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="vip-btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i>
+                        Get Quote
+                    </a>
+                    <a href="https://ai-tech-blog-7.web.app" 
+                       target="_blank" class="vip-btn btn-accent">
+                        <i class="fas fa-brain"></i>
+                        AI Blog
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div style="margin-top: 3rem; display: flex; gap: 2rem;">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary);">50+</div>
+                        <div style="color: #9ca3af;">Projects</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--secondary);">3+</div>
+                        <div style="color: #9ca3af;">Years Exp</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">100%</div>
+                        <div style="color: #9ca3af;">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="profile-container">
+                    <div class="image-glow"></div>
+                    <img src="ali.png" 
+                         alt="Ali Jaan" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Programming Languages Scroll -->
+    <section class="tech-scroll">
+        <div class="tech-scroll-container">
+            <!-- Duplicate for seamless scroll -->
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-html5" style="color: #e34f26;"></i></div>
+                <span class="tech-name">HTML5</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-css3-alt" style="color: #1572b6;"></i></div>
+                <span class="tech-name">CSS3</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-js-square" style="color: #f7df1e;"></i></div>
+                <span class="tech-name">JavaScript</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-react" style="color: #61dafb;"></i></div>
+                <span class="tech-name">React</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-node-js" style="color: #339933;"></i></div>
+                <span class="tech-name">Node.js</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-python" style="color: #3776ab;"></i></div>
+                <span class="tech-name">Python</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-git-alt" style="color: #f05032;"></i></div>
+                <span class="tech-name">Git</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-docker" style="color: #2496ed;"></i></div>
+                <span class="tech-name">Docker</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-aws" style="color: #ff9900;"></i></div>
+                <span class="tech-name">AWS</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-database" style="color: #336791;"></i></div>
+                <span class="tech-name">MongoDB</span>
+            </div>
+            <!-- Duplicate -->
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-html5" style="color: #e34f26;"></i></div>
+                <span class="tech-name">HTML5</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-css3-alt" style="color: #1572b6;"></i></div>
+                <span class="tech-name">CSS3</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-js-square" style="color: #f7df1e;"></i></div>
+                <span class="tech-name">JavaScript</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-react" style="color: #61dafb;"></i></div>
+                <span class="tech-name">React</span>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-node-js" style="color: #339933;"></i></div>
+                <span class="tech-name">Node.js</span>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p style="color: #9ca3af; font-size: 1.2rem;">Some of my recent work</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=300&fit=crop" 
+                     alt="AI Tech Blog" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">AI Tech Blog</h3>
+                    <p class="project-description">A modern AI-focused blog platform with Firebase integration, real-time updates, and SEO optimization. Features AI tool reviews and tutorials.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">SEO</span>
+                    </div>
+                    <a href="https://ai-tech-blog-7.web.app" 
+                       target="_blank" class="vip-btn btn-primary" style="padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+          
+
+            <div class="project-card">
+    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=300&fit=crop" 
+         alt="Task Management App" class="project-image">
+    <div class="project-content">
+        <h3 class="project-title">Task Management App</h3>
+        <p class="project-description">AI-powered task management application with smart scheduling, team collaboration, and productivity analytics.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">AI Integration</span>
+            <span class="tech-tag">WebSocket</span>
+        </div>
+        <a href="codea.html" class="vip-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
+            <i class="fas fa-external-link-alt"></i>
+            View Website
+        </a>
+    </div>
+</div>
+              <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=500&h=400&fit=crop" 
+                     alt="E-Commerce Platform" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">E-Commerce Platform</h3>
+                    <p class="project-description">Full-stack e-commerce solution with payment integration, user authentication, admin dashboard, and responsive design.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe API</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+                    <a href="code.html" class="vip-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
+                        <i class="fa fa-external-link-alt"></i>
+                        View Website
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop" 
+         alt="AI E-commerce" class="project-image">
+    <div class="project-content">
+        <h3 class="project-title">SmartShop AI</h3>
+        <p class="project-description">Intelligent e-commerce platform with AI recommendations, chatbot support, and personalized shopping experience.</p>
+        <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">AI Chatbot</span>
+            <span class="tech-tag">Stripe</span>
+        </div>
+        <a href="codeb.html" class="vip-btn btn-primary" style="padding: 0.8rem 1.5rem;">
+            <i class="fas fa-external-link-alt"></i>
+            View Demo
+        </a>
+        
+    </div>
+</div>
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=300&fit=crop" 
+         alt="Real Estate Portal" class="project-image">
+    <div class="project-content">
+        <h3 class="project-title">PropertyPro</h3>
+        <p class="project-description">Modern real estate platform with virtual tours, property matching, and agent management system.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Google Maps API</span>
+            <span class="tech-tag">Cloud Storage</span>
+            <span class="tech-tag">Payment Gateway</span>
+        </div>
+        <a href="codec.html" class="vip-btn btn-accent" style="padding: 0.8rem 1.5rem;">
+            <i class="fas fa-external-link-alt"></i>
+            View Demo
+        </a>
+    </div>
+</div>
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=300&fit=crop" 
+         alt="Food Delivery App" class="project-image">
+    <div class="project-content">
+        <h3 class="project-title">QuickBite</h3>
+        <p class="project-description">Food delivery application with real-time tracking, multiple payment options, and restaurant management.</p>
+        <div class="project-tech">
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Socket.io</span>
+            <span class="tech-tag">Push Notifications</span>
+        </div>
+        <a href="coded.html" class="vip-btn btn-primary" style="padding: 0.8rem 1.5rem;">
+            <i class="fas fa-external-link-alt"></i>
+            View Demo
+        </a>
+        
+    </div>
+</div>
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop" 
+         alt="SaaS Dashboard" class="project-image">
+    <div class="project-content">
+        <h3 class="project-title">AnalyticsPro SaaS</h3>
+        <p class="project-description">Business intelligence dashboard with real-time analytics, reporting, and data visualization tools.</p>
+        <div class="project-tech">
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">D3.js</span>
+            <span class="tech-tag">Chart.js</span>
+        </div>
+        <a href="codee.html" class="vip-btn btn-accent" style="padding: 0.8rem 1.5rem;">
+            <i class="fas fa-external-link-alt"></i>
+            View Demo
+        </a>
+       
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Start Your Project</h2>
+            <p style="color: #9ca3af; font-size: 1.2rem;">Let's discuss your next big idea</p>
+        </div>
+
+        <div class="contact-container">
+            <form class="contact-form" id="projectForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" class="form-control" placeholder="John Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" class="form-control" placeholder="Your company name">
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Project Budget (USD) *</label>
+                    <select id="budget" class="form-control" required>
+                        <option value="">Select budget range</option>
+                        <option value="$500 - $1,000">$500 - $1,000</option>
+                        <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                        <option value="$10,000+">$10,000+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectType">Project Type *</label>
+                    <select id="projectType" class="form-control" required>
+                        <option value="">Select project type</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="E-commerce Store">E-commerce Store</option>
+                        <option value="Web Application">Web Application</option>
+                        <option value="AI Integration">AI Integration</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" class="form-control" placeholder="Describe your project requirements, timeline, and any specific features needed..." required></textarea>
+                </div>
+
+                <button type="submit" class="vip-btn btn-primary" style="width: 100%; justify-content: center;">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Project Brief
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="color: #9ca3af;">&copy; 2024 AliDevTech.com. All rights reserved. | Professional Web Solutions</p>
+    </footer>
+
+    <!-- EmailJS Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("ai9FYgKLGAHO69Kx4"); // You'll get this from EmailJS
+        })();
+
+        // Form Submission with EmailJS
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                budget: document.getElementById('budget').value,
+                projectType: document.getElementById('projectType').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toLocaleString()
+            };
+            // Send email using EmailJS
+            emailjs.send('service_htifwfg', 'template_n5jgth9', formData)
+                .then(function(response) {
+                    alert('✅ Thank you! Your project details have been sent. I will contact you within 24 hours.');
+                    document.getElementById('projectForm').reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, function(error) {
+                    alert('❌ Sorry, there was an error sending your message. Please email me directly at: your-email@alidevtech.com');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
