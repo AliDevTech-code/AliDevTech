@@ -212,9 +212,23 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: var(--gradient);
+            background: linear-gradient(135deg, #021bf8 0%, #00ffea 25%, #00ff15 50%, #ffae00 75%, #e70404 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: logoGradient 1s ease-in-out infinite alternate;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes logoGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         /* Desktop Navigation Links */
@@ -322,19 +336,30 @@
 
         .hero-content h1 {
             font-size: 3.8rem;
+            background: linear-gradient(135deg, #021bf8 0%, #00ffea 25%, #00ff15 50%, #ffae00 75%, #e70404 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: logoGradient 1s ease-in-out infinite alternate;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
             /* Adjusted size for better visual weight */
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
             line-height: 1.2;
         }
 
         .hero-content .highlight {
-            background: var(--gradient);
+             background: linear-gradient(135deg, #aa02f8 0%, #ff0000 25%, #00ff15 50%, #ffae00 75%, #02e1ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: logoGradient 1s ease-in-out infinite alternate;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+           
         }
 
         .hero-content p {
@@ -664,7 +689,7 @@
             padding: 1rem 1.5rem;
             border: 2px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.05);
             color: white;
             font-size: 1rem;
             /* Fixed mobile font size to prevent iOS zoom */
@@ -675,7 +700,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.788);
         }
 
         .form-control::placeholder {
@@ -1110,7 +1135,8 @@
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-                    <a href="https://shopizo-mall.web.app/" class="vip-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
+                    <a href="https://shopizo-mall.web.app/" class="vip-btn btn-secondary"
+                        style="padding: 0.8rem 1.5rem;">
                         <i class="fa fa-external-link-alt"></i>
                         View Live Website
                     </a>
