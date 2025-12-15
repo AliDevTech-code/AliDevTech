@@ -28,15 +28,9 @@
         @media (max-width: 768px) {
 
             .nav-links {
-                /* [اہم تبدیلی یہاں ہے] - Menu ki height sirf zaroorat ke mutabiq ho */
-                /* height: 100vh;  <-- Isay hata dein */
                 height: auto;
-                /* Ya content jitni height */
                 max-height: 80vh;
-                /* Zyada se zyada viewport ka 80% */
                 overflow-y: auto;
-                /* Agar links zyada hon to scroll aa jaye */
-
                 position: fixed;
                 top: 0;
                 right: -100%;
@@ -44,12 +38,8 @@
                 background: var(--gradient);
                 flex-direction: column;
                 justify-content: flex-start;
-                /* Links ko top se start karein */
                 gap: 0;
-                /* Gap ko links mein shift kar dein */
                 padding: 5rem 2rem 2rem;
-                /* Navbar jitni jagah chhor kar start karein */
-
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
                 opacity: 0;
                 transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
@@ -62,44 +52,30 @@
             }
 
             .nav-links li {
-                /* Har link ke beech gap yahan set karein */
                 margin-bottom: 1.5rem;
                 transform: translateX(20px);
                 opacity: 0;
                 transition: all 0.3s ease-out;
                 width: 100%;
-                /* Link ko puri width dein */
             }
-
-            /* ... (Staggered Links Animation remains the same) ... */
 
             .nav-links a {
                 padding: 1rem 0;
                 font-size: 1.4rem;
                 display: block;
-                /* Link ko puri list item jitna clickable area mile */
                 text-align: left;
             }
-
-            /* Body scroll fix ki zaroorat nahi agar aap height auto rakhte hain */
-            /* body.menu-open {
-        overflow: hidden; 
-    } */
         }
 
         /* Mobile Menu Overlay Style (768px Media Query ke andar) */
         @media (max-width: 768px) {
 
             .nav-links {
-                /* Initial state: Hidden, slightly to the right, and fully transparent */
                 position: fixed;
-                /* Fixed position for overlay */
                 top: 0;
                 right: -100%;
-                /* Hiding off-screen */
                 height: 10vh;
                 width: 55%;
-                /* Slightly wider menu */
                 background: var(--gradient);
                 flex-direction: column;
                 justify-content: center;
@@ -107,36 +83,26 @@
                 padding: 0 2rem;
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
                 opacity: 0;
-                /* Fully transparent initially */
-
-                /* Transition for smooth animation */
                 transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
                 z-index: 999;
             }
 
-            /* Active State: Menu slides in and fades in */
             .nav-links.active {
                 right: 0;
-                /* Slides into view */
                 opacity: 1;
-                /* Fades in */
             }
 
             .nav-links li {
                 transform: translateX(20px);
-                /* Initial position for links */
                 opacity: 0;
                 transition: all 0.3s ease-out;
             }
 
-            /* Staggered Links Animation */
             .nav-links.active li {
                 transform: translateX(0);
-                /* Slide link into final position */
                 opacity: 1;
             }
 
-            /* Add a slight delay for a staggered effect */
             .nav-links.active li:nth-child(1) {
                 transition-delay: 0.1s;
             }
@@ -149,19 +115,15 @@
                 transition-delay: 0.3s;
             }
 
-            /* Agar aur links hon to aage bhi isi tarah delay badha den */
-
             .nav-links a {
                 padding: 1rem 0;
                 font-size: 1.4rem;
-                /* Slightly smaller for better fit */
             }
         }
 
         :root {
             --primary: #6366f1;
             --secondary: #f5576c;
-            /* Adjusted gradient 2 end color for contrast */
             --accent: #f59e0b;
             --danger: #ef4444;
             --dark: #1f2937;
@@ -169,7 +131,6 @@
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            /* Base Font Size for Desktop */
             font-size: 16px;
         }
 
@@ -256,13 +217,11 @@
         /* Mobile Menu Button */
         .menu-toggle {
             display: none;
-            /* Hide on desktop */
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 1001;
             color: var(--primary);
         }
-
 
         /* Programming Languages Scroll */
         .tech-scroll {
@@ -275,7 +234,6 @@
         .tech-scroll-container {
             display: flex;
             animation: scroll 40s linear infinite;
-            /* Increased speed for VIP feel */
             gap: 3rem;
             padding: 1rem 0;
         }
@@ -308,12 +266,10 @@
                 transform: translateX(0);
             }
 
-            /* Adjusted calculation based on item count and gap */
             100% {
                 transform: translateX(calc(-200px * 10 - 3rem * 10));
             }
         }
-
 
         /* VIP Hero Section */
         .hero {
@@ -343,47 +299,40 @@
             animation: logoGradient 1s ease-in-out infinite alternate;
             letter-spacing: 1px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-            /* Adjusted size for better visual weight */
             font-weight: 800;
             margin-bottom: 1.5rem;
-
             line-height: 1.2;
         }
 
         .hero-content .highlight {
-             background: linear-gradient(135deg, #aa02f8 0%, #ff0000 25%, #00ff15 50%, #ffae00 75%, #02e1ff 100%);
+            background: linear-gradient(135deg, #aa02f8 0%, #ff0000 25%, #00ff15 50%, #ffae00 75%, #02e1ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% 200%;
             animation: logoGradient 1s ease-in-out infinite alternate;
             letter-spacing: 1px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-           
         }
 
         .hero-content p {
             font-size: 1.25rem;
-            /* Adjusted size slightly for better readability */
             margin-bottom: 2.5rem;
             opacity: 0.9;
             line-height: 1.7;
         }
 
         /* Quick Stats improvement */
-        .hero-content>div:last-child {
+        .quick-stats {
             margin-top: 3rem;
             display: flex;
             gap: 2rem;
             justify-content: flex-start;
         }
 
-        .hero-content>div:last-child>div>div:first-child {
+        .quick-stats > div > div:first-child {
             font-size: 2.2rem;
-            /* Adjusted for better visibility */
             font-weight: 800;
         }
-
 
         /* VIP Colorful Buttons */
         .btn-group {
@@ -407,7 +356,6 @@
             position: relative;
             overflow: hidden;
             text-transform: uppercase;
-            /* VIP touch */
         }
 
         .btn-primary {
@@ -443,6 +391,17 @@
             box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
         }
 
+        .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+        }
+
         /* Profile Image VIP Style */
         .hero-image {
             position: relative;
@@ -460,14 +419,12 @@
             border-radius: 50%;
             object-fit: cover;
             margin-top: 20px;
-            /* Border gradient animation added */
             border: 5px solid transparent;
             background: linear-gradient(#ff00bf, #1f1f4e) padding-box,
                 linear-gradient(135deg, #667eea, #51fc02, #fcf804, #0c2ff5, #02f5fd, #667eea) border-box;
             background-size: 300% 300%;
-            animation: rotateBorder 3s linear infinite;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: float 6s ease-in-out infinite, rotateBorder 3s linear infinite;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes rotateBorder {
@@ -541,93 +498,157 @@
             margin-bottom: 1rem;
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 6rem 0;
-            background: rgba(255, 255, 255, 0.02);
-        }
+       /* Projects Section Fixed CSS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+.project-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    /* FIXED: Auto height instead of fixed height */
+    height: auto;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+}
 
-        .section-title h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
 
-        .projects-grid {
-            display: grid;
-            /* Adjusted minmax for better mobile/tablet scaling: was 400px, now smaller */
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+.project-image {
+    width: 100%;
+    height: 180px; /* Reduced height */
+    object-fit: cover;
+    flex-shrink: 0;
+}
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            /* Fixed height for consistent cards */
-            height: 550px;
-            display: flex;
-            flex-direction: column;
-        }
+.project-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* FIXED: Ensure proper content spacing */
+}
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
+.project-title {
+    font-size: 1.4rem; /* Slightly smaller */
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: white;
+}
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            /* Reduced height for better proportion */
-            object-fit: cover;
-            flex-shrink: 0;
-        }
+.project-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #10b981;
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+}
 
-        .project-content {
-            padding: .5rem;
-            flex: 1;
-            display: flex;
+.project-description {
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    flex: 1;
+    /* FIXED: Better text handling */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    min-height: 80px;
+}
 
-            flex-direction: column;
-        }
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
 
-        .project-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: white;
-        }
+.tech-tag {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
 
-        .project-description {
-            color: #9ca3af;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
+.project-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto; /* This pushes buttons to bottom */
+    flex-wrap: wrap;
+}
+
+.project-buttons .vip-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+    .project-card {
+        min-height: 460px;
+        height: auto;
+    }
+    
+    .project-image {
+        height: 160px;
+    }
+    
+    .project-buttons {
+        flex-direction: column;
+    }
+    
+    .project-buttons .vip-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        min-height: 440px;
+    }
+    
+    .project-image {
+        height: 150px;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+    
+    .project-description {
+        -webkit-line-clamp: 3;
+        min-height: 70px;
+    }
+}
 
         .project-tech {
             display: flex;
@@ -644,6 +665,45 @@
             font-size: 0.85rem;
             font-weight: 500;
             white-space: nowrap;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-buttons .vip-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Call to Action Banner */
+        .cta-banner {
+            background: var(--gradient);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-banner h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         /* Contact Form */
@@ -678,7 +738,6 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            /* Reduced margin for tighter layout */
             font-weight: 500;
             color: white;
             font-size: 1rem;
@@ -692,7 +751,6 @@
             background: rgba(0, 0, 0, 0.05);
             color: white;
             font-size: 1rem;
-            /* Fixed mobile font size to prevent iOS zoom */
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
@@ -720,7 +778,6 @@
             margin: 1.5rem auto 0;
             display: block;
             justify-content: center;
-            /* Center text/icon in the button */
         }
 
         /* Footer */
@@ -776,37 +833,42 @@
             }
 
             .projects-grid {
-                /* Allow projects to shrink slightly on tablets */
-                grid-template-columns: repeat(auto-fit, minmax(280px, ));
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                 padding: 0 1.5rem;
             }
 
             .project-card {
-                height: 575px;
-                /* Slightly reduced height for tablets */
-            }
-        }
+    height: auto; /* Changed from 550px */
+    min-height: 480px;
+}
 
+.project-content {
+    padding: 1.2rem; /* Reduced padding */
+}
+
+.project-description {
+    -webkit-line-clamp: 3; /* Show only 3 lines */
+    min-height: 70px;
+}
+
+.project-buttons {
+    margin-top: auto; /* This will push buttons to bottom */
+}
+}
         /* Mobile Optimization (up to 768px) */
         @media (max-width: 768px) {
-
-            /* Reset root font size for smaller screens to control all elements better */
             :root {
                 font-size: 14px;
-                /* Slightly smaller base font on mobile */
             }
 
             .menu-toggle {
                 display: block;
-                /* Show hamburger menu button */
             }
 
-            /* Mobile Menu Overlay Style */
             .nav-links {
                 position: absolute;
                 top: 0;
                 right: -100%;
-                /* Initially hide off-screen */
                 height: 100vh;
                 width: 70%;
                 background: var(--darker);
@@ -819,7 +881,6 @@
                 z-index: 999;
             }
 
-            /* Javascript will add this class to show the menu */
             .nav-links.active {
                 right: 0;
             }
@@ -836,8 +897,6 @@
                 border-bottom: none;
             }
 
-
-            /* Hero Section Adjustments */
             .hero {
                 padding: 6rem 0 3rem;
             }
@@ -850,12 +909,10 @@
 
             .hero-image {
                 order: -1;
-                /* Move image above content on mobile */
             }
 
             .hero-content h1 {
                 font-size: 2.8rem;
-                /* Smaller heading on mobile */
             }
 
             .hero-content p {
@@ -883,12 +940,12 @@
                 font-size: 1rem;
             }
 
-            .hero-content>div:last-child {
+            .quick-stats {
                 justify-content: center;
                 gap: 1.5rem;
             }
 
-            .hero-content>div:last-child>div>div:first-child {
+            .quick-stats > div > div:first-child {
                 font-size: 1.8rem;
             }
 
@@ -907,12 +964,15 @@
 
             .project-card {
                 height: auto;
-                /* Auto height on mobile for better flexibility */
-                min-height: 480px;
+                min-height: 580px;
             }
 
             .project-title {
                 font-size: 1.4rem;
+            }
+
+            .project-buttons {
+                flex-direction: column;
             }
 
             .contact-form {
@@ -921,6 +981,15 @@
 
             textarea.form-control {
                 min-height: 120px;
+            }
+
+            .cta-banner {
+                padding: 3rem 1rem;
+                margin: 2rem 1rem;
+            }
+
+            .cta-banner h3 {
+                font-size: 2rem;
             }
         }
 
@@ -932,7 +1001,6 @@
 
             .vip-btn {
                 width: 100%;
-                /* Full width buttons for better tap target */
                 justify-content: center;
             }
 
@@ -941,9 +1009,8 @@
                 gap: 0.75rem;
             }
 
-            .hero-content>div:last-child {
+            .quick-stats {
                 flex-wrap: wrap;
-                /* Allow stats to wrap if needed */
                 justify-content: space-around;
             }
 
@@ -953,11 +1020,15 @@
             }
 
             .project-card {
-                min-height: 450px;
+                min-height: 550px;
             }
 
             .project-image {
                 height: 180px;
+            }
+
+            .cta-banner h3 {
+                font-size: 1.8rem;
             }
         }
 
@@ -984,8 +1055,6 @@
         </div>
     </nav>
 
-
-
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -1002,7 +1071,6 @@
                         <i class="fas fa-paper-plane"></i>
                         Order Your Website
                     </a>
-
                 </div>
 
                 <div class="quick-stats">
@@ -1029,6 +1097,7 @@
             </div>
         </div>
     </section>
+
     <section class="tech-scroll">
         <div class="tech-scroll-container">
             <div class="tech-item">
@@ -1093,184 +1162,280 @@
             </div>
         </div>
     </section>
+
     <section class="projects" id="projects">
         <div class="section-title">
             <h2>Featured Projects</h2>
-            <p style="color: #9ca3af; font-size: 1.2rem;">Some of my recent work</p>
+            <p style="color: #9ca3af; font-size: 1.2rem;">Ready-to-use websites for sale</p>
         </div>
 
         <div class="projects-grid">
+            <!-- New Project 1: EarnTube -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=300&fit=crop&q=80"
+                    alt="EarnTube - Social Media Platform" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">EarnTube - Social Media Platform</h3>
+                    <div class="project-price">Price: RS 3,000 PKR</div>
+                    <p class="project-description">A complete social media platform for content creators to monetize their content. Features include user profiles, video uploads, likes/comments, monetization dashboard, and admin panel.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Payment Gateway</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://alidevtech-code.github.io/EarnTube/" target="_blank" class="vip-btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn" 
+                           data-project="EarnTube - Social Media Platform"
+                           data-price="3000"
+                           data-url="https://alidevtech-code.github.io/EarnTube/">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Project 2: FoodFly -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=300&fit=crop&q=80"
+                    alt="FoodFly - Food Delivery Platform" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">FoodFly - Food Delivery</h3>
+                    <div class="project-price">Price: RS 25,000 PKR</div>
+                    <p class="project-description">Full-featured food delivery platform with restaurant management, real-time order tracking, multiple payment methods, rider assignment, and customer reviews system.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google Maps API</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://alidevtech-code.github.io/FoodFly/" target="_blank" class="vip-btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn" 
+                           data-project="FoodFly - Food Delivery Platform"
+                           data-price="25000"
+                           data-url="https://alidevtech-code.github.io/FoodFly/">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+ <div class="project-card">
+                <img src="https://plus.unsplash.com/premium_photo-1699855177095-44b4da0508de?w=600&h=300&fit=crop&q=80"
+                    alt="Modern E-Commerce Website" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Modern E-Commerce Platform</h3>
+                    <div class="project-price">Price: RS 15,000 PKR</div>
+                    <p class="project-description">A fully functional e-commerce website with user authentication,
+                        complete admin panel, product management, cart system, and responsive design.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Tailwind</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://shopizo-mall.web.app/" target="_blank" class="vip-btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="Modern E-Commerce Platform"
+                           data-price="15000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Existing Projects with Order Now buttons -->
             <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=300&fit=crop"
                     alt="AI Tech Blog Platform" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">AI Tech Blog</h3>
+                    <div class="project-price">Price: RS 5,000 PKR</div>
                     <p class="project-description">A modern AI-focused blog platform with Firebase integration,
                         real-time updates, and SEO optimization. Features AI tool reviews and tutorials.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
+                        <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-                    <a href="codec.html" class="vip-btn btn-accent" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Demo
-                    </a>
+                    <div class="project-buttons">
+                        <a href="codec.html" class="vip-btn btn-accent">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="AI Tech Blog Platform"
+                           data-price="5000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="project-card">
-                <img src="https://plus.unsplash.com/premium_photo-1699855177095-44b4da0508de?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Modern E-Commerce Website" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">Modern E-Commerce Platform</h3>
-                    <p class="project-description">A fully functional e-commerce website with user authentication,
-                        complete admin panel, product management, cart system, and responsive design.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Tailwind</span>
-                    </div>
-                    <a href="https://shopizo-mall.web.app/" class="vip-btn btn-secondary"
-                        style="padding: 0.8rem 1.5rem;">
-                        <i class="fa fa-external-link-alt"></i>
-                        View Live Website
-                    </a>
-                </div>
-            </div>
+           
 
             <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=300&fit=crop"
                     alt="AI Task Management App" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Task App</h3>
+                    <div class="project-price">Price: RS 8,000 PKR</div>
                     <p class="project-description">AI-powered task management application with smart scheduling, team
                         collaboration, and productivity analytics.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
+                        <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-
-                    <a href="codea.html" class="vip-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Website
-                    </a>
+                    <div class="project-buttons">
+                        <a href="codea.html" class="vip-btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="AI Task Management App"
+                           data-price="8000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
                 </div>
             </div>
+
             <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=500&h=400&fit=crop"
+                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=600&h=300&fit=crop"
                     alt="Full-stack E-Commerce Platform" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">E-Commerce website</h3>
+                    <div class="project-price">Price: RS 12,000 PKR</div>
                     <p class="project-description">Full-stack e-commerce solution user authentication, admin dashboard,
                         and responsive design.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
+                        <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-                    <a href="code.html" class="vip-btn btn-secondary" style="padding: 0.8rem 1.5rem;">
-                        <i class="fa fa-external-link-alt"></i>
-                        View Website
-                    </a>
+                    <div class="project-buttons">
+                        <a href="code.html" class="vip-btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="E-Commerce website"
+                           data-price="12000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
                 </div>
             </div>
+
             <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop"
                     alt="Intelligent E-commerce with AI Recommendations" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">SmartShop AI</h3>
+                    <div class="project-price">Price: RS 18,000 PKR</div>
                     <p class="project-description">Intelligent e-commerce platform with AI recommendations, chatbot
                         support, and personalized shopping experience.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
+                        <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-
-                    <a href="codeb.html" class="vip-btn btn-primary" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Demo
-                    </a>
-
+                    <div class="project-buttons">
+                        <a href="codeb.html" class="vip-btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="SmartShop AI"
+                           data-price="18000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
                 </div>
             </div>
+
             <div class="project-card">
                 <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=300&fit=crop"
                     alt="Modern Real Estate Portal" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">PropertyPro</h3>
+                    <div class="project-price">Price: RS 20,000 PKR</div>
                     <p class="project-description">Modern real estate platform with virtual tours, property matching,
                         and agent management system.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
+                        <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Tailwind</span>
                     </div>
-                    <a href="codec.html" class="vip-btn btn-accent" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Demo
-                    </a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=300&fit=crop"
-                    alt="Food Delivery Application with Real-time Tracking" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">QuickBite</h3>
-                    <p class="project-description">Food delivery application with real-time tracking, multiple payment
-                        options, and restaurant management.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Tailwind</span>
+                    <div class="project-buttons">
+                        <a href="codec.html" class="vip-btn btn-accent">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Demo
+                        </a>
+                        <a href="#" class="vip-btn btn-success order-btn"
+                           data-project="PropertyPro"
+                           data-price="20000">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
                     </div>
-                    <a href="coded.html" class="vip-btn btn-primary" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Demo
-                    </a>
-
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop"
-                    alt="Business Intelligence SaaS Dashboard" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">AnalyticsPro SaaS</h3>
-                    <p class="project-description">Business intelligence dashboard with real-time analytics, reporting,
-                        and data visualization tools.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTml:5</HTml:5></span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Tailwind</span>
-                    </div>
-                    <a href="codee.html" class="vip-btn btn-accent" style="padding: 0.8rem 1.5rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Demo
-                    </a>
-
                 </div>
             </div>
         </div>
     </section>
 
+   <!-- Call to Action Banner -->
+<div class="cta-banner">
+    <h3>Ready to Launch Your Website?</h3>
+    <p>Get a professional website delivered in 3-7 days with complete support</p>
+    
+    <!-- دو بٹن والا آپشن -->
+    <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/923063159899?text=Hello%20Ali!%20I%20visited%20your%20portfolio%20and%20I'm%20interested%20in%20your%20web%20development%20services.%20I%20would%20like%20to%20schedule%20a%20free%20consultation%20to%20discuss%20my%20website%20project%20requirements." 
+           class="vip-btn btn-success" 
+           style="padding: 1rem 2rem;"
+           target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Chat on WhatsApp Now
+        </a>
+        
+        <a href="#contact" class="vip-btn btn-primary" style="padding: 1rem 2rem;">
+            <i class="fas fa-envelope"></i>
+            Fill Contact Form
+        </a>
+    </div>
+</div>
     <section class="contact" id="contact">
         <div class="section-title">
             <h2>Start Your Project</h2>
@@ -1290,18 +1455,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" class="form-control" placeholder="Your company name">
+                    <label for="phone">WhatsApp Number *</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+92 300 1234567" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="budget">Project Budget (USD) *</label>
+                    <label for="budget">Project Budget (PKR) *</label>
                     <select id="budget" class="form-control" required>
                         <option value="">Select budget range</option>
-                        <option value="$50 - $100">$50 - $100</option>
-                        <option value="$200 - $300">$200 - $300</option>
-                        <option value="$400 - $500">$400 - $500</option>
-                        <option value="$700+">$1000+</option>
+                        <option value="3000 - 5000">RS3,000 - RS5,000</option>
+                      <option value="5000 - 10000">RS5,000 - RS10,000</option>
+                        <option value="10000 - 20000">RS10,000 - RS20,000</option>
+                        <option value="20000 - 50000">RS20,000 - RS50,000</option>
+                        <option value="50000+">RS50,000+</option>
                     </select>
                 </div>
 
@@ -1314,6 +1480,7 @@
                         <option value="Web Application">Web Application</option>
                         <option value="AI Integration">AI Integration</option>
                         <option value="Mobile App">Mobile App</option>
+                        <option value="Ready Template">Ready Template</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
@@ -1326,8 +1493,8 @@
                 </div>
 
                 <button type="submit" class="vip-btn btn-primary">
-                    <i class="fas fa-paper-plane"></i>
-                    Send Project Brief
+                    <i class="fab fa-whatsapp"></i>
+                    Send via WhatsApp
                 </button>
             </form>
         </div>
@@ -1339,17 +1506,16 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923063159899" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p style="color: #9ca3af;">&copy; 2024 AliDevTech.com. All rights reserved. | Professional Web Solutions</p>
+        <p style="color: #9ca3af; margin-top: 10px; font-size: 0.9rem;">
+            <i class="fas fa-phone-alt"></i> +92 306 3159899 | 
+            <i class="fas fa-envelope"></i> contact@alidevtech.com
+        </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS
-        (function () {
-            // Replace with your actual EmailJS Public Key
-            emailjs.init("ai9FYgKLGAHO69Kx4");
-        })();
         // Mobile Menu Toggle with CSS Animation
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('menu-toggle');
@@ -1357,14 +1523,10 @@
 
             if (menuToggle && navLinks) {
                 menuToggle.addEventListener('click', () => {
-                    // 'active' class add/remove hogi jo CSS animations ko trigger karegi
                     navLinks.classList.toggle('active');
-
-                    // Body par 'menu-open' class add hogi taaki background scroll na kare
                     document.body.classList.toggle('menu-open');
                 });
 
-                // Meno band karne ke liye jab koi link click ho ya bahar click ho
                 navLinks.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         navLinks.classList.remove('active');
@@ -1372,50 +1534,118 @@
                     });
                 });
             }
-        });
 
-        // Form Submission with EmailJS
-        document.getElementById('projectForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-
-            // Show loading state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
-                budget: document.getElementById('budget').value,
-                projectType: document.getElementById('projectType').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toLocaleString()
-            };
-            // EmailJS Integration کے نیچے یہ کوڈ شامل کریں
-
-            // ... (Your Smooth Scrolling code) ...
-
-            // Send email using EmailJS
-            emailjs.send('service_htifwfg', 'template_n5jgth9', formData)
-                .then(function (response) {
-                    alert('✅ Thank you! Your project details have been sent. I will contact you within 24 hours.');
-                    document.getElementById('projectForm').reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, function (error) {
-                    // Update this email address
-                    alert('❌ Sorry, there was an error sending your message. Please email me directly at: your-email@alidevtech.com');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
+            // Order Now buttons functionality
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const projectName = this.getAttribute('data-project');
+                    const projectPrice = this.getAttribute('data-price');
+                    const projectUrl = this.getAttribute('data-url') || '';
+                    
+                    // Create WhatsApp message
+                    let message = `Hello Mr Ali!%0A%0A`;
+                    message += `I want to order: *${projectName}*%0A`;
+                    message += `Price: *RS${projectPrice} PKR*%0A`;
+                    if(projectUrl) {
+                        message += `Project URL: ${projectUrl}%0A`;
+                    }
+                    message += `%0APlease contact me for further details.`;
+                    
+                    // Open WhatsApp
+                    window.open(`https://wa.me/923063159899?text=${message}`, '_blank');
                 });
+            });
         });
+
+        // Form Submission to WhatsApp
+       // Form Submission to WhatsApp - IMPROVED VERSION
+document.getElementById('projectForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    // Show loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+    submitBtn.disabled = true;
+
+    // Collect form data
+    const formData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        budget: document.getElementById('budget').value,
+        projectType: document.getElementById('projectType').value,
+        message: document.getElementById('message').value.trim()
+    };
+
+    // Validate phone number
+    if (!formData.phone.startsWith('+92') && !formData.phone.startsWith('03')) {
+        alert('Please enter a valid Pakistani WhatsApp number (e.g., +92 300 1234567 or 0300 1234567)');
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        return;
+    }
+
+    // Format phone number for WhatsApp
+    let whatsappNumber = formData.phone;
+    if (whatsappNumber.startsWith('03')) {
+        whatsappNumber = '+92' + whatsappNumber.substring(1);
+    }
+    whatsappNumber = whatsappNumber.replace(/\s+/g, ''); // Remove spaces
+
+    // Create professional WhatsApp message
+    const timestamp = new Date().toLocaleString('en-PK', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    let whatsappMessage = `*🌟 NEW PROJECT INQUIRY 🌟*\n\n`;
+    whatsappMessage += `*📋 Project Inquiry From:*\n`;
+    whatsappMessage += `👉 *Name:* ${formData.name}\n`;
+    whatsappMessage += `👉 *Email:* ${formData.email}\n`;
+    whatsappMessage += `👉 *Phone:* ${formData.phone}\n\n`;
+    
+    whatsappMessage += `*💰 Budget Range:* ${formData.budget} PKR\n`;
+    whatsappMessage += `*📊 Project Type:* ${formData.projectType}\n\n`;
+    
+    whatsappMessage += `*📝 Project Details:*\n`;
+    whatsappMessage += `${formData.message}\n\n`;
+    
+    whatsappMessage += `*⏰ Submitted On:* ${timestamp}\n`;
+    whatsappMessage += `*🔗 Source:* https://alidevtech-code.github.io/AliDevTech/ Portfolio\n\n`;
+    
+    whatsappMessage += `---\n`;
+    whatsappMessage += `*💼 Company:* AliDevTech\n`;
+    whatsappMessage += `*👨‍💻 Developer:* Mr. Ali\n`;
+    whatsappMessage += `*📞 Contact:* +92 306 3159899`;
+
+    // Create a nicer URL encoded message
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // Reset form first
+    document.getElementById('projectForm').reset();
+    
+    // Show success message
+    setTimeout(() => {
+        alert('✅ Form submitted successfully! WhatsApp will now open with a professional message. Please review and send it to proceed.');
+        
+        // Open WhatsApp
+        window.open(`https://wa.me/923063159899?text=${encodedMessage}`, '_blank');
+        
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 1000);
+});
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
