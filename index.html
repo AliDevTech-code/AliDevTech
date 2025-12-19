@@ -1073,6 +1073,111 @@ html {
         scrollbar-width: none;
     }
 }
+            .crypto-card {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+        border: 1px solid #33334d;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+        transition: all 0.4s ease;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+
+    .crypto-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+        border-color: #00ffff;
+    }
+
+    .project-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        filter: brightness(0.9);
+    }
+
+    .project-content {
+        padding: 24px;
+        color: #e0e0ff;
+    }
+
+    .project-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #00ffff;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .project-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #00ff88;
+        margin-bottom: 12px;
+    }
+
+    .project-description {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #b0b0ff;
+        margin-bottom: 20px;
+    }
+
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    .tech-tag {
+        background: rgba(0, 255, 255, 0.15);
+        color: #00ffff;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        border: 1px solid #00ffff44;
+    }
+
+    .project-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .vip-btn {
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+    }
+
+    .btn-secondary {
+        background: #16213e;
+        color: #00ffff;
+        border: 1px solid #00ffff;
+    }
+
+    .btn-secondary:hover {
+        background: #00ffff22;
+        box-shadow: 0 0 15px #00ffff;
+    }
+
+    .btn-success {
+        background: linear-gradient(45deg, #00ff88, #00cc66);
+        color: #000;
+        border: none;
+    }
+
+    .btn-success:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00ff88aa;
+    }
     </style>
 </head>
 
@@ -1269,11 +1374,11 @@ html {
                 </div>
             </div>
             <div class="project-card crypto-card">
-    <img src="https://plus.unsplash.com/premium_photo-1670793982-6c8d8e8e0b8c?w=600&h=300&fit=crop&q=80"
+    <img src="https://unsplash.com/photos/a-stack-of-coins-with-a-dollar-sign-on-top-of-it-zqVUD_Ih-18"
          alt="Crypto Mining & Trading Dashboard" class="project-image">
     <div class="project-content">
         <h3 class="project-title">Crypto Mining & Trading Dashboard</h3>
-        <div class="project-price">Price: RS 18,000 PKR</div>
+        <div class="project-price">Price: RS 50,000 PKR</div>
         <p class="project-description">
         A powerful and modern crypto dashboard featuring real-time price tracking, mining status monitoring, portfolio management, interactive charts, customizable alerts, and a fully responsive design. Complete with a sleek dark theme and glowing neon effects! 🚀 </p>
         <div class="project-tech">
@@ -1724,4 +1829,5 @@ document.getElementById('projectForm').addEventListener('submit', function(e) {
 </body>
 
 </html>
+
 
