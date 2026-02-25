@@ -187,8 +187,15 @@ export default function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 ${scrolled ? 'py-4 bg-bg-primary/95 backdrop-blur-md shadow-xl' : 'py-6 bg-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollTo('home')}>
-            <div className="w-10 h-10 rounded-full border-2 border-accent overflow-hidden">
-              <img src="/ali-logo.png" alt="Logo" className="w-full h-full object-cover" />
+            <div className="w-10 h-10 rounded-full border-2 border-accent overflow-hidden bg-bg-secondary flex items-center justify-center">
+              <img 
+                src="/ali-logo.png" 
+                alt="Logo" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://picsum.photos/seed/ali/100";
+                }}
+              />
             </div>
             <span className="font-mono text-xl font-bold text-accent tracking-tighter">{"{ MUHAMMAD ALI }"}</span>
           </div>
