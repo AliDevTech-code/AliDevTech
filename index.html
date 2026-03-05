@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Ali | Full Stack Developer Portfolio</title>
-<meta name="title" content="Muhammad Ali | Full Stack Developer Portfolio">
-<meta name="description" content="Professional Full Stack Web Developer specializing in React, Node.js, and AI Integration.">
-   <link rel="icon" type="image/png" href="public/ali-logo.png">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mr-ali-web-developer.vercel.app/">
-<meta property="og:title" content="Muhammad Ali | Full Stack Developer Portfolio">
-<meta property="og:description" content="Innovative web solutions and professional development. Check out my latest work!">
-<meta property="og:image" content="https://mr-ali-web-developer.vercel.app/public/ali-logo.png">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://mr-ali-web-developer.vercel.app/">
-<meta property="twitter:title" content="Muhammad Ali | Full Stack Developer Portfolio">
-<meta property="twitter:description" content="Innovative web solutions and professional development. Check out my latest work!">
-<meta property="twitter:image" content="https://mr-ali-web-developer.vercel.app/public/ali-logo.png">
-
+    <title>Muhammad Ali | Full Stack Developer Portfolio</title>
+    <meta name="title" content="Muhammad Ali | Full Stack Developer Portfolio">
+    <meta name="description"
+        content="Professional Full Stack Web Developer specializing in React, Node.js, and AI Integration.">
+    <link rel="icon" type="image/png" href="public/ali-logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mr-ali-web-developer.vercel.app/">
+    <meta property="og:title" content="Muhammad Ali | Full Stack Developer Portfolio">
+    <meta property="og:description"
+        content="Innovative web solutions and professional development. Check out my latest work!">
+    <meta property="og:image" content="https://mr-ali-web-developer.vercel.app/public/ali-logo.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mr-ali-web-developer.vercel.app/">
+    <meta property="twitter:title" content="Muhammad Ali | Full Stack Developer Portfolio">
+    <meta property="twitter:description"
+        content="Innovative web solutions and professional development. Check out my latest work!">
+    <meta property="twitter:image" content="https://mr-ali-web-developer.vercel.app/public/ali-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -50,39 +49,48 @@
             }
         }
     </script>
-    
     <style>
         body {
             background-color: #0a192f;
             color: #ccd6f6;
             scroll-behavior: smooth;
         }
-        
-        /* Custom Scrollbar */
+
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0a192f;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #1d3557;
             border: 2px solid #0a192f;
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #64ffda;
         }
-        
+
         .typing-cursor::after {
             content: '|';
             animation: blink 1s infinite;
         }
+
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
-        
+
         .nav-scrolled {
             background-color: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
@@ -90,114 +98,153 @@
             padding-bottom: 1rem;
             box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
         }
-        
+
         .skill-bar-fill {
             transition: width 1.5s cubic-bezier(0.17, 0.55, 0.55, 1);
         }
-        html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* HAMBURGER FIX */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            background-color: #112240;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        #mobile-menu.is-open {
+            display: flex;
+        }
+        #mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background-color: #112240;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#mobile-menu.is-open {
+    display: flex;
+    transform: translateX(0);
 }
     </style>
 </head>
+
 <body class="font-sans antialiased selection:bg-accent selection:text-bg-primary">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 py-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="w-10 h-10 rounded-full border-2 border-accent overflow-hidden bg-bg-secondary flex items-center justify-center">
-                    <img id="logo-img" src="ali-logo.png" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://picsum.photos/seed/ali/100'">
+                <div
+                    class="w-10 h-10 rounded-full border-2 border-accent overflow-hidden bg-bg-secondary flex items-center justify-center">
+                    <img src="/public/ali-logo.png" alt="Logo">
                 </div>
                 <span class="font-mono text-xl font-bold text-accent tracking-tighter">{ MUHAMMAD ALI }</span>
             </div>
-
             <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">01.</span> Home
-                </a>
-                <a href="#about" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">02.</span> About
-                </a>
-                <a href="#projects" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">03.</span> Projects
-                </a>
-                <a href="#order-website" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">04.</span> Order
-                </a>
-                <a href="#skills" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">05.</span> Skills
-                </a>
-                <a href="#contact" class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <span class="font-mono text-accent text-xs">06.</span> Contact
-                </a>
+                <a href="#home"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">01.</span> Home</a>
+                <a href="#about"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">02.</span> About</a>
+                <a href="#projects"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">03.</span> Projects</a>
+                <a href="#order-website"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">04.</span> Order</a>
+                <a href="#skills"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">05.</span> Skills</a>
+                <a href="#contact"
+                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent text-xs">06.</span> Contact</a>
             </div>
-
             <button class="md:hidden text-accent" onclick="toggleMenu()">
-                <i data-lucide="menu" id="menu-icon"></i>
+                <i data-lucide="menu" id="menu-icon" size="28"></i>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-bg-secondary hidden flex-col items-center justify-center gap-8 md:hidden">
+    <div id="mobile-menu">
         <button class="absolute top-8 right-8 text-accent" onclick="toggleMenu()">
-            <i data-lucide="x" size="32"></i>
+            
         </button>
-        <a href="#home" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">01.</span> Home
-        </a>
-        <a href="#about" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">02.</span> About
-        </a>
-        <a href="#projects" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">03.</span> Projects
-        </a>
-        <a href="#order-website" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">04.</span> Order Website
-        </a>
-        <a href="#skills" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">05.</span> Skills
-        </a>
-        <a href="#contact" onclick="toggleMenu()" class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors">
-            <span class="font-mono text-accent text-sm">06.</span> Contact
-        </a>
+        <a href="#home" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">01.</span> Home</a>
+        <a href="#about" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">02.</span> About</a>
+        <a href="#projects" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">03.</span> Projects</a>
+        <a href="#order-website" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">04.</span> Order Website</a>
+        <a href="#skills" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">05.</span> Skills</a>
+        <a href="#contact" onclick="toggleMenu()"
+            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
+                class="font-mono text-accent text-sm">06.</span> Contact</a>
         <div class="absolute bottom-12 flex gap-6">
-            <a href="https://github.com/AliDevTech-code" target="_blank" class="text-text-secondary hover:text-accent transition-all"><i data-lucide="github"></i></a>
-            <a href="https://wa.me/923063159899" target="_blank" class="text-text-secondary hover:text-accent transition-all"><i data-lucide="message-circle"></i></a>
+            <a href="https://github.com/AliDevTech-code" target="_blank"
+                class="text-text-secondary hover:text-accent transition-all"><i data-lucide="github" size="24"></i></a>
+            <a href="https://wa.me/923063159899" target="_blank"
+                class="text-text-secondary hover:text-accent transition-all"><i data-lucide="message-circle"
+                    size="24"></i></a>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto pt-20">
         <div data-aos="fade-up">
-            <p class="font-mono text-accent mb-4 flex items-center gap-2">
-                <span class="text-2xl">👋</span> Hi, my name is
-            </p>
-            <h1 class="text-5xl md:text-8xl font-extrabold text-accent mb-4 tracking-tight">
-                Muhammad Ali
-            </h1>
-            <h2 class="text-3xl md:text-5xl font-bold text-text-secondary mb-8">
+            <p class="font-mono text-accent mb-4 flex items-center gap-2"><span class="text-2xl">👋</span> Hi, my name
+                is</p>
+            <h1 class="text-3xl md:text-8xl font-extrabold text-accent mb-4 tracking-tight">Muhammad Ali</h1>
+            <h2 class="text-1xl md:text-5xl font-bold text-text-secondary mb-8">
                 I'm a <span id="typing-text" class="text-accent border-r-4 border-accent pr-2 typing-cursor"></span>
             </h2>
             <p class="text-lg text-text-secondary max-w-xl mb-12 leading-relaxed">
-                I'm a passionate developer specializing in building exceptional digital experiences. 
+                I'm a passionate developer specializing in building exceptional digital experiences.
                 Currently focused on creating responsive full-stack web applications with modern technologies.
             </p>
-            
             <div class="flex flex-wrap gap-4 mb-16">
-                <a href="#projects" class="px-8 py-4 border-2 border-accent text-accent font-bold rounded hover:bg-accent/10 transition-all flex items-center gap-2">
-                    <i data-lucide="code-2"></i> View My Work
-                </a>
-                <a href="#contact" class="px-8 py-4 border-2 border-text-secondary text-text-primary font-bold rounded hover:border-accent hover:text-accent transition-all flex items-center gap-2">
-                    <i data-lucide="send"></i> Get In Touch
-                </a>
+                <a href="#projects"
+                    class="px-8 py-4 border-2 border-accent text-accent font-bold rounded hover:bg-accent/10 transition-all flex items-center gap-2"><i
+                        data-lucide="code-2"></i> View My Work</a>
+                <a href="#contact"
+                    class="px-8 py-4 border-2 border-text-secondary text-text-primary font-bold rounded hover:border-accent hover:text-accent transition-all flex items-center gap-2"><i
+                        data-lucide="send"></i> Get In Touch</a>
             </div>
-
             <div class="flex gap-6">
-                <a href="https://github.com/AliDevTech-code" target="_blank" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i data-lucide="github" size="24"></i></a>
-                <a href="#" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i data-lucide="linkedin" size="24"></i></a>
-                <a href="https://wa.me/923063159899" target="_blank" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i data-lucide="message-circle" size="24"></i></a>
+                <a href="https://github.com/AliDevTech-code" target="_blank"
+                    class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
+                        data-lucide="github" size="24"></i></a>
+                <a href="#" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
+                        data-lucide="linkedin" size="24"></i></a>
+                <a href="https://wa.me/923063159899" target="_blank"
+                    class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
+                        data-lucide="message-circle" size="24"></i></a>
             </div>
         </div>
     </section>
@@ -209,67 +256,62 @@
             <h2 class="text-3xl font-bold text-text-primary">Who Am I?</h2>
             <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
         </div>
-
         <div class="grid md:grid-cols-2 gap-16">
             <div class="space-y-6 text-text-secondary leading-relaxed" data-aos="fade-up">
                 <h3 class="text-accent text-xl font-bold">The Journey So Far</h3>
-                <p>
-                    Started with a curiosity about how websites work, turned that into late-night coding sessions, and
-                    now I'm building full-stack applications that solve real problems.
-                </p>
-                <p>
-                    Every project teaches me something new. Every bug makes me better. Every solution brings that rush
-                    that keeps me coming back for more.
-                </p>
-                <p>
-                    First line of code? A "Hello World" in HTML. Still gets me hyped.
-                </p>
-
+                <p>Started with a curiosity about how websites work, turned that into late-night coding sessions, and
+                    now I'm building full-stack applications that solve real problems.</p>
+                <p>Every project teaches me something new. Every bug makes me better. Every solution brings that rush
+                    that keeps me coming back for more.</p>
+                <p>First line of code? A "Hello World" in HTML. Still gets me hyped.</p>
                 <div class="pt-6">
                     <h4 class="text-text-primary font-bold mb-4">When I'm Not Coding</h4>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="book-open" size="18"></i></span>
-                            <span class="text-sm">Learning</span>
+                        <div
+                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
+                            <span class="text-accent"><i data-lucide="book-open" size="18"></i></span><span
+                                class="text-sm">Learning</span>
                         </div>
-                        <div class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="music" size="18"></i></span>
-                            <span class="text-sm">Music</span>
+                        <div
+                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
+                            <span class="text-accent"><i data-lucide="music" size="18"></i></span><span
+                                class="text-sm">Music</span>
                         </div>
-                        <div class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="gamepad" size="18"></i></span>
-                            <span class="text-sm">Gaming</span>
+                        <div
+                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
+                            <span class="text-accent"><i data-lucide="gamepad" size="18"></i></span><span
+                                class="text-sm">Gaming</span>
                         </div>
-                        <div class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="lightbulb" size="18"></i></span>
-                            <span class="text-sm">Innovation</span>
+                        <div
+                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
+                            <span class="text-accent"><i data-lucide="lightbulb" size="18"></i></span><span
+                                class="text-sm">Innovation</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-           <div class="bg-bg-secondary p-8 rounded-2xl border border-bg-tertiary" data-aos="fade-left">
-    <h3 class="font-mono text-accent mb-8 flex items-center gap-2">
-        <i data-lucide="terminal" size="20"></i> &lt;Tech Stack/&gt;
-    </h3>
-    <div class="space-y-6" id="skills-bars">
-        </div>
-
-    <div class="grid grid-cols-3 gap-0 mt-12">
-        <div class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-            <div class="text-2xl font-bold text-accent font-mono">50+</div>
-            <div class="text-xs text-text-secondary mt-1">Projects</div>
-        </div>
-        <div class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-            <div class="text-2xl font-bold text-accent font-mono">500+</div>
-            <div class="text-xs text-text-secondary mt-1">Commits</div>
-        </div>
-        <div class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-            <div class="text-2xl font-bold text-accent font-mono">24/7</div>
-            <div class="text-xs text-text-secondary mt-1">Learning</div>
-        </div>
-    </div>
-</div>
+            <div class="bg-bg-secondary p-8 rounded-2xl border border-bg-tertiary" data-aos="fade-left">
+                <h3 class="font-mono text-accent mb-8 flex items-center gap-2"><i data-lucide="terminal" size="20"></i>
+                    &lt;Tech Stack/&gt;</h3>
+                <div class="space-y-6" id="skills-bars"></div>
+                <div class="grid grid-cols-3 gap-0 mt-12">
+                    <div
+                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
+                        <div class="text-2xl font-bold text-accent font-mono">50+</div>
+                        <div class="text-xs text-text-secondary mt-1">Projects</div>
+                    </div>
+                    <div
+                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
+                        <div class="text-2xl font-bold text-accent font-mono">500+</div>
+                        <div class="text-xs text-text-secondary mt-1">Commits</div>
+                    </div>
+                    <div
+                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
+                        <div class="text-2xl font-bold text-accent font-mono">24/7</div>
+                        <div class="text-xs text-text-secondary mt-1">Learning</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -281,54 +323,48 @@
                 <h2 class="text-3xl font-bold text-text-primary">Things I've Built</h2>
                 <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                <!-- Projects will be injected here -->
-            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
         </div>
     </section>
 
-    <!-- Order Website Form Section -->
+    <!-- Order Website Section -->
     <section id="order-website" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
             <span class="font-mono text-accent text-xl">04.</span>
             <h2 class="text-3xl font-bold text-text-primary">Order Your Website</h2>
             <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
         </div>
-
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div class="space-y-6" data-aos="fade-up">
                 <h3 class="text-2xl font-bold text-accent">Ready to launch your project?</h3>
-                <p class="text-text-secondary leading-relaxed">
-                    Fill out this form to tell me exactly what kind of website you need. 
-                    Whether it's an E-commerce store, a Portfolio, or a Custom Web App, 
-                    I'll build it professionally and fast.
-                </p>
+                <p class="text-text-secondary leading-relaxed">Fill out this form to tell me exactly what kind of
+                    website you need. Whether it's an E-commerce store, a Portfolio, or a Custom Web App, I'll build it
+                    professionally and fast.</p>
                 <ul class="space-y-4">
-                    <li class="flex items-center gap-3 text-text-primary">
-                        <span class="text-accent"><i data-lucide="rocket" size="18"></i></span> Fast Delivery
-                    </li>
-                    <li class="flex items-center gap-3 text-text-primary">
-                        <span class="text-accent"><i data-lucide="globe" size="18"></i></span> SEO Optimized
-                    </li>
-                    <li class="flex items-center gap-3 text-text-primary">
-                        <span class="text-accent"><i data-lucide="smartphone" size="18"></i></span> Fully Responsive
-                    </li>
-                    <li class="flex items-center gap-3 text-text-primary">
-                        <span class="text-accent"><i data-lucide="code-2" size="18"></i></span> Clean Code
-                    </li>
+                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
+                                data-lucide="rocket" size="18"></i></span> Fast Delivery</li>
+                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
+                                data-lucide="globe" size="18"></i></span> SEO Optimized</li>
+                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
+                                data-lucide="smartphone" size="18"></i></span> Fully Responsive</li>
+                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
+                                data-lucide="code-2" size="18"></i></span> Clean Code</li>
                 </ul>
             </div>
-
-            <form id="order-form" class="bg-bg-secondary p-8 rounded-3xl border border-bg-tertiary shadow-2xl space-y-4" data-aos="fade-left">
+            <form id="order-form" class="bg-bg-secondary p-8 rounded-3xl border border-bg-tertiary shadow-2xl space-y-4"
+                data-aos="fade-left">
                 <div class="space-y-2">
                     <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Your Name</label>
-                    <input name="clientName" required class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="Enter your name">
+                    <input name="clientName" required
+                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                        placeholder="Enter your name">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2">
-                        <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Website Type</label>
-                        <select name="siteType" class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors">
+                        <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Website
+                            Type</label>
+                        <select name="siteType"
+                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors">
                             <option>E-commerce</option>
                             <option>Portfolio</option>
                             <option>Business Site</option>
@@ -337,19 +373,28 @@
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Budget (Approx)</label>
-                        <input name="budget" class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="e.g. 10k">
+                        <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Budget
+                            (Approx)</label>
+                        <input name="budget"
+                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                            placeholder="e.g. 10k">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Key Features</label>
-                    <input name="features" class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="e.g. Login, Payments, Chat">
+                    <input name="features"
+                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                        placeholder="e.g. Login, Payments, Chat">
                 </div>
                 <div class="space-y-2">
-                    <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Detailed Description</label>
-                    <textarea name="description" required rows="4" class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none" placeholder="Describe your dream website..."></textarea>
+                    <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Detailed
+                        Description</label>
+                    <textarea name="description" required rows="4"
+                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none"
+                        placeholder="Describe your dream website..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-colors flex items-center justify-center gap-2">
+                <button type="submit"
+                    class="w-full py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-colors flex items-center justify-center gap-2">
                     <i data-lucide="message-circle" size="20"></i> Order via WhatsApp
                 </button>
             </form>
@@ -363,10 +408,7 @@
             <h2 class="text-3xl font-bold text-text-primary">My Arsenal</h2>
             <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-8" id="skills-grid">
-            <!-- Skills categories will be injected here -->
-        </div>
+        <div class="grid md:grid-cols-3 gap-8" id="skills-grid"></div>
     </section>
 
     <!-- Contact Section -->
@@ -376,73 +418,76 @@
             <h2 class="text-3xl font-bold text-text-primary">Let's Connect</h2>
             <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
         </div>
-
         <div class="grid md:grid-cols-2 gap-16">
             <div class="space-y-8" data-aos="fade-up">
-                <p class="text-text-secondary text-lg leading-relaxed">
-                    Have a project in mind or just want to chat? Drop me a message! 
-                    I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-                </p>
-
+                <p class="text-text-secondary text-lg leading-relaxed">Have a project in mind or just want to chat? Drop
+                    me a message! I'm always open to discussing new projects, creative ideas or opportunities to be part
+                    of your visions.</p>
                 <div class="space-y-6">
-                    <a href="mailto:mralijaan690@gmail.com" class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors">
-                            <i data-lucide="mail" size="20"></i>
-                        </span>
+                    <a href="mailto:mralijaan690@gmail.com"
+                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
+                        <span
+                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
+                                data-lucide="mail" size="20"></i></span>
                         <div>
-                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Email</div>
+                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Email
+                            </div>
                             <div class="text-text-primary font-medium">mralijaan690@gmail.com</div>
                         </div>
                     </a>
-                    <a href="https://wa.me/923063159899" target="_blank" class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors">
-                            <i data-lucide="message-circle" size="20"></i>
-                        </span>
+                    <a href="https://wa.me/923063159899" target="_blank"
+                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
+                        <span
+                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
+                                data-lucide="message-circle" size="20"></i></span>
                         <div>
-                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">WhatsApp</div>
+                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">WhatsApp
+                            </div>
                             <div class="text-text-primary font-medium">+92 306 315 9899</div>
                         </div>
                     </a>
-                    <div class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors">
-                            <i data-lucide="map-pin" size="20"></i>
-                        </span>
+                    <div
+                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
+                        <span
+                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
+                                data-lucide="map-pin" size="20"></i></span>
                         <div>
-                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Location</div>
+                            <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Location
+                            </div>
                             <div class="text-text-primary font-medium">Pakistan</div>
                         </div>
                     </div>
                 </div>
-
                 <div class="flex items-center gap-3 p-4 bg-accent/10 rounded-full w-fit">
                     <span class="w-3 h-3 bg-accent rounded-full animate-pulse"></span>
                     <span class="text-accent text-sm font-bold">Available for freelance work</span>
                 </div>
             </div>
-
-            <form id="contact-form" class="bg-bg-secondary p-8 md:p-12 rounded-3xl border border-bg-tertiary shadow-2xl" data-aos="fade-left">
+            <form id="contact-form" class="bg-bg-secondary p-8 md:p-12 rounded-3xl border border-bg-tertiary shadow-2xl"
+                data-aos="fade-left">
                 <div class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-sm text-text-secondary font-medium">Your Name</label>
-                            <input name="name" required class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="John Doe">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm text-text-secondary font-medium">Your Email</label>
-                            <input name="email" type="email" required class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="john@example.com">
-                        </div>
+                        <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Your
+                                Name</label><input name="name" required
+                                class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                                placeholder="John Doe"></div>
+                        <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Your
+                                Email</label><input name="email" type="email" required
+                                class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                                placeholder="john@example.com"></div>
                     </div>
-                    <div class="space-y-2">
-                        <label class="text-sm text-text-secondary font-medium">Subject</label>
-                        <input name="subject" required class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors" placeholder="Project Inquiry">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-sm text-text-secondary font-medium">Message</label>
-                        <textarea name="message" required rows={5} class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none" placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-5 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-hover transition-colors flex items-center justify-center gap-2 text-lg">
-                        <i data-lucide="send"></i> Send Message
-                    </button>
+                    <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Subject</label><input
+                            name="subject" required
+                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
+                            placeholder="Project Inquiry"></div>
+                    <div class="space-y-2"><label
+                            class="text-sm text-text-secondary font-medium">Message</label><textarea name="message"
+                            required rows="5"
+                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none"
+                            placeholder="Tell me about your project..."></textarea></div>
+                    <button type="submit"
+                        class="w-full py-5 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-hover transition-colors flex items-center justify-center gap-2 text-lg"><i
+                            data-lucide="send"></i> Send Message</button>
                 </div>
             </form>
         </div>
@@ -452,91 +497,84 @@
     <footer class="py-12 border-t border-bg-tertiary text-center bg-bg-secondary">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-center gap-6 mb-8">
-                <a href="https://github.com/AliDevTech-code" target="_blank" class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="github" size="20"></i></a>
-                <a href="#" class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="linkedin" size="20"></i></a>
-                <a href="https://wa.me/923063159899" target="_blank" class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="message-circle" size="20"></i></a>
+                <a href="https://github.com/AliDevTech-code" target="_blank"
+                    class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="github"
+                        size="20"></i></a>
+                <a href="#" class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="linkedin"
+                        size="20"></i></a>
+                <a href="https://wa.me/923063159899" target="_blank"
+                    class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="message-circle"
+                        size="20"></i></a>
             </div>
-            <p class="text-text-secondary text-sm">
-                Designed & Built by <span class="text-accent font-bold">Muhammad Ali</span> © <span id="year"></span>
-            </p>
-            <div class="mt-4 flex items-center justify-center gap-4 text-[10px] font-mono text-text-secondary uppercase tracking-widest">
-                <span>HTML5</span>
-                <span class="w-1 h-1 bg-bg-tertiary rounded-full"></span>
-                <span>Tailwind CSS</span>
-                <span class="w-1 h-1 bg-bg-tertiary rounded-full"></span>
-                <span>Vanilla JS</span>
+            <p class="text-text-secondary text-sm">Designed & Built by <span class="text-accent font-bold">Muhammad
+                    Ali</span> © <span id="year"></span></p>
+            <div
+                class="mt-4 flex items-center justify-center gap-4 text-[10px] font-mono text-text-secondary uppercase tracking-widest">
+                <span>HTML5</span><span class="w-1 h-1 bg-bg-tertiary rounded-full"></span><span>Tailwind
+                    CSS</span><span class="w-1 h-1 bg-bg-tertiary rounded-full"></span><span>Vanilla JS</span>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/923063159899" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 hover:bg-green-600 transition-all z-50 group">
+    <a href="https://wa.me/923063159899" target="_blank"
+        class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 hover:bg-green-600 transition-all z-50 group">
         <i data-lucide="message-circle" size="32"></i>
-        <span class="absolute right-full mr-4 bg-bg-secondary text-text-primary px-4 py-2 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-bg-tertiary shadow-xl">
-            Chat with me!
-        </span>
+        <span
+            class="absolute right-full mr-4 bg-bg-secondary text-text-primary px-4 py-2 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-bg-tertiary shadow-xl">Chat
+            with me!</span>
     </a>
 
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Initialize Lucide Icons
+        AOS.init({ duration: 1000, once: true, offset: 100 });
         lucide.createIcons();
 
         // Typing Effect
         const typingTextElement = document.getElementById('typing-text');
         const texts = ['Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'MERN Stack Developer'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
+        let textIndex = 0, charIndex = 0, isDeleting = false;
         function type() {
             const currentText = texts[textIndex];
-            if (isDeleting) {
-                typingTextElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingTextElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
+            if (isDeleting) { typingTextElement.textContent = currentText.substring(0, charIndex - 1); charIndex--; }
+            else { typingTextElement.textContent = currentText.substring(0, charIndex + 1); charIndex++; }
+            if (!isDeleting && charIndex === currentText.length) { isDeleting = true; setTimeout(type, 2000); }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDeleting ? 50 : 100); }
         }
         type();
 
-        // Scroll Navbar
-        const navbar = document.getElementById('navbar');
+        // Navbar scroll
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
+            document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 50);
         });
 
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        }
+       function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    const isOpen = menu.classList.contains('is-open');
 
-        // Data
+    if (isOpen) {
+        menu.classList.remove('is-open');
+        setTimeout(() => { menu.style.display = 'none'; }, 350);
+        icon.setAttribute('data-lucide', 'menu');
+    } else {
+        menu.style.display = 'flex';
+        setTimeout(() => { menu.classList.add('is-open'); }, 10);
+        icon.setAttribute('data-lucide', 'x');
+    }
+    lucide.createIcons();
+}
+
+        // Projects — ToolsHub added at TOP
         const projects = [
+            {
+                title: "ToolsHub – Free Online Calculator Tools",
+                description: "A complete tools website with 13+ calculators including Currency Converter, BMI, Loan/EMI, Scientific Calculator, GST, Profit/Loss and more. Fast, mobile-friendly and SEO optimized.",
+                image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=800&auto=format&fit=crop",
+                tags: ["HTML", "CSS", "JavaScript", "Vercel"],
+                live: "https://calculator-seven-pi-12.vercel.app/",
+                orderText: "Hi Muhammad Ali, I want to order a Tools website like ToolsHub"
+            },
             {
                 title: "Shopizo Mall - E-commerce Platform",
                 description: "Full-featured e-commerce platform with payment integration, cart management, and admin dashboard.",
@@ -612,24 +650,9 @@
         ];
 
         const skills = {
-            frontend: [
-                { name: "React", level: 90 },
-                { name: "JavaScript", level: 90 },
-                { name: "HTML5 & CSS3", level: 95 },
-                { name: "Tailwind CSS", level: 85 }
-            ],
-            backend: [
-                { name: "Node.js", level: 85 },
-                { name: "Express", level: 85 },
-                { name: "MongoDB", level: 80 },
-                { name: "Firebase", level: 75 }
-            ],
-            tools: [
-                { name: "Git & GitHub", level: 85 },
-                { name: "Vercel/Netlify", level: 85 },
-                { name: "Postman", level: 80 },
-                { name: "NPM", level: 80 }
-            ]
+            frontend: [{ name: "React", level: 90 }, { name: "JavaScript", level: 90 }, { name: "HTML5 & CSS3", level: 95 }, { name: "Tailwind CSS", level: 85 }],
+            backend: [{ name: "Node.js", level: 85 }, { name: "Express", level: 85 }, { name: "MongoDB", level: 80 }, { name: "Firebase", level: 75 }],
+            tools: [{ name: "Git & GitHub", level: 85 }, { name: "Vercel/Netlify", level: 85 }, { name: "Postman", level: 80 }, { name: "NPM", level: 80 }]
         };
 
         // Inject Projects
@@ -639,7 +662,6 @@
             card.className = "group bg-bg-primary rounded-2xl overflow-hidden border border-bg-tertiary hover:border-accent hover:-translate-y-2 transition-all duration-300 flex flex-col";
             card.setAttribute('data-aos', 'fade-up');
             card.setAttribute('data-aos-delay', (idx * 100).toString());
-            
             card.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
                     <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -651,109 +673,58 @@
                 <div class="p-6 flex-grow flex flex-col">
                     <h3 class="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors">${project.title}</h3>
                     <p class="text-text-secondary text-sm mb-6 flex-grow">${project.description}</p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        ${project.tags.map(tag => `<span class="text-[10px] font-mono text-accent bg-accent/10 px-2 py-1 rounded border border-accent/20">${tag}</span>`).join('')}
-                    </div>
+                    <div class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="text-[10px] font-mono text-accent bg-accent/10 px-2 py-1 rounded border border-accent/20">${tag}</span>`).join('')}</div>
                     <div class="flex gap-3">
-                        <a href="https://wa.me/923063159899?text=${encodeURIComponent(project.orderText)}" target="_blank" class="flex-1 py-2 bg-green-500/10 text-green-500 text-xs font-bold rounded border border-green-500/20 hover:bg-green-500 hover:text-white transition-all text-center flex items-center justify-center gap-2">
-                            <i data-lucide="message-circle" size="14"></i> Order
-                        </a>
-                        <a href="${project.live}" target="_blank" class="flex-1 py-2 bg-bg-tertiary text-text-primary text-xs font-bold rounded border border-transparent hover:border-accent hover:text-accent transition-all text-center flex items-center justify-center gap-2">
-                            <i data-lucide="external-link" size="14"></i> Live Demo
-                        </a>
+                        <a href="https://wa.me/923063159899?text=${encodeURIComponent(project.orderText)}" target="_blank" class="flex-1 py-2 bg-green-500/10 text-green-500 text-xs font-bold rounded border border-green-500/20 hover:bg-green-500 hover:text-white transition-all text-center flex items-center justify-center gap-2"><i data-lucide="message-circle" size="14"></i> Order</a>
+                        <a href="${project.live}" target="_blank" class="flex-1 py-2 bg-bg-tertiary text-text-primary text-xs font-bold rounded border border-transparent hover:border-accent hover:text-accent transition-all text-center flex items-center justify-center gap-2"><i data-lucide="external-link" size="14"></i> Live Demo</a>
                     </div>
-                </div>
-            `;
+                </div>`;
             projectsGrid.appendChild(card);
         });
 
-        // Inject Skills Bars in About
+        // Inject Skills Bars
         const skillsBars = document.getElementById('skills-bars');
         skills.frontend.forEach(skill => {
             const bar = document.createElement('div');
-            bar.innerHTML = `
-                <div class="flex justify-between mb-2">
-                    <span class="text-text-primary font-medium">${skill.name}</span>
-                    <span class="font-mono text-accent">${skill.level}%</span>
-                </div>         
-                <div class="h-2 bg-bg-tertiary rounded-full overflow-hidden">
-                    <div class="h-full bg-gradient-to-r from-accent to-accent-hover skill-bar-fill" style="width: 0" data-level="${skill.level}"></div>
-                </div>
-            `;
+            bar.innerHTML = `<div class="flex justify-between mb-2"><span class="text-text-primary font-medium">${skill.name}</span><span class="font-mono text-accent">${skill.level}%</span></div><div class="h-2 bg-bg-tertiary rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-accent to-accent-hover skill-bar-fill" style="width: 0" data-level="${skill.level}"></div></div>`;
             skillsBars.appendChild(bar);
         });
 
         // Inject Skills Grid
         const skillsGrid = document.getElementById('skills-grid');
-        const categories = [
-            { title: "Frontend", icon: "laptop", skills: skills.frontend },
-            { title: "Backend", icon: "server", skills: skills.backend },
-            { title: "Tools", icon: "database", skills: skills.tools }
-        ];
-
-        categories.forEach(cat => {
+        [{ title: "Frontend", icon: "laptop", skills: skills.frontend }, { title: "Backend", icon: "server", skills: skills.backend }, { title: "Tools", icon: "database", skills: skills.tools }].forEach(cat => {
             const div = document.createElement('div');
             div.className = "bg-bg-secondary p-8 rounded-2xl border border-bg-tertiary hover:border-accent transition-all group";
             div.setAttribute('data-aos', 'fade-up');
-            
-            div.innerHTML = `
-                <div class="flex items-center gap-3 mb-8">
-                    <span class="text-accent group-hover:scale-110 transition-transform"><i data-lucide="${cat.icon}" size="24"></i></span>
-                    <h3 class="text-xl font-bold">${cat.title}</h3>
-                </div>
-                <div class="space-y-6">
-                    ${cat.skills.map(skill => `
-                        <div>
-                            <div class="flex justify-between mb-2 text-sm">
-                                <span class="text-text-secondary">${skill.name}</span>
-                                <span class="font-mono text-accent">${skill.level}%</span>
-                            </div>
-                            <div class="h-1.5 bg-bg-tertiary rounded-full overflow-hidden">
-                                <div class="h-full bg-accent skill-bar-fill" style="width: 0" data-level="${skill.level}"></div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
+            div.innerHTML = `<div class="flex items-center gap-3 mb-8"><span class="text-accent group-hover:scale-110 transition-transform"><i data-lucide="${cat.icon}" size="24"></i></span><h3 class="text-xl font-bold">${cat.title}</h3></div><div class="space-y-6">${cat.skills.map(skill => `<div><div class="flex justify-between mb-2 text-sm"><span class="text-text-secondary">${skill.name}</span><span class="font-mono text-accent">${skill.level}%</span></div><div class="h-1.5 bg-bg-tertiary rounded-full overflow-hidden"><div class="h-full bg-accent skill-bar-fill" style="width: 0" data-level="${skill.level}"></div></div></div>`).join('')}</div>`;
             skillsGrid.appendChild(div);
         });
 
-        // Animate Skill Bars on Scroll
+        // Animate Skill Bars
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const fills = entry.target.querySelectorAll('.skill-bar-fill');
-                    fills.forEach(fill => {
-                        fill.style.width = fill.getAttribute('data-level') + '%';
-                    });
+                    entry.target.querySelectorAll('.skill-bar-fill').forEach(fill => { fill.style.width = fill.getAttribute('data-level') + '%'; });
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('section').forEach(section => observer.observe(section));
 
         // Forms
         document.getElementById('order-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            const whatsappMessage = `*NEW WEBSITE ORDER*%0A%0A*Client Name:* ${data.clientName}%0A*Website Type:* ${data.siteType}%0A*Budget:* ${data.budget}%0A*Features:* ${data.features}%0A*Description:* ${data.description}`;
-            window.open(`https://wa.me/923063159899?text=${whatsappMessage}`, '_blank');
+            const d = Object.fromEntries(new FormData(e.target));
+            window.open(`https://wa.me/923063159899?text=*NEW WEBSITE ORDER*%0A%0A*Client Name:* ${d.clientName}%0A*Website Type:* ${d.siteType}%0A*Budget:* ${d.budget}%0A*Features:* ${d.features}%0A*Description:* ${d.description}`, '_blank');
         });
-
         document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${data.name}%0A*Email:* ${data.email}%0A*Subject:* ${data.subject}%0A*Message:* ${data.message}`;
-            window.open(`https://wa.me/923063159899?text=${whatsappMessage}`, '_blank');
+            const d = Object.fromEntries(new FormData(e.target));
+            window.open(`https://wa.me/923063159899?text=*New Contact Form Submission*%0A%0A*Name:* ${d.name}%0A*Email:* ${d.email}%0A*Subject:* ${d.subject}%0A*Message:* ${d.message}`, '_blank');
         });
 
-        // Set Year
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Refresh Lucide Icons for injected content
         lucide.createIcons();
     </script>
 </body>
+
 </html>

@@ -1,20 +1,63 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Muhammad Ali — Full Stack Developer Portfolio
 
-# Run and deploy your AI Studio app
+> Building fast, scalable, and beautiful web experiences. From idea to deployment.
 
-This contains everything you need to run your app locally.
+🔗 **Live Portfolio:** [mr-ali-web-developer.vercel.app](https://mr-ali-web-developer.vercel.app)
 
-View your app in AI Studio: https://ai.studio/apps/c2dfb8cd-487c-4f3f-ab27-1770133d7f6f
+---
 
-## Run Locally
+## 👨‍💻 About Me
 
-**Prerequisites:**  Node.js
+I'm a passionate **Full Stack Web Developer** specializing in building modern, responsive, and production-ready web applications. I work across the entire stack — from pixel-perfect frontends to robust backends and database architecture.
+
+- 🚀 50+ Projects delivered
+- 💻 500+ GitHub commits
+- 📍 Based in Pakistan
+- 📬 Available for freelance work
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React.js, HTML5, CSS3, Tailwind CSS, JavaScript (ES6+)
+
+**Backend**
+- Node.js, Express.js, MongoDB, Firebase, Supabase
+
+**Tools & Platforms**
+- Git & GitHub, Vercel, Netlify, Postman, NPM
+
+---
+
+## 🚀 Featured Projects
+
+| Project | Description | Live |
+|---------|-------------|------|
+| **Shopizo Mall** | Full-featured e-commerce platform with cart, payments & admin dashboard | [View →](https://shopizo-mall.web.app) |
+| **ToolsHub** | 13+ free online calculator & converter tools, SEO optimized | [View →](https://calculator-seven-pi-12.vercel.app) |
+| **CalcMaster** | High-performance calculator web app with unlimited history | [View →](https://calcmastercom.vercel.app) |
+| **EarnTube** | Social media platform with video sharing & user profiles | [View →](https://alidevtech-code.github.io/EarnTube) |
+| **AutoMine** | Automated PKR mining platform with real-time rewards & admin panel | [View →](https://auto-mining-bbceb.web.app) |
+| **Qoinly Game** | Interactive play & earn web game platform | [View →](https://qoinly.web.app) |
+| **FoodFly** | Online food delivery platform with real-time order tracking | [View →](https://alidevtech-code.github.io/FoodFly) |
+| **Al Chishti Dawakhana** | Herbal medicine platform with consultation booking | [View →](https://al-chishti-dawakhana.vercel.app) |
+| **PromptMaster AI** | AI prompt generator with multiple styles & clipboard support | [View →](https://promptmaster-ai-generator-pro.vercel.app) |
+| **URL Security Scanner** | Real-time URL threat detection & phishing analyzer | [View →](https://url-security-scanner-dusky.vercel.app) |
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## 📬 Contact
+
+| Channel | Link |
+|---------|------|
+| 📧 Email | mralijaan690@gmail.com |
+| 💬 WhatsApp | [+92 306 315 9899](https://wa.me/923063159899) |
+| 🐙 GitHub | [AliDevTech-code](https://github.com/AliDevTech-code) |
+
+---
+
+> *"Every project is a new problem to solve — and I love solving problems."*
+
+**⭐ If you like my work, consider giving this repo a star!**
