@@ -44,7 +44,7 @@ I'm a passionate **Full Stack Web Developer** specializing in building modern, r
 | **Al Chishti Dawakhana** | Herbal medicine platform with consultation booking | [View →](https://al-chishti-dawakhana.vercel.app) |
 | **PromptMaster AI** | AI prompt generator with multiple styles & clipboard support | [View →](https://promptmaster-ai-generator-pro.vercel.app) |
 | **URL Security Scanner** | Real-time URL threat detection & phishing analyzer | [View →](https://url-security-scanner-dusky.vercel.app) |
-
+| **PakMobile Store** | Modern mobile phone store with WhatsApp cart, brand filters & real-time search | [View →](https://pak-mobile-store-two.vercel.app) |
 
 ---
 
