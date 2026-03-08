@@ -125,23 +125,25 @@
         #mobile-menu.is-open {
             display: flex;
         }
+
         #mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 40;
-    background-color: #112240;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-#mobile-menu.is-open {
-    display: flex;
-    transform: translateX(0);
-}
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            background-color: #112240;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #mobile-menu.is-open {
+            display: flex;
+            transform: translateX(0);
+        }
     </style>
 </head>
 
@@ -186,7 +188,7 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu">
         <button class="absolute top-8 right-8 text-accent" onclick="toggleMenu()">
-            
+
         </button>
         <a href="#home" onclick="toggleMenu()"
             class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
@@ -548,25 +550,33 @@
             document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 50);
         });
 
-       function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const icon = document.getElementById('menu-icon');
-    const isOpen = menu.classList.contains('is-open');
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            const isOpen = menu.classList.contains('is-open');
 
-    if (isOpen) {
-        menu.classList.remove('is-open');
-        setTimeout(() => { menu.style.display = 'none'; }, 350);
-        icon.setAttribute('data-lucide', 'menu');
-    } else {
-        menu.style.display = 'flex';
-        setTimeout(() => { menu.classList.add('is-open'); }, 10);
-        icon.setAttribute('data-lucide', 'x');
-    }
-    lucide.createIcons();
-}
+            if (isOpen) {
+                menu.classList.remove('is-open');
+                setTimeout(() => { menu.style.display = 'none'; }, 350);
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                menu.style.display = 'flex';
+                setTimeout(() => { menu.classList.add('is-open'); }, 10);
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        }
 
         // Projects — ToolsHub added at TOP
         const projects = [
+            {
+                title: "CryptoKombat - Telegram Airdrop Bot",
+                description: "Hamster Kombat style Telegram airdrop bot with daily tapping, TON wallet integration, auto play, boost system and referral rewards.",
+                image: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=1074&auto=format&fit=crop",
+                tags: ["Telegram Bot", "Node.js", "TON Wallet", "Firebase"],
+                live: "https://t.me/CryptoKombatairdrop_bot",
+                orderText: "Hi Muhammad Ali, I want to order a Telegram Airdrop Bot like CryptoKombat"
+            },
             {
                 title: "ToolsHub – Free Online Calculator Tools",
                 description: "A complete tools website with 13+ calculators including Currency Converter, BMI, Loan/EMI, Scientific Calculator, GST, Profit/Loss and more. Fast, mobile-friendly and SEO optimized.",
@@ -576,13 +586,13 @@
                 orderText: "Hi Muhammad Ali, I want to order a Tools website like ToolsHub"
             },
             {
-    title: "PakMobile Store - Mobile Phone E-commerce",
-    description: "Modern mobile phone store with WhatsApp cart system, brand filters, real-time search, banner slider and fast delivery across Pakistan.",
-    image: "https://images.unsplash.com/photo-1697545806245-9795b6056141?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    tags: ["HTML", "Tailwind CSS", "JavaScript", "Vercel"],
-    live: "https://pak-mobile-store-two.vercel.app/",
-    orderText: "Hi Muhammad Ali, I want to order a Mobile Store website like PakMobile Store"
-},
+                title: "PakMobile Store - Mobile Phone E-commerce",
+                description: "Modern mobile phone store with WhatsApp cart system, brand filters, real-time search, banner slider and fast delivery across Pakistan.",
+                image: "https://images.unsplash.com/photo-1697545806245-9795b6056141?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                tags: ["HTML", "Tailwind CSS", "JavaScript", "Vercel"],
+                live: "https://pak-mobile-store-two.vercel.app/",
+                orderText: "Hi Muhammad Ali, I want to order a Mobile Store website like PakMobile Store"
+            },
             {
                 title: "Shopizo Mall - E-commerce Platform",
                 description: "Full-featured e-commerce platform with payment integration, cart management, and admin dashboard.",
