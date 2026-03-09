@@ -45,7 +45,7 @@ I'm a passionate **Full Stack Web Developer** specializing in building modern, r
 | **PromptMaster AI** | AI prompt generator with multiple styles & clipboard support | [View →](https://promptmaster-ai-generator-pro.vercel.app) |
 | **URL Security Scanner** | Real-time URL threat detection & phishing analyzer | [View →](https://url-security-scanner-dusky.vercel.app) |
 | **PakMobile Store** | Modern mobile phone store with WhatsApp cart, brand filters & real-time search | [View →](https://pak-mobile-store-two.vercel.app) |
-
+| **CryptoKombat Bot** | Hamster Kombat style Telegram airdrop bot with TON wallet, auto play & referral system | [View →](https://t.me/CryptoKombatairdrop_bot) |
 ---
 
 ## 📬 Contact
