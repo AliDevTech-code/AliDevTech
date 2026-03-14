@@ -34,7 +34,8 @@ I'm a passionate **Full Stack Web Developer** specializing in building modern, r
 
 | Project | Description | Live |
 |---------|-------------|------|
-| **Shopizo Mall** | Full-featured e-commerce platform with cart, payments & admin dashboard | [View →](https://shopizo-mall.web.app) |
+| **PakStore** | Full-featured E-commerce store with PHP, MySQL, admin panel, cart system, order tracking & payment integration | [View →](https://pakstore.gt.tc/) |
+ | **Shopizo Mall** | Full-featured e-commerce platform with cart, payments & admin dashboard | [View →](https://shopizo-mall.web.app) |
 | **ToolsHub** | 13+ free online calculator & converter tools, SEO optimized | [View →](https://calculator-seven-pi-12.vercel.app) |
 | **CalcMaster** | High-performance calculator web app with unlimited history | [View →](https://calcmastercom.vercel.app) |
 | **EarnTube** | Social media platform with video sharing & user profiles | [View →](https://alidevtech-code.github.io/EarnTube) |
