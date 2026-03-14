@@ -23,294 +23,1434 @@
     <meta property="twitter:image" content="https://mr-ali-web-developer.vercel.app/public/ali-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'bg-primary': '#0a192f',
-                        'bg-secondary': '#112240',
-                        'bg-tertiary': '#1d3557',
-                        'text-primary': '#ccd6f6',
-                        'text-secondary': '#8892b0',
-                        'accent': '#64ffda',
-                        'accent-hover': '#4cd4b0',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                }
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <style>
         body {
-            background-color: #0a192f;
-            color: #ccd6f6;
-            scroll-behavior: smooth;
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0a192f;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #1d3557;
-            border: 2px solid #0a192f;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64ffda;
-        }
-
-        .typing-cursor::after {
-            content: '|';
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .nav-scrolled {
-            background-color: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-        }
-
-        .skill-bar-fill {
-            transition: width 1.5s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-
-        html,
-        body {
-            max-width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #0f0f0f 50%, #0a0a0a 100%);
+            color: #e6f1ff;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* HAMBURGER FIX */
-        #mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 40;
-            background-color: #112240;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
+        .font-mono {
+            font-family: 'Fira Code', monospace;
         }
 
-        #mobile-menu.is-open {
-            display: flex;
+        /* Tailwind color extensions - Modern dark theme */
+        .text-accent {
+            color: #64ffda;
         }
 
-        #mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 40;
-            background-color: #112240;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        .text-text-primary {
+            color: #e6f1ff;
         }
 
-        #mobile-menu.is-open {
-            display: flex;
-            transform: translateX(0);
+        .text-text-secondary {
+            color: #8b949e;
         }
+
+        .bg-bg-primary {
+            background-color: #0f0f0f;
+        }
+
+        .bg-bg-secondary {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .bg-bg-tertiary {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .bg-accent {
+            background-color: #64ffda;
+        }
+
+        .border-bg-tertiary {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .hover\:text-accent:hover {
+            color: #64ffda;
+        }
+
+        .hover\:bg-accent\/10:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .hover\:border-accent:hover {
+            border-color: #64ffda;
+        }
+
+        /* Additional utilities */
+        .max-w-7xl {
+            max-width: 80rem;
+        }
+
+        /* Navbar */
+        nav#navbar {
+            padding: 0.75rem 0 !important;
+            background: transparent !important;
+        }
+
+        nav#navbar.nav-scrolled {
+            padding: 0.5rem 0 !important;
+            background: rgba(15, 15, 15, 0.95) !important;
+        }
+
+
+
+        /* Hero title responsive */
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 5rem);
+        }
+
+        /* Section titles */
+        h2.text-3xl {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            h2.text-3xl {
+                font-size: 1.25rem;
+            }
+
+            .text-1xl {
+                font-size: 0.9rem !important;
+            }
+
+            .glass-card,
+            .project-card {
+                border-radius: 16px;
+            }
+
+            /* Fix container width */
+            .max-w-7xl {
+                max-width: 100% !important;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            /* Fix sections */
+            section {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                overflow-x: hidden;
+            }
+
+            /* Fix grid */
+            #projects-grid {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .magic-bg {
+                overflow-x: hidden;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Fix hero text position - move up */
+            #home {
+                padding-top: 6rem !important;
+                padding-bottom: 2rem !important;
+                justify-content: flex-start !important;
+            }
+
+            #home .hero-content {
+                margin-top: 18px;
+                padding-top: 0;
+            }
+
+            #home p:first-of-type {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+        }
+
+        /* Project card grid - responsive */
+        #projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            #projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        /* ===== MAGICAL PORTFOLIO STYLES 2026 ===== */
+:root {
+    --primary: #64ffda;
+    --primary-glow: rgba(100, 255, 218, 0.4);
+    --bg-dark: #0d1117;
+    --bg-card: rgba(17, 34, 64, 0.6);
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #e6f1ff;
+    --text-secondary: #8892b0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== MAGICAL BACKGROUND ===== */
+.magic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.magic-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 40%);
+    animation: bgShift 20s ease-in-out infinite;
+}
+
+.magic-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(100, 255, 218, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    animation: bgShift 20s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(5%, 5%) rotate(5deg); }
+    66% { transform: translate(-5%, 3%) rotate(-3deg); }
+}
+
+/* Floating orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: float 15s ease-in-out infinite;
+    opacity: 0.25;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: #a855f7;
+    top: 60%;
+    right: 10%;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: #38bdf8;
+    bottom: 20%;
+    left: 30%;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -30px) scale(1.1); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(20px, 30px) scale(1.05); }
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 3px;
+     background: linear-gradient(180deg, #64ffda 0%, #a855f7 100%);
+}
+
+/* ===== TYPOGRAPHY & GLOW EFFECTS ===== */
+.glow-text {
+    text-shadow: 0 0 20px var(--primary-glow), 0 0 40px var(--primary-glow);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, #a855f7 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== NAVBAR ===== */
+#navbar {
+    background: transparent !important;
+    backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    padding: 0.75rem 0 !important;
+}
+
+.nav-scrolled {
+    background: rgba(15, 15, 15, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.15);
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-link {
+    position: relative;
+    overflow: hidden;
+    padding: 0.25rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #64ffda;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px #64ffda;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ===== GLASSMORPHISM CARDS ===== */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 
+        0 20px 60px rgba(100, 255, 218, 0.15),
+        0 0 30px rgba(100, 255, 218, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ===== HERO SECTION ===== */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.hero-name {
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    z-index: 1;
+    font-size: 0.875rem;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.btn-primary:hover::before {
+    left: 0;
+}
+
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+/* ===== SECTIONS ===== */
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    border-radius: 2px;
+}
+
+.skill-bar {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 8px;
+    width: 100%;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #64ffda, #a855f7);
+    border-radius: 10px;
+    transition: width 1.2s cubic-bezier(0.17, 0.55, 0.55, 1);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+    position: relative;
+}
+
+.skill-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmerBar 2s infinite;
+}
+
+@keyframes shimmerBar {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ===== PROJECT CARDS ===== */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card .image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    flex-shrink: 0;
+}
+
+.project-card .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.5rem;
+}
+
+.project-card .description {
+    min-height: 60px;
+    max-height: 60px;
+}
+
+.project-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 
+        0 30px 60px rgba(100, 255, 218, 0.2),
+        0 0 50px rgba(100, 255, 218, 0.1);
+}
+
+.project-card .image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    flex-shrink: 0;
+}
+
+.project-card .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.5rem;
+}
+
+.project-card .description {
+    min-height: 60px;
+    max-height: 60px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.project-card img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+.project-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-card .tag {
+    padding: 4px 12px;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.project-card .tag:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* ===== FORMS ===== */
+.form-input {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
+.floating {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.floating-delayed {
+    animation: floating 6s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+    opacity: 1;
+}
+
+/* ===== MOBILE MENU ===== */
+#mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85%;
+    z-index: 100;
+    
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+#mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(100, 255, 218, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+#mobile-menu::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -30%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+#mobile-menu.is-open {
+    display: flex;
+    transform: translateX(0);
+}
+
+/* Menu links styling */
+#mobile-menu a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #e6f1ff;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+#mobile-menu a:hover {
+    color: #64ffda;
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateX(8px);
+}
+
+#mobile-menu a span:first-child {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: #64ffda;
+    opacity: 0.8;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+    border-color: #64ffda;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #64ffda;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    right: auto;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15) rotate(-10deg);
+    box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    z-index: -1;
+    opacity: 0.4;
+    animation: pulseRing 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 10px 60px rgba(37, 211, 102, 0.6); }
+}
+
+@keyframes pulseRing {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0; }
+}
+
+/* ===== AVAILABLE BADGE ===== */
+.available-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.available-badge .dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: dotPulse 2s infinite;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== PARALLAX FLOATING ELEMENTS ===== */
+.parallax-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+/* ===== AOS CUSTOM ===== */
+[data-aos] {
+    transition-duration: 0.8s;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+    
+    .glass-card {
+        border-radius: 16px;
+    }
+}
+
+/* ===== CUSTOM SELECT ===== */
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2364ffda' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+    cursor: pointer;
+    color: #e6f1ff !important;
+}
+
+/* Dropdown popup styling - browser dependent */
+select,
+select:focus,
+select:hover,
+select:active,
+::-webkit-select-placeholder,
+::-webkit-file-upload-button {
+    background-color: transparent !important;
+}
+
+/* For Firefox */
+select option {
+    background-color: #0f0f0f !important;
+    color: #e6f1ff !important;
+    padding: 12px !important;
+}
+
+/* For Chrome/Safari/Edge - most complete fix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select option {
+        background-color: #0f0f0f !important;
+        color: #e6f1ff !important;
+        padding: 12px !important;
+        -webkit-appearance: none !important;
+    }
+    
+    select option:checked {
+        background-color: #1a1a2e !important;
+        color: #64ffda !important;
+    }
+}
+
+/* For IE/Edge */
+select option:checked {
+    background-color: #1a1a2e !important;
+    color: #64ffda !important;
+}
+
+select:focus,
+select:active {
+    outline: none !important;
+    border-color: #64ffda !important;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: linear-gradient(to top, rgba(100, 255, 218, 0.02), transparent);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ===== HOBBY CARDS ===== */
+.hobby-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hobby-card:hover {
+    border-color: var(--primary);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+.hobby-card .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 10px;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.hobby-card:hover .icon {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* ===== STATS CARDS ===== */
+.stat-card {
+    position: relative;
+    padding: 1rem 1.25rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #64ffda, #a855f7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: #64ffda;
+    transform: translateY(-5px);
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
+.stat-card .number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #64ffda, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-card .label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* Mobile responsive stat cards */
+@media (max-width: 640px) {
+    .stat-card {
+        padding: 0.75rem 1rem;
+    }
+    
+    .stat-card .number {
+        font-size: 1.25rem;
+    }
+    
+    .stat-card .label {
+        font-size: 0.6rem;
+    }
+}
+
+/* ===== ORDER BUTTONS ===== */
+.order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.order-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+.demo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.demo-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+/* ===== CONTACT CARDS ===== */
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-card:hover {
+    border-color: var(--primary);
+    transform: translateX(15px);
+    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.1);
+}
+
+.contact-card .icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 14px;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .icon-box {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--primary-glow);
+}
+
+/* ===== SEND BUTTON ===== */
+.send-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #64ffda, #a855f7);
+    border: none;
+    border-radius: 14px;
+    color: #0a0a0f;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.3);
+}
+
+.send-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+.send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.3);
+}
+
     </style>
 </head>
 
 <body class="font-sans antialiased selection:bg-accent selection:text-bg-primary">
 
+    <!-- Magical Background -->
+    <div class="magic-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 py-6">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <div class="flex items-center gap-2 sm:gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)"
+                style="margin-left: 4px;">
                 <div
-                    class="w-10 h-10 rounded-full border-2 border-accent overflow-hidden bg-bg-secondary flex items-center justify-center">
-                    <img src="/public/ali-logo.png" alt="Logo">
+                    class="w-9 h-9 rounded-lg border-2 border-accent overflow-hidden bg-bg-secondary flex items-center justify-center transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(100,255,218,0.4)]">
+                    <img src="/public/ali-logo.png" alt="Logo" class="w-full h-full object-cover">
                 </div>
-                <span class="font-mono text-xl font-bold text-accent tracking-tighter">{ MUHAMMAD ALI }</span>
+                <span
+                    class="font-mono text-sm font-bold text-accent tracking-tighter hidden xs:block sm:hidden">MA</span>
+                <span class="font-mono text-sm font-bold text-accent tracking-tighter hidden sm:block">
+                    <span class="text-text-secondary">{</span>MUHAMMAD ALI<span class="text-text-secondary">}</span>
+                </span>
             </div>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#home"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">01.</span> Home</a>
-                <a href="#about"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">02.</span> About</a>
-                <a href="#projects"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">03.</span> Projects</a>
-                <a href="#order-website"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">04.</span> Order</a>
-                <a href="#skills"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">05.</span> Skills</a>
-                <a href="#contact"
-                    class="group flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors"><span
-                        class="font-mono text-accent text-xs">06.</span> Contact</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#home" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">01.</span>Home</a>
+                <a href="#about" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">02.</span>About</a>
+                <a href="#projects" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">03.</span>Projects</a>
+                <a href="#order-website" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">04.</span>Order</a>
+                <a href="#skills" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">05.</span>Skills</a>
+                <a href="#contact" class="nav-link text-xs font-medium hover:text-accent transition-colors"><span
+                        class="font-mono text-accent mr-1">06.</span>Contact</a>
             </div>
-            <button class="md:hidden text-accent" onclick="toggleMenu()">
-                <i data-lucide="menu" id="menu-icon" size="28"></i>
+            <button class="md:hidden mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu">
-        <button class="absolute top-8 right-8 text-accent" onclick="toggleMenu()">
-
+        <button class="absolute top-4 right-4 text-accent p-2 rounded-lg hover:bg-accent/10 transition-colors"
+            onclick="toggleMenu()">
+            <i data-lucide="x" size="24"></i>
         </button>
-        <a href="#home" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">01.</span> Home</a>
-        <a href="#about" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">02.</span> About</a>
-        <a href="#projects" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">03.</span> Projects</a>
-        <a href="#order-website" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">04.</span> Order Website</a>
-        <a href="#skills" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">05.</span> Skills</a>
-        <a href="#contact" onclick="toggleMenu()"
-            class="flex flex-col items-center gap-2 text-2xl font-bold hover:text-accent transition-colors"><span
-                class="font-mono text-accent text-sm">06.</span> Contact</a>
-        <div class="absolute bottom-12 flex gap-6">
-            <a href="https://github.com/AliDevTech-code" target="_blank"
-                class="text-text-secondary hover:text-accent transition-all"><i data-lucide="github" size="24"></i></a>
-            <a href="https://wa.me/923063159899" target="_blank"
-                class="text-text-secondary hover:text-accent transition-all"><i data-lucide="message-circle"
-                    size="24"></i></a>
+        <div class="flex flex-col items-center gap-4">
+            <a href="#home" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">01.</span> Home
+            </a>
+            <a href="#about" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">02.</span> About
+            </a>
+            <a href="#projects" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">03.</span> Projects
+            </a>
+            <a href="#order-website" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">04.</span> Order
+            </a>
+            <a href="#skills" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">05.</span> Skills
+            </a>
+            <a href="#contact" onclick="toggleMenu()"
+                class="text-2xl font-bold hover:text-accent transition-all nav-link px-4 py-2">
+                <span class="font-mono text-accent text-xs block text-center mb-1">06.</span> Contact
+            </a>
+        </div>
+        <div class="absolute bottom-8 flex gap-4">
+            <a href="https://github.com/AliDevTech-code" target="_blank" class="social-icon">
+                <i data-lucide="github" size="20"></i>
+            </a>
+            <a href="https://wa.me/923063159899" target="_blank" class="social-icon">
+                <i data-lucide="message-circle" size="20"></i>
+            </a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto pt-20">
-        <div data-aos="fade-up">
-            <p class="font-mono text-accent mb-4 flex items-center gap-2"><span class="text-2xl">👋</span> Hi, my name
-                is</p>
-            <h1 class="text-3xl md:text-8xl font-extrabold text-accent mb-4 tracking-tight">Muhammad Ali</h1>
-            <h2 class="text-1xl md:text-5xl font-bold text-text-secondary mb-8">
-                I'm a <span id="typing-text" class="text-accent border-r-4 border-accent pr-2 typing-cursor"></span>
-            </h2>
-            <p class="text-lg text-text-secondary max-w-xl mb-12 leading-relaxed">
-                I'm a passionate developer specializing in building exceptional digital experiences.
-                Currently focused on creating responsive full-stack web applications with modern technologies.
+    <section id="home"
+        class="min-h-screen flex flex-col justify-center px-4 md:px-12 max-w-7xl mx-auto pt-28 md:pt-20 relative">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+            <p class="font-mono text-accent mb-3 md:mb-6 flex items-center gap-2 md:gap-3 text-sm md:text-lg mt-0 md:mt-0"
+                style="margin-top: 0;">
+                <span class="text-2xl md:text-3xl floating">👋</span> Hi, my name is
             </p>
-            <div class="flex flex-wrap gap-4 mb-16">
+            <h1 class="hero-title font-extrabold mb-3 md:mb-4 tracking-tight">
+                <span class="hero-name block gradient-text">Muhammad Ali</span>
+            </h1>
+            <h2 class="text-base md:text-4xl lg:text-5xl font-bold text-text-secondary mb-6 md:mb-8">
+                I'm a <span id="typing-text"
+                    class="text-accent border-r-2 md:border-r-4 border-accent pr-1 md:pr-2 typing-cursor glow-text"></span>
+            </h2>
+            <p class="text-sm md:text-lg text-text-secondary max-w-lg md:max-w-xl mb-8 md:mb-12 leading-relaxed">
+                I'm a passionate developer specializing in building exceptional digital experiences.
+                Currently focused on creating responsive full-stack web applications.
+            </p>
+            <div class="flex flex-row gap-2 md:gap-4 mb-8 md:mb-16 w-full">
                 <a href="#projects"
-                    class="px-8 py-4 border-2 border-accent text-accent font-bold rounded hover:bg-accent/10 transition-all flex items-center gap-2"><i
-                        data-lucide="code-2"></i> View My Work</a>
+                    class="btn-primary text-xs md:text-base px-4 md:px-8 py-2 md:py-4 flex items-center justify-center gap-1 md:gap-2 flex-1 sm:flex-none">
+                    <i data-lucide="code-2" size="14 md:18"></i> <span class="hidden sm:inline">View My Work</span><span
+                        class="sm:hidden">View Work</span>
+                </a>
                 <a href="#contact"
-                    class="px-8 py-4 border-2 border-text-secondary text-text-primary font-bold rounded hover:border-accent hover:text-accent transition-all flex items-center gap-2"><i
-                        data-lucide="send"></i> Get In Touch</a>
+                    class="btn-secondary text-xs md:text-base px-4 md:px-8 py-2 md:py-4 flex items-center justify-center gap-1 md:gap-2 flex-1 sm:flex-none">
+                    <i data-lucide="send" size="14 md:18"></i> <span class="hidden sm:inline">Get In Touch</span><span
+                        class="sm:hidden">Contact</span>
+                </a>
             </div>
-            <div class="flex gap-6">
-                <a href="https://github.com/AliDevTech-code" target="_blank"
-                    class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
-                        data-lucide="github" size="24"></i></a>
-                <a href="#" class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
-                        data-lucide="linkedin" size="24"></i></a>
-                <a href="https://wa.me/923063159899" target="_blank"
-                    class="text-text-secondary hover:text-accent hover:-translate-y-1 transition-all"><i
-                        data-lucide="message-circle" size="24"></i></a>
+            <div class="flex gap-4 md:gap-6">
+                <a href="https://github.com/AliDevTech-code" target="_blank" class="social-icon">
+                    <i data-lucide="github" size="22"></i>
+                </a>
+                <a href="www.linkedin.com/in/muhammad-ali-190204313" class="social-icon">
+                    <i data-lucide="linkedin" size="22"></i>
+                </a>
+                <a href="https://wa.me/923063159899" target="_blank" class="social-icon">
+                    <i data-lucide="message-circle" size="22"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 floating-delayed hidden md:flex">
+            <div class="w-6 h-10 border-2 border-accent/30 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-accent rounded-full animate-bounce"></div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
-            <span class="font-mono text-accent text-xl">02.</span>
-            <h2 class="text-3xl font-bold text-text-primary">Who Am I?</h2>
-            <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
+    <section id="about" class="py-16 md:py-24 px-4 md:px-2 max-w-7xl mx-auto relative">
+        <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12" data-aos="fade-right">
+            <span class="font-mono text-accent text-lg md:text-xl">02.</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary section-title">Who Am I?</h2>
+            <div class="h-px bg-bg-tertiary flex-grow max-w-xs hidden sm:block"></div>
         </div>
-        <div class="grid md:grid-cols-2 gap-16">
-            <div class="space-y-6 text-text-secondary leading-relaxed" data-aos="fade-up">
-                <h3 class="text-accent text-xl font-bold">The Journey So Far</h3>
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
+            <div class="space-y-4 md:space-y-6 text-text-secondary leading-relaxed" data-aos="fade-up">
+                <h3 class="text-lg md:text-xl font-bold gradient-text">The Journey So Far</h3>
                 <p>Started with a curiosity about how websites work, turned that into late-night coding sessions, and
                     now I'm building full-stack applications that solve real problems.</p>
                 <p>Every project teaches me something new. Every bug makes me better. Every solution brings that rush
                     that keeps me coming back for more.</p>
                 <p>First line of code? A "Hello World" in HTML. Still gets me hyped.</p>
-                <div class="pt-6">
-                    <h4 class="text-text-primary font-bold mb-4">When I'm Not Coding</h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div
-                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="book-open" size="18"></i></span><span
-                                class="text-sm">Learning</span>
+                <div class="pt-4 md:pt-6">
+                    <h4 class="text-text-primary font-bold mb-3 md:mb-4">When I'm Not Coding</h4>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="hobby-card">
+                            <div class="icon"><i data-lucide="book-open" size="18"></i></div>
+                            <span class="text-sm font-medium">Learning</span>
                         </div>
-                        <div
-                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="music" size="18"></i></span><span
-                                class="text-sm">Music</span>
+                        <div class="hobby-card">
+                            <div class="icon"><i data-lucide="music" size="18"></i></div>
+                            <span class="text-sm font-medium">Music</span>
                         </div>
-                        <div
-                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="gamepad" size="18"></i></span><span
-                                class="text-sm">Gaming</span>
+                        <div class="hobby-card">
+                            <div class="icon"><i data-lucide="gamepad-2" size="18"></i></div>
+                            <span class="text-sm font-medium">Gaming</span>
                         </div>
-                        <div
-                            class="flex items-center gap-3 p-3 bg-bg-secondary rounded-lg border border-transparent hover:border-accent transition-all">
-                            <span class="text-accent"><i data-lucide="lightbulb" size="18"></i></span><span
-                                class="text-sm">Innovation</span>
+                        <div class="hobby-card">
+                            <div class="icon"><i data-lucide="lightbulb" size="18"></i></div>
+                            <span class="text-sm font-medium">Innovation</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-bg-secondary p-8 rounded-2xl border border-bg-tertiary" data-aos="fade-left">
-                <h3 class="font-mono text-accent mb-8 flex items-center gap-2"><i data-lucide="terminal" size="20"></i>
-                    &lt;Tech Stack/&gt;</h3>
-                <div class="space-y-6" id="skills-bars"></div>
-                <div class="grid grid-cols-3 gap-0 mt-12">
-                    <div
-                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-                        <div class="text-2xl font-bold text-accent font-mono">50+</div>
-                        <div class="text-xs text-text-secondary mt-1">Projects</div>
+            <div class="glass-card p-6 md:p-8" data-aos="fade-left" data-aos-delay="200">
+                <h3 class="font-mono text-accent mb-6 md:mb-8 flex items-center gap-2">
+                    <i data-lucide="terminal" size="20"></i> Tech Stack
+                </h3>
+                <div class="space-y-4 md:space-y-6" id="skills-bars"></div>
+                <div class="grid grid-cols-3 gap-3 md:gap-4 mt-8 md:mt-12">
+                    <div class="stat-card p-3 md:p-4">
+                        <div class="number text-xl md:text-2xl">50+</div>
+                        <div class="label text-xs">Projects</div>
                     </div>
-                    <div
-                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-                        <div class="text-2xl font-bold text-accent font-mono">500+</div>
-                        <div class="text-xs text-text-secondary mt-1">Commits</div>
+                    <div class="stat-card p-3 md:p-4">
+                        <div class="number text-xl md:text-2xl">500+</div>
+                        <div class="label text-xs">Commits</div>
                     </div>
-                    <div
-                        class="text-center p-4 bg-bg-primary rounded-xl border border-bg-tertiary hover:border-accent transition-all">
-                        <div class="text-2xl font-bold text-accent font-mono">24/7</div>
-                        <div class="text-xs text-text-secondary mt-1">Learning</div>
+                    <div class="stat-card p-3 md:p-4">
+                        <div class="number text-xl md:text-2xl">24/7</div>
+                        <div class="label text-xs">Learning</div>
                     </div>
                 </div>
             </div>
@@ -318,85 +1458,98 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 md:px-12 bg-bg-secondary">
+    <section id="projects" class="py-16 md:py-24 px-4 md:px-12"
+        style="background: linear-gradient(180deg, transparent 0%, rgba(26,26,46,0.3) 50%, transparent 100%);">
         <div class="max-w-7xl mx-auto">
-            <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
-                <span class="font-mono text-accent text-xl">03.</span>
-                <h2 class="text-3xl font-bold text-text-primary">Things I've Built</h2>
-                <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
+            <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12" data-aos="fade-right">
+                <span class="font-mono text-accent text-lg md:text-xl">03.</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-text-primary section-title">Things I've Built</h2>
+                <div class="h-px bg-bg-tertiary flex-grow max-w-xs hidden sm:block"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projects-grid"></div>
         </div>
     </section>
 
     <!-- Order Website Section -->
-    <section id="order-website" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
-            <span class="font-mono text-accent text-xl">04.</span>
-            <h2 class="text-3xl font-bold text-text-primary">Order Your Website</h2>
-            <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
+    <section id="order-website" class="py-16 md:py-24 px-4 md:px-12 max-w-7xl mx-auto relative">
+        <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12" data-aos="fade-right">
+            <span class="font-mono text-accent text-lg md:text-xl">04.</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary section-title">Order Your Website</h2>
+            <div class="h-px bg-bg-tertiary flex-grow max-w-xs hidden sm:block"></div>
         </div>
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6" data-aos="fade-up">
-                <h3 class="text-2xl font-bold text-accent">Ready to launch your project?</h3>
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div class="space-y-4 md:space-y-6" data-aos="fade-up">
+                <h3 class="text-xl md:text-2xl font-bold gradient-text">Ready to launch your project?</h3>
                 <p class="text-text-secondary leading-relaxed">Fill out this form to tell me exactly what kind of
                     website you need. Whether it's an E-commerce store, a Portfolio, or a Custom Web App, I'll build it
                     professionally and fast.</p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
-                                data-lucide="rocket" size="18"></i></span> Fast Delivery</li>
-                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
-                                data-lucide="globe" size="18"></i></span> SEO Optimized</li>
-                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
-                                data-lucide="smartphone" size="18"></i></span> Fully Responsive</li>
-                    <li class="flex items-center gap-3 text-text-primary"><span class="text-accent"><i
-                                data-lucide="code-2" size="18"></i></span> Clean Code</li>
+                <ul class="space-y-3 md:space-y-4">
+                    <li class="flex items-center gap-3 text-text-primary">
+                        <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                            <i data-lucide="rocket" size="18"></i>
+                        </span> Fast Delivery
+                    </li>
+                    <li class="flex items-center gap-3 text-text-primary">
+                        <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                            <i data-lucide="globe" size="18"></i>
+                        </span> SEO Optimized
+                    </li>
+                    <li class="flex items-center gap-3 text-text-primary">
+                        <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                            <i data-lucide="smartphone" size="18"></i>
+                        </span> Fully Responsive
+                    </li>
+                    <li class="flex items-center gap-3 text-text-primary">
+                        <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                            <i data-lucide="code-2" size="18"></i>
+                        </span> Clean Code
+                    </li>
                 </ul>
             </div>
-            <form id="order-form" class="bg-bg-secondary p-8 rounded-3xl border border-bg-tertiary shadow-2xl space-y-4"
-                data-aos="fade-left">
+            <form id="order-form" class="glass-card p-6 md:p-8 space-y-4" data-aos="fade-left" data-aos-delay="200">
                 <div class="space-y-2">
                     <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Your Name</label>
-                    <input name="clientName" required
-                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                        placeholder="Enter your name">
+                    <input name="clientName" required class="form-input" placeholder="Enter your name">
                 </div>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="space-y-2">
                         <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Website
                             Type</label>
-                        <select name="siteType"
-                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors">
-                            <option>E-commerce</option>
-                            <option>Portfolio</option>
-                            <option>Business Site</option>
+                        <select name="siteType" class="form-input" style="background-color: rgba(255,255,255,0.05);">
+                            <option>E-commerce Store</option>
+                            <option>Portfolio Website</option>
+                            <option>Business Website</option>
                             <option>Landing Page</option>
-                            <option>Custom App</option>
+                            <option>Custom Web App</option>
+                            <option>Blog Website</option>
+                            <option>Educational Platform</option>
+                            <option>Restaurant Website</option>
+                            <option>Real Estate Website</option>
+                            <option>Travel & Tourism</option>
+                            <option>Healthcare Website</option>
+                            <option>Job Portal</option>
+                            <option>Social Media App</option>
+                            <option>CRM Dashboard</option>
+                            <option>Telegram Bot</option>
                         </select>
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Budget
                             (Approx)</label>
-                        <input name="budget"
-                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                            placeholder="e.g. 10k">
+                        <input name="budget" class="form-input" placeholder="e.g. 10k">
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Key Features</label>
-                    <input name="features"
-                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                        placeholder="e.g. Login, Payments, Chat">
+                    <input name="features" class="form-input" placeholder="e.g. Login, Payments, Chat">
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs text-text-secondary uppercase tracking-widest font-bold">Detailed
                         Description</label>
-                    <textarea name="description" required rows="4"
-                        class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none"
+                    <textarea name="description" required rows="4" class="form-input resize-none"
                         placeholder="Describe your dream website..."></textarea>
                 </div>
-                <button type="submit"
-                    class="w-full py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-colors flex items-center justify-center gap-2">
+                <button type="submit" class="order-btn w-full">
                     <i data-lucide="message-circle" size="20"></i> Order via WhatsApp
                 </button>
             </form>
@@ -404,55 +1557,53 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
-            <span class="font-mono text-accent text-xl">05.</span>
-            <h2 class="text-3xl font-bold text-text-primary">My Arsenal</h2>
-            <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
+    <section id="skills" class="py-16 md:py-24 px-4 md:px-12 max-w-7xl mx-auto relative">
+        <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12" data-aos="fade-right">
+            <span class="font-mono text-accent text-lg md:text-xl">05.</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary section-title">My Arsenal</h2>
+            <div class="h-px bg-bg-tertiary flex-grow max-w-xs hidden sm:block"></div>
         </div>
-        <div class="grid md:grid-cols-3 gap-8" id="skills-grid"></div>
+        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8" id="skills-grid"></div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
-            <span class="font-mono text-accent text-xl">06.</span>
-            <h2 class="text-3xl font-bold text-text-primary">Let's Connect</h2>
-            <div class="h-px bg-bg-tertiary flex-grow max-w-xs"></div>
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-12 max-w-7xl mx-auto relative">
+        <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12" data-aos="fade-right">
+            <span class="font-mono text-accent text-lg md:text-xl">06.</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary section-title">Let's Connect</h2>
+            <div class="h-px bg-bg-tertiary flex-grow max-w-xs hidden sm:block"></div>
         </div>
-        <div class="grid md:grid-cols-2 gap-16">
-            <div class="space-y-8" data-aos="fade-up">
-                <p class="text-text-secondary text-lg leading-relaxed">Have a project in mind or just want to chat? Drop
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
+            <div class="space-y-6 md:space-y-8" data-aos="fade-up">
+                <p class="text-text-secondary text-base md:text-lg leading-relaxed">Have a project in mind or just want
+                    to chat? Drop
                     me a message! I'm always open to discussing new projects, creative ideas or opportunities to be part
                     of your visions.</p>
-                <div class="space-y-6">
-                    <a href="mailto:mralijaan690@gmail.com"
-                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span
-                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
-                                data-lucide="mail" size="20"></i></span>
+                <div class="space-y-4 md:space-y-6">
+                    <a href="mailto:mralijaan690@gmail.com" class="contact-card block">
+                        <div class="icon-box">
+                            <i data-lucide="mail" size="22"></i>
+                        </div>
                         <div>
                             <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Email
                             </div>
                             <div class="text-text-primary font-medium">mralijaan690@gmail.com</div>
                         </div>
                     </a>
-                    <a href="https://wa.me/923063159899" target="_blank"
-                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span
-                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
-                                data-lucide="message-circle" size="20"></i></span>
+                    <a href="https://wa.me/923063159899" target="_blank" class="contact-card block">
+                        <div class="icon-box">
+                            <i data-lucide="message-circle" size="22"></i>
+                        </div>
                         <div>
                             <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">WhatsApp
                             </div>
                             <div class="text-text-primary font-medium">+92 306 315 9899</div>
                         </div>
                     </a>
-                    <div
-                        class="flex items-center gap-4 p-6 bg-bg-secondary rounded-2xl border border-bg-tertiary hover:border-accent hover:translate-x-2 transition-all group">
-                        <span
-                            class="p-3 bg-bg-primary text-accent rounded-xl group-hover:bg-accent group-hover:text-bg-primary transition-colors"><i
-                                data-lucide="map-pin" size="20"></i></span>
+                    <div class="contact-card">
+                        <div class="icon-box">
+                            <i data-lucide="map-pin" size="22"></i>
+                        </div>
                         <div>
                             <div class="text-xs text-text-secondary uppercase tracking-widest font-bold mb-1">Location
                             </div>
@@ -460,58 +1611,59 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 p-4 bg-accent/10 rounded-full w-fit">
-                    <span class="w-3 h-3 bg-accent rounded-full animate-pulse"></span>
+                <div class="available-badge">
+                    <span class="dot"></span>
                     <span class="text-accent text-sm font-bold">Available for freelance work</span>
                 </div>
             </div>
-            <form id="contact-form" class="bg-bg-secondary p-8 md:p-12 rounded-3xl border border-bg-tertiary shadow-2xl"
-                data-aos="fade-left">
-                <div class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Your
-                                Name</label><input name="name" required
-                                class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                                placeholder="John Doe"></div>
-                        <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Your
-                                Email</label><input name="email" type="email" required
-                                class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                                placeholder="john@example.com"></div>
+            <form id="contact-form" class="glass-card p-6 md:p-10" data-aos="fade-left" data-aos-delay="200">
+                <div class="space-y-5 md:space-y-6">
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm text-text-secondary font-medium">Your Name</label>
+                            <input name="name" required class="form-input" placeholder="John Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm text-text-secondary font-medium">Your Email</label>
+                            <input name="email" type="email" required class="form-input" placeholder="john@example.com">
+                        </div>
                     </div>
-                    <div class="space-y-2"><label class="text-sm text-text-secondary font-medium">Subject</label><input
-                            name="subject" required
-                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors"
-                            placeholder="Project Inquiry"></div>
-                    <div class="space-y-2"><label
-                            class="text-sm text-text-secondary font-medium">Message</label><textarea name="message"
-                            required rows="5"
-                            class="w-full bg-bg-primary border border-bg-tertiary rounded-xl p-4 focus:outline-none focus:border-accent transition-colors resize-none"
-                            placeholder="Tell me about your project..."></textarea></div>
-                    <button type="submit"
-                        class="w-full py-5 bg-accent text-bg-primary font-bold rounded-xl hover:bg-accent-hover transition-colors flex items-center justify-center gap-2 text-lg"><i
-                            data-lucide="send"></i> Send Message</button>
+                    <div class="space-y-2">
+                        <label class="text-sm text-text-secondary font-medium">Subject</label>
+                        <input name="subject" required class="form-input" placeholder="Project Inquiry">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm text-text-secondary font-medium">Message</label>
+                        <textarea name="message" required rows="5" class="form-input resize-none"
+                            placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="send-btn">
+                        <i data-lucide="send" size="20"></i>
+                        <span>Send Message</span>
+                    </button>
                 </div>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-bg-tertiary text-center bg-bg-secondary">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-center gap-6 mb-8">
-                <a href="https://github.com/AliDevTech-code" target="_blank"
-                    class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="github"
-                        size="20"></i></a>
-                <a href="#" class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="linkedin"
-                        size="20"></i></a>
-                <a href="https://wa.me/923063159899" target="_blank"
-                    class="text-text-secondary hover:text-accent transition-colors"><i data-lucide="message-circle"
-                        size="20"></i></a>
+    <footer class="py-10 md:py-12 border-t border-bg-tertiary text-center" style="background: rgba(26,26,46,0.3);">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="flex justify-center gap-5 md:gap-6 mb-6 md:mb-8">
+                <a href="https://github.com/AliDevTech-code" target="_blank" class="social-icon">
+                    <i data-lucide="github" size="20"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i data-lucide="linkedin" size="20"></i>
+                </a>
+                <a href="https://wa.me/923063159899" target="_blank" class="social-icon">
+                    <i data-lucide="message-circle" size="20"></i>
+                </a>
             </div>
             <p class="text-text-secondary text-sm">Designed & Built by <span class="text-accent font-bold">Muhammad
                     Ali</span> © <span id="year"></span></p>
             <div
-                class="mt-4 flex items-center justify-center gap-4 text-[10px] font-mono text-text-secondary uppercase tracking-widest">
+                class="mt-4 flex items-center justify-center gap-2 md:gap-4 text-[10px] font-mono text-text-secondary uppercase tracking-widest">
                 <span>HTML5</span><span class="w-1 h-1 bg-bg-tertiary rounded-full"></span><span>Tailwind
                     CSS</span><span class="w-1 h-1 bg-bg-tertiary rounded-full"></span><span>Vanilla JS</span>
             </div>
@@ -519,229 +1671,359 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/923063159899" target="_blank"
-        class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 hover:bg-green-600 transition-all z-50 group">
-        <i data-lucide="message-circle" size="32"></i>
+    <a href="https://wa.me/923063159899" target="_blank" class="whatsapp-float">
+        <i data-lucide="message-circle" size="28"></i>
         <span
-            class="absolute right-full mr-4 bg-bg-secondary text-text-primary px-4 py-2 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-bg-tertiary shadow-xl">Chat
-            with me!</span>
+            class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-bg-secondary text-text-primary px-3 py-2 rounded-xl text-xs font-bold opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap border border-accent/20 shadow-xl translate-x-2 group-hover:translate-x-0">
+            Chat!
+        </span>
     </a>
 
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 100 });
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 80,
+            easing: 'ease-out-cubic'
+        });
+
+        // Initialize Lucide icons
         lucide.createIcons();
 
         // Typing Effect
         const typingTextElement = document.getElementById('typing-text');
         const texts = ['Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'MERN Stack Developer'];
         let textIndex = 0, charIndex = 0, isDeleting = false;
+
         function type() {
             const currentText = texts[textIndex];
-            if (isDeleting) { typingTextElement.textContent = currentText.substring(0, charIndex - 1); charIndex--; }
-            else { typingTextElement.textContent = currentText.substring(0, charIndex + 1); charIndex++; }
-            if (!isDeleting && charIndex === currentText.length) { isDeleting = true; setTimeout(type, 2000); }
-            else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
+            if (isDeleting) {
+                typingTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            }
+            else {
+                typingTextElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 2500);
+            }
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            }
             else { setTimeout(type, isDeleting ? 50 : 100); }
         }
         type();
 
-        // Navbar scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 50);
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
         });
 
+        // Toggle mobile menu
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
+            const btn = document.querySelector('.mobile-menu-btn');
             const isOpen = menu.classList.contains('is-open');
 
             if (isOpen) {
                 menu.classList.remove('is-open');
-                setTimeout(() => { menu.style.display = 'none'; }, 350);
-                icon.setAttribute('data-lucide', 'menu');
+                if (btn) btn.classList.remove('active');
             } else {
                 menu.style.display = 'flex';
                 setTimeout(() => { menu.classList.add('is-open'); }, 10);
-                icon.setAttribute('data-lucide', 'x');
+                if (btn) btn.classList.add('active');
             }
-            lucide.createIcons();
         }
 
-        // Projects — ToolsHub added at TOP
+        // Projects Data
         const projects = [
+             {
+        title: "PakStore - E-commerce Store",
+        description: "Full-featured E-commerce website built with PHP. Features include fully working admin panel, product management, cart system, order tracking, user authentication, payment integration and responsive design for all devices.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1170&auto=format&fit=crop",
+        tags: ["PHP", "MySQL", "Admin Panel", "E-commerce"],
+        live: "https://pakstore.gt.tc/",
+        orderText: "Hi Muhammad Ali, I want to order an E-commerce website like PakStore"
+    },
             {
                 title: "CryptoKombat - Telegram Airdrop Bot",
-                description: "Hamster Kombat style Telegram airdrop bot with daily tapping, TON wallet integration, auto play, boost system and referral rewards.",
+                description: "Hamster Kombat style Telegram airdrop bot with daily tapping, TON wallet integration, auto play, boost system.",
                 image: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?q=80&w=1074&auto=format&fit=crop",
-                tags: ["Telegram Bot", "Node.js", "TON Wallet", "Firebase"],
+                tags: ["Telegram Bot", "Node.js", "Firebase"],
                 live: "https://t.me/CryptoKombatairdrop_bot",
                 orderText: "Hi Muhammad Ali, I want to order a Telegram Airdrop Bot like CryptoKombat"
             },
             {
                 title: "ToolsHub – Free Online Calculator Tools",
-                description: "A complete tools website with 13+ calculators including Currency Converter, BMI, Loan/EMI, Scientific Calculator, GST, Profit/Loss and more. Fast, mobile-friendly and SEO optimized.",
-                image: "https://images.unsplash.com/photo-1709534486708-fb8f94150d0a?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                tags: ["HTML", "CSS", "JavaScript", "Vercel"],
+                description: "Complete tools website with 13+ calculators. Fast, mobile-friendly and SEO optimized.",
+                image: "https://images.unsplash.com/photo-1709534486708-fb8f94150d0a?q=80&w=1287&auto=format&fit=crop",
+                tags: ["HTML", "CSS", "JavaScript"],
                 live: "https://calculator-seven-pi-12.vercel.app/",
                 orderText: "Hi Muhammad Ali, I want to order a Tools website like ToolsHub"
             },
             {
                 title: "PakMobile Store - Mobile Phone E-commerce",
-                description: "Modern mobile phone store with WhatsApp cart system, brand filters, real-time search, banner slider and fast delivery across Pakistan.",
-                image: "https://images.unsplash.com/photo-1697545806245-9795b6056141?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                tags: ["HTML", "Tailwind CSS", "JavaScript", "Vercel"],
+                description: "Modern mobile phone store with WhatsApp cart system, brand filters, real-time search.",
+                image: "https://images.unsplash.com/photo-1697545806245-9795b6056141?q=80&w=1074&auto=format&fit=crop",
+                tags: ["Tailwind CSS", "JavaScript", "Vercel"],
                 live: "https://pak-mobile-store-two.vercel.app/",
-                orderText: "Hi Muhammad Ali, I want to order a Mobile Store website like PakMobile Store"
+                orderText: "Hi Muhammad Ali, I want to order a Mobile Store website"
             },
             {
                 title: "Shopizo Mall - E-commerce Platform",
-                description: "Full-featured e-commerce platform with payment integration, cart management, and admin dashboard.",
+                description: "Full-featured e-commerce platform with payment integration, cart management.",
                 image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "Firebase", "Stripe"],
+                tags: ["HTML", "CSS", "Firebase"],
                 live: "https://shopizo-mall.web.app/",
-                orderText: "Hi Muhammad Ali, I want to order E-Commerce Platform project"
+                orderText: "Hi Muhammad Ali, I want to order E-Commerce Platform"
             },
             {
                 title: "CalcMaster - Unlimited Calculator",
-                description: "A high-performance, precision calculator web app designed for complex mathematical computations with unlimited history.",
+                description: "High-performance calculator web app with unlimited history.",
                 image: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "Vercel"],
+                tags: ["HTML", "CSS", "JavaScript"],
                 live: "https://calcmastercom.vercel.app/",
-                orderText: "Hi Muhammad Ali, I want to order CalcMaster project"
+                orderText: "Hi Muhammad Ali, I want to order CalcMaster"
             },
             {
                 title: "EarnTube - Social Media Platform",
-                description: "Modern social media platform with video sharing, user profiles, and interactive features.",
+                description: "Modern social media platform with video sharing and user profiles.",
                 image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML5", "CSS3", "JavaScript", "Responsive"],
+                tags: ["HTML5", "CSS3", "JavaScript"],
                 live: "https://alidevtech-code.github.io/EarnTube/",
                 orderText: "Hi Muhammad Ali, I want to order EarnTube project"
             },
             {
                 title: "AutoMine - PKR Mining Platform",
-                description: "Automated mining platform with real-time rewards, integrated payment processing, and admin panel.",
+                description: "Automated mining platform with real-time rewards and admin panel.",
                 image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "Supabase"],
+                tags: ["HTML", "CSS", "Supabase"],
                 live: "https://auto-mining-bbceb.web.app/",
                 orderText: "Hi Muhammad Ali, I want to order AutoMine project"
             },
             {
-                title: "Qoinly Game - Play & Earn",
-                description: "An engaging web-based game platform where users can play and experience interactive gameplay.",
-                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
-                tags: ["Game Dev", "JavaScript", "Interactive", "Web App"],
-                live: "https://qoinly.web.app/",
-                orderText: "Hi Muhammad Ali, I want to inquire about the Qoinly Game project"
-            },
-            {
                 title: "FoodFly - Online Food Delivery",
-                description: "Complete food delivery platform with restaurant listings, menu management, and real-time order tracking.",
+                description: "Complete food delivery platform with restaurant listings.",
                 image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "Supabase"],
+                tags: ["HTML", "CSS", "JavaScript"],
                 live: "https://alidevtech-code.github.io/FoodFly/",
                 orderText: "Hi Muhammad Ali, I want to order FoodFly project"
             },
             {
                 title: "Al Chishti Dawakhana - Herbal Medicine",
-                description: "Online platform for traditional herbal medicine practice featuring consultation booking and product showcases.",
+                description: "Online platform for traditional herbal medicine practice.",
                 image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "Supabase"],
+                tags: ["HTML", "CSS", "Vercel"],
                 live: "https://al-chishti-dawakhana.vercel.app/",
                 orderText: "Hi Muhammad Ali, I want to order Al Chishti project"
             },
             {
                 title: "PromptMaster AI - Generator",
-                description: "AI prompt generator platform with multiple artistic styles and instant copy-to-clipboard functionality.",
+                description: "AI prompt generator platform with multiple artistic styles.",
                 image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "AI"],
+                tags: ["HTML", "CSS", "AI"],
                 live: "https://promptmaster-ai-generator-pro.vercel.app/",
-                orderText: "Hi Muhammad Ali, I want to order PromptMaster AI project"
+                orderText: "Hi Muhammad Ali, I want to order PromptMaster AI"
             },
             {
                 title: "URL Security Scanner",
-                description: "Web application that analyzes URLs in real-time to detect security threats and phishing attempts.",
+                description: "Web app that analyzes URLs to detect security threats.",
                 image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
-                tags: ["HTML", "CSS", "JavaScript", "Security"],
+                tags: ["HTML", "CSS", "Security"],
                 live: "https://url-security-scanner-dusky.vercel.app",
                 orderText: "Hi Muhammad Ali, I want to order URL Scanner project"
+            },
+            {
+                title: "Qoinly Game - Play & Earn",
+                description: "Engaging web-based game platform with interactive gameplay.",
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+                tags: ["Game Dev", "JavaScript"],
+                live: "https://qoinly.web.app/",
+                orderText: "Hi Muhammad Ali, I want to inquire about Qoinly Game"
             }
         ];
 
         const skills = {
-            frontend: [{ name: "React", level: 90 }, { name: "JavaScript", level: 90 }, { name: "HTML5 & CSS3", level: 95 }, { name: "Tailwind CSS", level: 85 }],
-            backend: [{ name: "Node.js", level: 85 }, { name: "Express", level: 85 }, { name: "MongoDB", level: 80 }, { name: "Firebase", level: 75 }],
-            tools: [{ name: "Git & GitHub", level: 85 }, { name: "Vercel/Netlify", level: 85 }, { name: "Postman", level: 80 }, { name: "NPM", level: 80 }]
+            frontend: [
+                { name: "React", level: 90 },
+                { name: "JavaScript", level: 90 },
+                { name: "TypeScript", level: 80 },
+                { name: "HTML5 & CSS3", level: 95 },
+                { name: "Tailwind CSS", level: 85 },
+                { name: "Next.js", level: 75 }
+            ],
+            backend: [
+                { name: "Node.js", level: 85 },
+                { name: "Express", level: 85 },
+                { name: "MongoDB", level: 80 },
+                { name: "Firebase", level: 75 },
+                { name: "REST APIs", level: 85 },
+                { name: "GraphQL", level: 70 }
+            ],
+            tools: [
+                { name: "Git & GitHub", level: 85 },
+                { name: "Vercel/Netlify", level: 85 },
+                { name: "Postman", level: 80 },
+                { name: "NPM", level: 80 },
+                { name: "VS Code", level: 90 },
+                { name: "Figma", level: 70 }
+            ]
         };
 
         // Inject Projects
-        const projectsGrid = document.getElementById('projects-grid');
+        const projectsGrid = document.getElementById("projects-grid");
         projects.forEach((project, idx) => {
-            const card = document.createElement('div');
-            card.className = "group bg-bg-primary rounded-2xl overflow-hidden border border-bg-tertiary hover:border-accent hover:-translate-y-2 transition-all duration-300 flex flex-col";
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', (idx * 100).toString());
+            const card = document.createElement("div");
+            card.className = "project-card";
+            card.setAttribute("data-aos", "fade-up");
+            card.setAttribute("data-aos-delay", (idx * 50).toString());
             card.innerHTML = `
-                <div class="relative h-48 overflow-hidden">
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                        <a href="${project.live}" target="_blank" class="p-3 bg-accent text-bg-primary rounded-full hover:scale-110 transition-transform"><i data-lucide="external-link" size="20"></i></a>
-                        <a href="https://wa.me/923063159899?text=${encodeURIComponent(project.orderText)}" target="_blank" class="p-3 bg-green-500 text-white rounded-full hover:scale-110 transition-transform"><i data-lucide="message-circle" size="20"></i></a>
-                    </div>
+                <div class="image-container h-40 sm:h-48">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                    <div class="overlay"></div>
                 </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-text-primary mb-3 group-hover:text-accent transition-colors">${project.title}</h3>
-                    <p class="text-text-secondary text-sm mb-6 flex-grow">${project.description}</p>
-                    <div class="flex flex-wrap gap-2 mb-6">${project.tags.map(tag => `<span class="text-[10px] font-mono text-accent bg-accent/10 px-2 py-1 rounded border border-accent/20">${tag}</span>`).join('')}</div>
-                    <div class="flex gap-3">
-                        <a href="https://wa.me/923063159899?text=${encodeURIComponent(project.orderText)}" target="_blank" class="flex-1 py-2 bg-green-500/10 text-green-500 text-xs font-bold rounded border border-green-500/20 hover:bg-green-500 hover:text-white transition-all text-center flex items-center justify-center gap-2"><i data-lucide="message-circle" size="14"></i> Order</a>
-                        <a href="${project.live}" target="_blank" class="flex-1 py-2 bg-bg-tertiary text-text-primary text-xs font-bold rounded border border-transparent hover:border-accent hover:text-accent transition-all text-center flex items-center justify-center gap-2"><i data-lucide="external-link" size="14"></i> Live Demo</a>
+                <div class="p-4 sm:p-5 flex flex-col" style="min-height: auto;">
+                    <h3 class="text-base sm:text-xl font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">${project.title}</h3>
+                    <p class="project-description text-text-secondary text-xs sm:text-sm mb-3">${project.description}</p>
+                    <div class="tags mb-3 sm:mb-4 flex flex-wrap gap-2">
+                        ${project.tags.map(tag => `<span class="tag text-xs">${tag}</span>`).join('')}
+                    </div>
+                    <div class="flex gap-2 sm:gap-3 mt-auto">
+                        <a href="https://wa.me/923063159899?text=${encodeURIComponent(project.orderText)}" target="_blank" class="order-btn flex-1 text-center py-2 sm:py-3 text-xs sm:text-sm flex items-center justify-center gap-1">
+                            <i data-lucide="message-circle" size="12"></i> Order
+                        </a>
+                        <a href="${project.live}" target="_blank" class="demo-btn flex-1 text-center py-2 sm:py-3 text-xs sm:text-sm flex items-center justify-center gap-1">
+                            <i data-lucide="external-link" size="12"></i> Demo
+                        </a>
                     </div>
                 </div>`;
             projectsGrid.appendChild(card);
         });
 
         // Inject Skills Bars
-        const skillsBars = document.getElementById('skills-bars');
+        const skillsBars = document.getElementById("skills-bars");
         skills.frontend.forEach(skill => {
-            const bar = document.createElement('div');
-            bar.innerHTML = `<div class="flex justify-between mb-2"><span class="text-text-primary font-medium">${skill.name}</span><span class="font-mono text-accent">${skill.level}%</span></div><div class="h-2 bg-bg-tertiary rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-accent to-accent-hover skill-bar-fill" style="width: 0" data-level="${skill.level}"></div></div>`;
+            const bar = document.createElement("div");
+            bar.innerHTML = `
+                <div class="flex justify-between mb-2">
+                    <span class="text-text-primary font-medium text-sm">${skill.name}</span>
+                    <span class="font-mono text-accent text-sm">${skill.level}%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" data-level="${skill.level}"></div>
+                </div>`;
             skillsBars.appendChild(bar);
         });
 
         // Inject Skills Grid
-        const skillsGrid = document.getElementById('skills-grid');
-        [{ title: "Frontend", icon: "laptop", skills: skills.frontend }, { title: "Backend", icon: "server", skills: skills.backend }, { title: "Tools", icon: "database", skills: skills.tools }].forEach(cat => {
-            const div = document.createElement('div');
-            div.className = "bg-bg-secondary p-8 rounded-2xl border border-bg-tertiary hover:border-accent transition-all group";
-            div.setAttribute('data-aos', 'fade-up');
-            div.innerHTML = `<div class="flex items-center gap-3 mb-8"><span class="text-accent group-hover:scale-110 transition-transform"><i data-lucide="${cat.icon}" size="24"></i></span><h3 class="text-xl font-bold">${cat.title}</h3></div><div class="space-y-6">${cat.skills.map(skill => `<div><div class="flex justify-between mb-2 text-sm"><span class="text-text-secondary">${skill.name}</span><span class="font-mono text-accent">${skill.level}%</span></div><div class="h-1.5 bg-bg-tertiary rounded-full overflow-hidden"><div class="h-full bg-accent skill-bar-fill" style="width: 0" data-level="${skill.level}"></div></div></div>`).join('')}</div>`;
+        const skillsGrid = document.getElementById("skills-grid");
+        [{ title: "Frontend", icon: "laptop", skills: skills.frontend }, { title: "Backend", icon: "server", skills: skills.backend }, { title: "Tools", icon: "wrench", skills: skills.tools }].forEach(cat => {
+            const div = document.createElement("div");
+            div.className = "glass-card p-5 sm:p-8 group";
+            div.setAttribute("data-aos", "fade-up");
+            div.innerHTML = `
+                <div class="flex items-center gap-3 mb-5 sm:mb-8">
+                    <span class="text-accent group-hover:scale-110 transition-transform">
+                        <i data-lucide="${cat.icon}" size="22"></i>
+                    </span>
+                    <h3 class="text-lg sm:text-xl font-bold gradient-text">${cat.title}</h3>
+                </div>
+                <div class="space-y-4 sm:space-y-6">
+                    ${cat.skills.map(skill => `
+                        <div>
+                            <div class="flex justify-between mb-2 text-xs sm:text-sm">
+                                <span class="text-text-secondary">${skill.name}</span>
+                                <span class="font-mono text-accent">${skill.level}%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-bar-fill" data-level="${skill.level}"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>`;
             skillsGrid.appendChild(div);
         });
 
-        // Animate Skill Bars
+        // Animate Skill Bars on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.skill-bar-fill').forEach(fill => { fill.style.width = fill.getAttribute('data-level') + '%'; });
+                    const fills = entry.target.querySelectorAll(".skill-bar-fill");
+                    fills.forEach(fill => {
+                        const level = fill.getAttribute("data-level");
+                        setTimeout(() => {
+                            fill.style.width = level + "%";
+                        }, 200);
+                    });
                 }
             });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        }, { threshold: 0.2 });
 
-        // Forms
-        document.getElementById('order-form').addEventListener('submit', (e) => {
+        document.querySelectorAll("section").forEach(section => observer.observe(section));
+
+        // Forms - Order Form
+        document.getElementById("order-form").addEventListener("submit", (e) => {
             e.preventDefault();
             const d = Object.fromEntries(new FormData(e.target));
-            window.open(`https://wa.me/923063159899?text=*NEW WEBSITE ORDER*%0A%0A*Client Name:* ${d.clientName}%0A*Website Type:* ${d.siteType}%0A*Budget:* ${d.budget}%0A*Features:* ${d.features}%0A*Description:* ${d.description}`, '_blank');
-        });
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const d = Object.fromEntries(new FormData(e.target));
-            window.open(`https://wa.me/923063159899?text=*New Contact Form Submission*%0A%0A*Name:* ${d.name}%0A*Email:* ${d.email}%0A*Subject:* ${d.subject}%0A*Message:* ${d.message}`, '_blank');
+
+            // Trigger confetti
+            confetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.7 },
+                colors: ['#64ffda', '#a855f7', '#38bdf8']
+            });
+
+            const message = `*NEW WEBSITE ORDER*\n\n*Client Name:* ${d.clientName}\n*Website Type:* ${d.siteType}\n*Budget:* ${d.budget}\n*Features:* ${d.features}\n*Description:* ${d.description}`;
+            window.open(`https://wa.me/923063159899?text=${encodeURIComponent(message)}`, "_blank");
         });
 
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Contact Form
+        document.getElementById("contact-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const d = Object.fromEntries(new FormData(e.target));
+
+            // Trigger confetti
+            confetti({
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.7 },
+                colors: ['#64ffda', '#a855f7', '#38bdf8']
+            });
+
+            const message = `*New Contact Form Submission*\n\n*Name:* ${d.name}\n*Email:* ${d.email}\n*Subject:* ${d.subject}\n*Message:* ${d.message}`;
+            window.open(`https://wa.me/923063159899?text=${encodeURIComponent(message)}`, "_blank");
+        });
+
+        // Set current year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Re-initialize icons for dynamically added elements
         lucide.createIcons();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
