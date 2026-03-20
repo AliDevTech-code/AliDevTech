@@ -1,0 +1,17 @@
+packages:
+  "framer-motion": "For high-quality smooth reveal animations and micro-interactions"
+  "react-simple-typewriter": "For the requested typing effect in the hero section"
+
+images:
+  - path: "artifacts/portfolio/public/images/abstract-bg-1.png"
+    description: "Dark, moody abstract background with glowing cyan and electric blue mesh gradients, very subtle and professional, deep blacks"
+    aspect_ratio: "16:9"
+  - path: "artifacts/portfolio/public/images/abstract-bg-2.png"
+    description: "Dark technology background with subtle geometric lines, glowing cyan nodes, depth of field, sleek and premium"
+    aspect_ratio: "16:9"
+
+notes:
+  - Static portfolio as requested, no backend needed.
+  - Used Framer Motion for scroll animations to provide a premium feel.
+  - Using Lucide React for icons.
+  - Included a mock mutation hook for the contact form to demonstrate architecture completeness while keeping it static.
