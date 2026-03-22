@@ -22,7 +22,7 @@ const projects = [
     price: "PKR 30,000"
   },
   {
-    id: 2,
+    id: 3,
     title: "Shopizo Mall",
     description: "Full-featured e-commerce platform with cart, payments & admin dashboard — built for scale.",
     tags: ["React", "Firebase", "E-Commerce"],
@@ -31,7 +31,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20Shopizo%20Mall"
   },
   {
-    id: 3,
+    id: 4,
     title: "ToolsHub",
     description: "13+ free online calculator & converter tools, fully SEO optimized for maximum organic traffic.",
     tags: ["React", "Vite", "SEO", "Tools"],
@@ -40,7 +40,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20ToolsHub"
   },
   {
-    id: 4,
+    id: 5,
     title: "CalcMaster",
     description: "High-performance calculator web app with unlimited history tracking and clean UI.",
     tags: ["JavaScript", "HTML5", "CSS3"],
@@ -49,7 +49,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20CalcMaster"
   },
   {
-    id: 5,
+    id: 6,
     title: "EarnTube",
     description: "Social media platform with video sharing & user profiles — YouTube-style experience.",
     tags: ["HTML", "CSS", "JavaScript", "Firebase"],
@@ -58,7 +58,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20EarnTube"
   },
   {
-    id: 6,
+    id: 7,
     title: "AutoMine",
     description: "Automated PKR mining platform with real-time rewards system & full admin panel.",
     tags: ["React", "Firebase", "Real-time"],
@@ -67,7 +67,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20AutoMine"
   },
   {
-    id: 7,
+    id: 8,
     title: "Qoinly Game",
     description: "Interactive play & earn web game platform — engaging, rewarding, and fully gamified.",
     tags: ["React", "Firebase", "Gaming"],
@@ -76,7 +76,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20Qoinly"
   },
   {
-    id: 8,
+    id: 9,
     title: "FoodFly",
     description: "Online food delivery platform with real-time order tracking and restaurant listings.",
     tags: ["HTML", "CSS", "JavaScript"],
@@ -85,7 +85,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20FoodFly"
   },
   {
-    id: 9,
+    id: 10,
     title: "Al Chishti Dawakhana",
     description: "Herbal medicine platform with online consultation booking system for a traditional clinic.",
     tags: ["React", "Vercel", "Booking"],
@@ -94,7 +94,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20similar%20medical%20website"
   },
   {
-    id: 10,
+    id: 11,
     title: "PromptMaster AI",
     description: "AI prompt generator with multiple creative styles & one-click clipboard support.",
     tags: ["React", "AI", "Vercel"],
@@ -103,7 +103,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20an%20AI%20tool%20website"
   },
   {
-    id: 11,
+    id: 12,
     title: "URL Security Scanner",
     description: "Real-time URL threat detection & phishing analyzer — keep your browsing safe.",
     tags: ["React", "Security", "API"],
@@ -112,7 +112,7 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20security%20tool%20website"
   },
   {
-    id: 12,
+    id: 13,
     title: "PakMobile Store",
     description: "Modern mobile phone store with WhatsApp cart, brand filters & real-time search.",
     tags: ["React", "Tailwind", "WhatsApp API"],
@@ -121,14 +121,23 @@ const projects = [
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20mobile%20store%20website"
   },
   {
-    id: 13,
+    id: 14,
     title: "CryptoKombat Bot",
     description: "Hamster Kombat style Telegram airdrop bot with TON wallet, auto play & referral system.",
     tags: ["Telegram Bot", "TON", "Crypto"],
     image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=800&q=80",
     liveLink: "https://t.me/CryptoKombatairdrop_bot",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20Telegram%20bot"
-  }
+  },
+  {
+    "id": 15,
+    "title": "AuraPK Perfume Store",
+    "description": "Premium luxury fragrance store with white-glass UI and direct WhatsApp ordering system.",
+    "tags": ["HTML5", "Tailwind CSS", "JavaScript"],
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
+    "liveLink": "https://aurapk.vercel.app",
+    "orderLink": "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20the%20AuraPK%20perfume%20store%20website"
+}
 ];
 
 const WaIcon = () => (
