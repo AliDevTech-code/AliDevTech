@@ -8,6 +8,7 @@ I believe in building real-world solutions. Here is a list of my live projects:
 
 | Project Name | Tech Stack | Action |
 | :--- | :--- | :--- |
+| **AuraPK** | HTML5, CSS3, JAVASCRIPT | [View](https://aura-pk.vercel.app/) |
 | **Wish Me** | PHP, MySQL, Animations | [View](https://wishme.gt.tc/) |
 | **PakStore** | PHP, MySQL, Admin Panel | [View](https://pakstore.gt.tc/) |
 | **Shopizo Mall** | React, Firebase, E-Commerce | [View](https://shopizo-mall.web.app) |
