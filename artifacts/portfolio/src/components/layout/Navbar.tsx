@@ -185,7 +185,7 @@ export function Navbar() {
                 Hire Me
               </motion.a>
               <p className="text-center text-xs text-muted-foreground mt-4">
-                📍 Lahore, Pakistan · Available for freelance
+                📍 Sukkur, Sindh, Pakistan · Available for freelance
               </p>
             </div>
           </motion.aside>

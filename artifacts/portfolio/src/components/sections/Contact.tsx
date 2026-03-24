@@ -98,7 +98,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground font-medium mb-1">Location</p>
-                    <p className="text-white font-semibold">Lahore, Pakistan</p>
+                    <p className="text-white font-semibold">Sukkur, Sindh, Pakistan</p>
                   </div>
                 </div>
               </div>

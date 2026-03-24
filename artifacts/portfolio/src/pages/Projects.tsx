@@ -1,144 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowLeft } from "lucide-react";
-
-const projects = [
-  {
-    id: 1,
-    title: "Wish Me",
-    description: "Beautiful birthday & anniversary wish website with animations, music player & elegant designs — built in PHP.",
-    tags: ["PHP", "MySQL", "Birthday Wishes", "Animated"],
-    image: "https://images.unsplash.com/photo-1697012700991-d686ce12188e?q=80&w=1037&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    liveLink: "https://wishme.gt.tc/",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20wish%20website%20like%20WishMe"
-  },
-  {
-    id: 2,
-    title: "PakStore",
-    description: "Full-featured E-commerce store with PHP, MySQL, admin panel, cart system, order tracking & payment integration.",
-    tags: ["PHP", "MySQL", "E-Commerce", "Admin Panel"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    liveLink: "https://pakstore.gt.tc/",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20PakStore%20(PKR%2030%2C000)",
-    price: "PKR 30,000"
-  },
-  {
-    id: 3,
-    title: "Shopizo Mall",
-    description: "Full-featured e-commerce platform with cart, payments & admin dashboard — built for scale.",
-    tags: ["React", "Firebase", "E-Commerce"],
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80",
-    liveLink: "https://shopizo-mall.web.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20Shopizo%20Mall"
-  },
-  {
-    id: 4,
-    title: "ToolsHub",
-    description: "13+ free online calculator & converter tools, fully SEO optimized for maximum organic traffic.",
-    tags: ["React", "Vite", "SEO", "Tools"],
-    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80",
-    liveLink: "https://calculator-seven-pi-12.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20ToolsHub"
-  },
-  {
-    id: 5,
-    title: "CalcMaster",
-    description: "High-performance calculator web app with unlimited history tracking and clean UI.",
-    tags: ["JavaScript", "HTML5", "CSS3"],
-    image: "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=800&q=80",
-    liveLink: "https://calcmastercom.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20CalcMaster"
-  },
-  {
-    id: 6,
-    title: "EarnTube",
-    description: "Social media platform with video sharing & user profiles — YouTube-style experience.",
-    tags: ["HTML", "CSS", "JavaScript", "Firebase"],
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-    liveLink: "https://alidevtech-code.github.io/EarnTube",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20EarnTube"
-  },
-  {
-    id: 7,
-    title: "AutoMine",
-    description: "Automated PKR mining platform with real-time rewards system & full admin panel.",
-    tags: ["React", "Firebase", "Real-time"],
-    image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?w=800&q=80",
-    liveLink: "https://auto-mining-bbceb.web.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20AutoMine"
-  },
-  {
-    id: 8,
-    title: "Qoinly Game",
-    description: "Interactive play & earn web game platform — engaging, rewarding, and fully gamified.",
-    tags: ["React", "Firebase", "Gaming"],
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-    liveLink: "https://qoinly.web.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20Qoinly"
-  },
-  {
-    id: 9,
-    title: "FoodFly",
-    description: "Online food delivery platform with real-time order tracking and restaurant listings.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
-    liveLink: "https://alidevtech-code.github.io/FoodFly",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20project%20like%20FoodFly"
-  },
-  {
-    id: 10,
-    title: "Al Chishti Dawakhana",
-    description: "Herbal medicine platform with online consultation booking system for a traditional clinic.",
-    tags: ["React", "Vercel", "Booking"],
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80",
-    liveLink: "https://al-chishti-dawakhana.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20similar%20medical%20website"
-  },
-  {
-    id: 11,
-    title: "PromptMaster AI",
-    description: "AI prompt generator with multiple creative styles & one-click clipboard support.",
-    tags: ["React", "AI", "Vercel"],
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    liveLink: "https://promptmaster-ai-generator-pro.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20an%20AI%20tool%20website"
-  },
-  {
-    id: 12,
-    title: "URL Security Scanner",
-    description: "Real-time URL threat detection & phishing analyzer — keep your browsing safe.",
-    tags: ["React", "Security", "API"],
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
-    liveLink: "https://url-security-scanner-dusky.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20security%20tool%20website"
-  },
-  {
-    id: 13,
-    title: "PakMobile Store",
-    description: "Modern mobile phone store with WhatsApp cart, brand filters & real-time search.",
-    tags: ["React", "Tailwind", "WhatsApp API"],
-    image: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80",
-    liveLink: "https://pak-mobile-store-two.vercel.app",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20mobile%20store%20website"
-  },
-  {
-    id: 14,
-    title: "CryptoKombat Bot",
-    description: "Hamster Kombat style Telegram airdrop bot with TON wallet, auto play & referral system.",
-    tags: ["Telegram Bot", "TON", "Crypto"],
-    image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=800&q=80",
-    liveLink: "https://t.me/CryptoKombatairdrop_bot",
-    orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20Telegram%20bot"
-  },
-  {
-    "id": 15,
-    "title": "AuraPK Perfume Store",
-    "description": "Premium luxury fragrance store with white-glass UI and direct WhatsApp ordering system.",
-    "tags": ["HTML5", "Tailwind CSS", "JavaScript"],
-    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-    "liveLink": "https://aurapk.vercel.app",
-    "orderLink": "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20the%20AuraPK%20perfume%20store%20website"
-}
-];
+import { projects } from "@/data/projects";
 
 const WaIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -149,33 +11,38 @@ const WaIcon = () => (
 
 export default function Projects() {
   return (
-    <div className="min-h-screen pt-8 pb-20 relative"
-      style={{ background: "linear-gradient(180deg, #000a14 0%, #000507 100%)" }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,212,255,0.07) 0%, transparent 70%)" }}
+    <div className="min-h-screen pt-8 pb-20 relative" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%)' }}>
+      <img 
+        src={`${import.meta.env.BASE_URL}images/abstract-bg-2.png`}
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.03] pointer-events-none mix-blend-screen"
       />
-
+      
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex items-center gap-4 mb-12 pt-6">
-          <a href="/" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Portfolio
-          </a>
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-4 mb-12"
+        >
+          <a
+            href="/#portfolio"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-muted-foreground hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <ArrowLeft size={18} />
+            Back to Home
+          </a>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-4 text-white">
-            All <span className="text-primary">Projects</span>
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">All <span className="text-primary">Projects</span></h1>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            {projects.length} real live projects — all built and deployed by Mr. Ali.
+            Browse through all my projects — each one crafted with attention to detail and modern technologies.
           </p>
         </motion.div>
 
@@ -185,24 +52,17 @@ export default function Projects() {
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.06 }}
-              className="rounded-2xl overflow-hidden flex flex-col h-full group transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,212,255,0.12)]"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                backdropFilter: "blur(16px)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
+              transition={{ delay: index * 0.05 }}
+              className="glass-card rounded-2xl overflow-hidden group hover:border-primary/50 transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,212,255,0.1)] flex flex-col h-full"
             >
               <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 z-10 group-hover:opacity-0 transition-opacity duration-500"
-                  style={{ background: "rgba(0,212,255,0.12)", mixBlendMode: "overlay" }}
-                />
-                <img
-                  src={project.image}
-                  alt={project.title}
+                <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {project.price && (
+                {(project as any).price && (
                   <div className="absolute top-3 right-3 z-30">
                     <span
                       className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
@@ -211,11 +71,11 @@ export default function Projects() {
                         boxShadow: "0 2px 12px rgba(0,212,255,0.5)"
                       }}
                     >
-                      {project.price}
+                      {(project as any).price}
                     </span>
                   </div>
                 )}
-                <div className="absolute bottom-3 left-3 flex gap-2 flex-wrap z-20">
+                <div className="absolute bottom-3 left-3 right-3 flex gap-2 flex-wrap z-20">
                   {project.tags.slice(0, 2).map(tag => (
                     <span key={tag} className="text-xs font-semibold bg-black/60 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 rounded-md">
                       {tag}
@@ -223,34 +83,23 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-
+              
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-5 text-sm flex-grow">
+                <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                <p className="text-muted-foreground mb-5 text-sm flex-grow line-clamp-3">
                   {project.description}
                 </p>
-
+                
                 <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10">
-                  <a
+                  <a 
                     href={project.orderLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg font-medium text-sm transition-colors"
-                    style={{ background: "rgba(0,212,255,0.1)", color: "#00d4ff" }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.background = "#00d4ff";
-                      (e.currentTarget as HTMLElement).style.color = "#000";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.1)";
-                      (e.currentTarget as HTMLElement).style.color = "#00d4ff";
-                    }}
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground font-medium text-sm transition-colors"
                   >
                     <WaIcon /> Order Now
                   </a>
-                  <a
+                  <a 
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -264,11 +113,20 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <a href="/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white border border-white/10 hover:bg-white/5 transition-all">
-            <ArrowLeft size={18} /> Back to Portfolio
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="/#contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]"
+            style={{ background: "linear-gradient(135deg, #00d4ff, #0070f3)", color: "#fff" }}
+          >
+            Let's Work Together →
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
