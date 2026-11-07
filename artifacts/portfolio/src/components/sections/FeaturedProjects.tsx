@@ -15,11 +15,11 @@ export function FeaturedProjects() {
       ? featuredProjects
       : featuredProjects.filter((project) => project.categories.includes(active));
 
-  const visible = filtered.slice(0, 6);
+  const visible = filtered;
 
   return (
     <section
-      id="featured-projects"
+      id="portfolio"
       className="py-24 relative bg-black/40 border-y border-white/5"
     >
       <img
@@ -37,15 +37,15 @@ export function FeaturedProjects() {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary text-sm font-medium mb-6 border-primary/20">
-            <Sparkles size={16} /> Hand-picked work
+            <Sparkles size={16} /> Complete portfolio
           </div>
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
             Featured <span className="text-primary">Projects</span>
           </h2>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            A focused selection of websites and web apps I have designed, built
-            and launched for businesses in Pakistan, the USA and worldwide.
+            Every live project I have designed, built and launched — for
+            businesses in Pakistan, the USA and worldwide.
           </p>
         </motion.div>
 
@@ -88,6 +88,19 @@ export function FeaturedProjects() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  {project.price && (
+                    <div className="absolute top-3 right-3 z-30">
+                      <span
+                        className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
+                        style={{
+                          background: "linear-gradient(135deg, #00d4ff, #0070f3)",
+                          boxShadow: "0 2px 12px rgba(0,212,255,0.5)",
+                        }}
+                      >
+                        {project.price}
+                      </span>
+                    </div>
+                  )}
                   {project.label && (
                     <div className="absolute top-3 left-3 right-3 z-30">
                       <span className="inline-block text-[11px] font-bold px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-primary/40 text-primary">

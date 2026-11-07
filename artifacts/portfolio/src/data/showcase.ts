@@ -1,4 +1,8 @@
-// New showcase data (additive). Existing src/data/projects.ts is left untouched.
+// Showcase data. The existing project list in src/data/projects.ts is the
+// single source of truth for real projects; this file only tags them with
+// showcase categories and adds the personal Tesla sample.
+
+import { projects } from "@/data/projects";
 
 export const projectCategories = [
   "All",
@@ -20,9 +24,9 @@ export interface ShowcaseProject {
   image: string;
   liveLink: string;
   tech: string[];
+  price?: string;
   label?: string;
   ownProject?: boolean;
-  forSale?: boolean;
   orderLink?: string;
 }
 
@@ -39,65 +43,38 @@ export interface ReadyToBuyProject {
   orderLink: string;
 }
 
-const WHATSAPP = "https://wa.me/923063159899";
+// Every real project is tagged with one or more showcase categories.
+const categoriesByProjectId: Record<number, ProjectCategory[]> = {
+  1: ["Business Websites"], // Wish Me
+  2: ["E-commerce Websites", "SEO Projects"], // PakStore
+  3: ["E-commerce Websites"], // Shopizo Mall
+  4: ["Calculator Websites", "SEO Projects"], // ToolsHub
+  5: ["Calculator Websites"], // CalcMaster
+  6: ["Business Websites"], // EarnTube
+  7: ["Business Websites"], // AutoMine
+  8: ["Business Websites"], // Qoinly Game
+  9: ["Business Websites"], // FoodFly
+  10: ["Business Websites", "SEO Projects"], // Al Chishti Dawakhana
+  11: ["AI Tools"], // PromptMaster AI
+  12: ["AI Tools"], // URL Security Scanner
+  13: ["E-commerce Websites"], // PakMobile Store
+  14: ["AI Tools"], // CryptoKombat Bot
+  15: ["E-commerce Websites"], // AuraPK Perfume Store
+  16: ["Calculator Websites", "AI Tools"], // Fun Tools International
+};
 
 export const featuredProjects: ShowcaseProject[] = [
-  {
-    id: "pakstore",
-    title: "PakStore",
-    description:
-      "Complete e-commerce store with product catalog, cart, order tracking and admin panel — built for Pakistani online sellers.",
-    categories: ["E-commerce Websites", "SEO Projects"],
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    liveLink: "https://pakstore.gt.tc/",
-    tech: ["PHP", "MySQL", "Admin Panel"],
-    orderLink: `${WHATSAPP}?text=${encodeURIComponent(
-      "Hi Ali, I want an e-commerce website like PakStore.",
-    )}`,
-  },
-  {
-    id: "shopizo",
-    title: "Shopizo Mall",
-    description:
-      "Scalable multi-vendor e-commerce platform with secure checkout, product management and a modern shopping experience.",
-    categories: ["E-commerce Websites", "Business Websites"],
-    image:
-      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80",
-    liveLink: "https://shopizo-mall.web.app",
-    tech: ["React", "Firebase", "E-Commerce"],
-    orderLink: `${WHATSAPP}?text=${encodeURIComponent(
-      "Hi Ali, I want an e-commerce platform like Shopizo Mall.",
-    )}`,
-  },
-  {
-    id: "al-chishti",
-    title: "Al Chishti Dawakhana",
-    description:
-      "Professional healthcare website with online consultation booking, service pages and a clean, trustworthy design.",
-    categories: ["Business Websites", "SEO Projects"],
-    image:
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80",
-    liveLink: "https://al-chishti-dawakhana.vercel.app",
-    tech: ["React", "Vercel", "Booking"],
-    orderLink: `${WHATSAPP}?text=${encodeURIComponent(
-      "Hi Ali, I want a business website like Al Chishti Dawakhana.",
-    )}`,
-  },
-  {
-    id: "promptmaster",
-    title: "PromptMaster AI",
-    description:
-      "AI prompt generator with multiple creative styles, one-click copy and a fast, SEO-friendly interface.",
-    categories: ["AI Tools"],
-    image:
-      "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
-    liveLink: "https://promptmaster-ai-generator-pro.vercel.app",
-    tech: ["React", "AI", "Vercel"],
-    orderLink: `${WHATSAPP}?text=${encodeURIComponent(
-      "Hi Ali, I want an AI tool website like PromptMaster AI.",
-    )}`,
-  },
+  ...projects.map((project) => ({
+    id: String(project.id),
+    title: project.title,
+    description: project.description,
+    categories: categoriesByProjectId[project.id] ?? ["Business Websites"],
+    image: project.image,
+    liveLink: project.liveLink,
+    tech: project.tags,
+    price: project.price,
+    orderLink: project.orderLink,
+  })),
   {
     id: "tesla-price-calculator",
     title: "Tesla Price Calculator US",
@@ -111,21 +88,9 @@ export const featuredProjects: ShowcaseProject[] = [
     label: "My Own Project / Portfolio Sample",
     ownProject: true,
   },
-  {
-    id: "toolshub",
-    title: "ToolsHub",
-    description:
-      "13+ free online calculators and converters engineered for search visibility and organic traffic growth.",
-    categories: ["SEO Projects", "Calculator Websites"],
-    image:
-      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80",
-    liveLink: "https://calculator-seven-pi-12.vercel.app",
-    tech: ["React", "Vite", "SEO"],
-    orderLink: `${WHATSAPP}?text=${encodeURIComponent(
-      "Hi Ali, I want an SEO-optimized tools website like ToolsHub.",
-    )}`,
-  },
 ];
+
+const WHATSAPP = "https://wa.me/923063159899";
 
 export const readyToBuyProjects: ReadyToBuyProject[] = [
   {
