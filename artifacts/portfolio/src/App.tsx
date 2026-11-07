@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useEffect } from "react";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -73,11 +74,48 @@ function Router() {
   );
 }
 
+const SITE_URL = "https://mr-ali-web-developer.vercel.app";
+
+function RouteSeo() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const isProjects = location.startsWith("/projects");
+    const title = isProjects
+      ? "All Projects | Mr. Ali - Full Stack Web Developer"
+      : "Mr. Ali | Full Stack Web Developer in Pakistan | Hire Web Developer";
+    const description = isProjects
+      ? "Browse every website and web app built by Mr. Ali — e-commerce stores, business websites, AI tools, calculators and SEO projects."
+      : "Hire Mr. Ali, a full stack web developer in Pakistan building e-commerce stores, business websites, AI tools, calculators and SEO-optimized websites for clients in the USA, Pakistan and worldwide.";
+    const url = `${SITE_URL}${isProjects ? "/projects" : "/"}`;
+
+    document.title = title;
+
+    const setMeta = (selector: string, attribute: string, value: string) => {
+      const element = document.head.querySelector(selector);
+      if (element) {
+        element.setAttribute(attribute, value);
+      }
+    };
+
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", description);
+    setMeta('meta[property="og:url"]', "content", url);
+    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:description"]', "content", description);
+    setMeta('link[rel="canonical"]', "href", url);
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <RouteSeo />
           <Router />
         </WouterRouter>
         <Toaster />

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Assets and pages are public. Keep crawl budget focused on real content.
+Disallow: /api/
+Disallow: /*?*
+
+Sitemap: https://mr-ali-web-developer.vercel.app/sitemap.xml
