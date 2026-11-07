@@ -49,24 +49,55 @@ export function FeaturedProjects() {
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
-          {projectCategories.map((category) => {
-            const isActive = active === category;
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActive(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
-                  isActive
-                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_rgba(0,212,255,0.25)]"
-                    : "bg-white/5 text-muted-foreground border-white/10 hover:text-white hover:border-primary/40"
-                }`}
-              >
-                {category}
-              </button>
-            );
-          })}
+        <div className="mb-12 flex justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md max-w-full">
+            {projectCategories.map((category) => {
+              const isActive = active === category;
+              const count =
+                category === "All"
+                  ? featuredProjects.length
+                  : featuredProjects.filter((project) =>
+                      project.categories.includes(category),
+                    ).length;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActive(category)}
+                  aria-pressed={isActive}
+                  className={`relative px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-sm font-medium transition-colors duration-300 cursor-pointer ${
+                    isActive
+                      ? "text-white"
+                      : "text-muted-foreground hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="project-filter-pill"
+                      className="absolute inset-0 rounded-xl"
+                      style={{
+                        background: "linear-gradient(135deg, #00d4ff, #0070f3)",
+                        boxShadow: "0 0 18px rgba(0,212,255,0.35)",
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5 whitespace-nowrap">
+                    {category}
+                    <span
+                      className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${
+                        isActive
+                          ? "bg-black/25 text-white"
+                          : "bg-white/10 text-white/60"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {visible.length > 0 ? (
