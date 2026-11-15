@@ -61,6 +61,7 @@ const categoriesByProjectId: Record<number, ProjectCategory[]> = {
   14: ["AI Tools"], // CryptoKombat Bot
   15: ["E-commerce Websites"], // AuraPK Perfume Store
   16: ["Calculator Websites", "AI Tools"], // Fun Tools International
+  17: ["Business Websites"], // Dr. Shahbaz Hussain Veterinary Clinic
 };
 
 export const featuredProjects: ShowcaseProject[] = [
