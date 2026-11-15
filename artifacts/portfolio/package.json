@@ -71,6 +71,7 @@
     "zod": "^3.24.1"
   },
   "dependencies": {
-    "react-simple-typewriter": "^5.0.1"
+    "react-simple-typewriter": "^5.0.1",
+    "swiper": "^11.2.10"
   }
 }

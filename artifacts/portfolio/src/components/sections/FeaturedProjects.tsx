@@ -1,6 +1,18 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  A11y,
+  EffectFade,
+  FreeMode,
+  Keyboard,
+  Thumbs,
+} from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowLeft, ArrowRight, ExternalLink, Sparkles } from "lucide-react";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/thumbs";
 import {
   featuredProjects,
   projectCategories,
@@ -10,54 +22,59 @@ import {
 export function FeaturedProjects() {
   const [active, setActive] = useState<ProjectCategory>("All");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperInstance | null>(null);
+  const [mainSwiper, setMainSwiper] = useState<SwiperInstance | null>(null);
 
-  const visible =
-    active === "All"
+  const visible = useMemo(
+    () => active === "All"
       ? featuredProjects
-      : featuredProjects.filter((project) => project.categories.includes(active));
-
+      : featuredProjects.filter((project) => project.categories.includes(active)),
+    [active],
+  );
   const current = visible[activeIndex] ?? visible[0];
 
-  useEffect(() => {
+  const selectCategory = (category: ProjectCategory) => {
+    if (category === active) return;
+    setMainSwiper(null);
+    setThumbsSwiper(null);
     setActiveIndex(0);
-  }, [active]);
-
-  const goTo = (index: number) => {
-    if (!visible.length) return;
-    setActiveIndex((index + visible.length) % visible.length);
+    setActive(category);
   };
 
   return (
-    <section id="portfolio" className="py-20 md:py-24 relative bg-black/40 border-y border-white/5">
-      <img
-        src={`${import.meta.env.BASE_URL}images/abstract-bg-2.png`}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.03] pointer-events-none mix-blend-screen"
-      />
+    <section id="portfolio" className="relative overflow-hidden border-y border-white/[0.07] bg-[#070b12] py-20 md:py-28">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-48 top-20 h-[420px] w-[420px] rounded-full bg-cyan-500/[0.08] blur-[130px]" />
+        <div className="absolute -right-48 bottom-0 h-[420px] w-[420px] rounded-full bg-blue-600/[0.08] blur-[130px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:54px_54px] opacity-40" />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-9 md:mb-10"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55 }}
+          className="mb-10 flex flex-col items-center text-center md:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-primary text-sm font-medium mb-5 border-primary/20">
-            <Sparkles size={16} /> Complete portfolio
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
+            <Sparkles size={14} /> Selected work
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Featured <span className="text-primary">Projects</span>
+          <h2 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            Projects that <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">make an impact.</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6" />
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Explore my real-world websites and web applications — select any preview below to view its details.
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+            A collection of websites and digital products built with care — from online stores to custom web applications.
           </p>
+          <div className="mt-7 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+            <span className="h-px w-9 bg-cyan-400/50" />
+            {featuredProjects.length} projects
+            <span className="h-px w-9 bg-cyan-400/50" />
+          </div>
         </motion.div>
 
-        <div className="mb-8 -mx-4 px-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex items-center gap-2 w-max mx-auto p-1.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl">
+        <div className="mb-8 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex w-max min-w-full items-center justify-center gap-2">
             {projectCategories.map((category) => {
               const selected = active === category;
               const count = category === "All"
@@ -67,11 +84,17 @@ export function FeaturedProjects() {
                 <button
                   key={category}
                   type="button"
-                  onClick={() => setActive(category)}
+                  onClick={() => selectCategory(category)}
                   aria-pressed={selected}
-                  className={`shrink-0 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all ${selected ? "bg-cyan-400/15 text-cyan-300 border border-cyan-300/30" : "text-muted-foreground hover:text-white border border-transparent"}`}
+                  className={[
+                    "whitespace-nowrap rounded-full border px-4 py-2.5 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm",
+                    selected
+                      ? "border-cyan-300/50 bg-cyan-300 text-[#06111d] shadow-[0_5px_24px_rgba(34,211,238,0.2)]"
+                      : "border-white/10 bg-white/[0.035] text-slate-400 hover:border-cyan-300/30 hover:bg-cyan-300/[0.07] hover:text-white",
+                  ].join(" ")}
                 >
-                  {category} <span className="ml-1 text-[10px] opacity-70">{count}</span>
+                  {category}
+                  <span className={["ml-2 text-[10px]", selected ? "text-slate-700" : "text-slate-500"].join(" ")}>{count}</span>
                 </button>
               );
             })}
@@ -79,87 +102,146 @@ export function FeaturedProjects() {
         </div>
 
         {current && (
-          <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0c1420] shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-              <div className="grid lg:grid-cols-[1.35fr_0.85fr] min-h-[300px] md:min-h-[390px]">
-                <div className="relative min-h-[230px] md:min-h-[340px] bg-black/30 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={current.id}
-                      src={current.image}
-                      alt={`${current.title} project preview`}
-                      loading="lazy"
-                      initial={{ opacity: 0, scale: 1.025 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.28 }}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07111d]/65 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                    {current.tech.slice(0, 3).map((tag) => (
-                      <span key={tag} className="text-[11px] font-semibold bg-black/65 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full">{tag}</span>
-                    ))}
-                  </div>
-                </div>
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="mx-auto max-w-6xl"
+          >
+            <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-[#0b1421] shadow-[0_30px_100px_rgba(0,0,0,0.48)] sm:rounded-[32px]">
+              <Swiper
+                key={active}
+                modules={[Thumbs, EffectFade, Keyboard, A11y]}
+                effect="fade"
+                fadeEffect={{ crossFade: true }}
+                slidesPerView={1}
+                speed={650}
+                loop={visible.length > 1}
+                keyboard={{ enabled: true }}
+                thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                onSwiper={setMainSwiper}
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                className="featured-project-main"
+              >
+                {visible.map((project, index) => (
+                  <SwiperSlide key={project.id}>
+                    <article className="relative min-h-[470px] overflow-hidden sm:min-h-[540px] lg:min-h-[590px]">
+                      <img
+                        src={project.image}
+                        alt={project.title + " website preview"}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#050a12]/95 via-[#07111d]/75 to-[#07111d]/10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050a12]/95 via-transparent to-[#050a12]/10" />
 
-                <div className="p-6 md:p-8 lg:p-9 flex flex-col justify-center">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300 mb-3">
-                    Project {activeIndex + 1} of {visible.length}
-                  </p>
-                  <p className="text-xs text-muted-foreground mb-2">{current.categories.join(" · ")}</p>
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">{current.title}</h3>
-                  <p className="text-sm md:text-base leading-7 text-slate-300/80 mb-7">{current.description}</p>
-                  {current.label && <p className="text-xs text-cyan-300 mb-4">{current.label}</p>}
-                  <div className="flex flex-wrap gap-3 mt-auto">
-                    <a href={current.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-slate-950 font-bold text-sm hover:brightness-110 transition">
-                      <ExternalLink size={16} /> Live Demo
-                    </a>
-                    {!current.ownProject && current.orderLink && (
-                      <a href={current.orderLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 transition">
-                        Order Similar
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+                      <div className="absolute left-5 right-5 top-5 flex items-start justify-between sm:left-8 sm:right-8 sm:top-8">
+                        <div className="flex flex-wrap gap-2">
+                          {project.categories.slice(0, 2).map((category) => (
+                            <span key={category} className="rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/80 backdrop-blur-md">
+                              {category}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1.5 font-mono text-xs text-white/75 backdrop-blur-md">
+                          {String(index + 1).padStart(2, "0")} <span className="text-white/35">/</span> {String(visible.length).padStart(2, "0")}
+                        </span>
+                      </div>
 
-              <div className="absolute top-3 right-3 md:top-4 md:right-4 flex gap-2">
-                <button type="button" onClick={() => goTo(activeIndex - 1)} aria-label="Previous project" className="w-10 h-10 rounded-full bg-black/65 border border-white/20 text-white backdrop-blur-md flex items-center justify-center hover:bg-cyan-400 hover:text-slate-950 transition">
-                  <ArrowLeft size={18} />
+                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-6 p-6 sm:p-10 lg:p-12">
+                        <div className="max-w-2xl">
+                          <div className="mb-4 flex flex-wrap gap-2">
+                            {project.tech.slice(0, 4).map((tech) => (
+                              <span key={tech} className="rounded-md border border-cyan-200/20 bg-cyan-200/[0.08] px-2.5 py-1 text-[10px] font-semibold text-cyan-100 sm:text-xs">{tech}</span>
+                            ))}
+                          </div>
+                          <h3 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">{project.title}</h3>
+                          <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">{project.description}</p>
+                          {project.label && <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">{project.label}</p>}
+                          <div className="mt-7 flex flex-wrap gap-3">
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-bold text-[#06111d] shadow-[0_8px_28px_rgba(34,211,238,0.2)] transition hover:-translate-y-0.5 hover:bg-cyan-200">
+                              View Live Website <ExternalLink size={16} />
+                            </a>
+                            {!project.ownProject && project.orderLink && (
+                              <a href={project.orderLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/40 hover:bg-white/10">
+                                Build Similar
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <div className="absolute bottom-6 right-5 z-20 hidden gap-2 sm:flex lg:bottom-9 lg:right-10">
+                <button type="button" onClick={() => mainSwiper?.slidePrev()} aria-label="Previous project" className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-lg transition hover:border-cyan-300 hover:bg-cyan-300 hover:text-[#06111d]">
+                  <ArrowLeft size={19} />
                 </button>
-                <button type="button" onClick={() => goTo(activeIndex + 1)} aria-label="Next project" className="w-10 h-10 rounded-full bg-black/65 border border-white/20 text-white backdrop-blur-md flex items-center justify-center hover:bg-cyan-400 hover:text-slate-950 transition">
-                  <ArrowRight size={18} />
+                <button type="button" onClick={() => mainSwiper?.slideNext()} aria-label="Next project" className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-lg transition hover:border-cyan-300 hover:bg-cyan-300 hover:text-[#06111d]">
+                  <ArrowRight size={19} />
                 </button>
               </div>
             </div>
 
-            <div className="mt-5 flex gap-3 overflow-x-auto pb-3 [scrollbar-width:thin]">
+            <div className="mt-5 flex items-center justify-between gap-4 px-1">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Explore projects</p>
+                <p className="mt-1 text-[11px] text-slate-600">Tap a preview to jump to that project</p>
+              </div>
+              <div className="flex gap-2 sm:hidden">
+                <button type="button" onClick={() => mainSwiper?.slidePrev()} aria-label="Previous project" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-white">
+                  <ArrowLeft size={17} />
+                </button>
+                <button type="button" onClick={() => mainSwiper?.slideNext()} aria-label="Next project" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-white">
+                  <ArrowRight size={17} />
+                </button>
+              </div>
+            </div>
+
+            <Swiper
+              key={"thumbs-" + active}
+              modules={[Thumbs, FreeMode, A11y]}
+              onSwiper={setThumbsSwiper}
+              watchSlidesProgress
+              freeMode
+              spaceBetween={12}
+              slidesPerView="auto"
+              breakpoints={{ 640: { spaceBetween: 14 } }}
+              className="featured-project-thumbs mt-4 !overflow-visible"
+            >
               {visible.map((project, index) => (
-                <button
-                  key={project.id}
-                  type="button"
-                  onClick={() => goTo(index)}
-                  aria-label={`Show ${project.title}`}
-                  aria-current={index === activeIndex ? "true" : undefined}
-                  className={`group relative shrink-0 w-28 sm:w-36 rounded-xl overflow-hidden border-2 text-left transition-all ${index === activeIndex ? "border-cyan-400 shadow-[0_0_18px_rgba(0,212,255,0.2)] opacity-100" : "border-white/10 opacity-55 hover:opacity-100 hover:border-white/30"}`}
-                >
-                  <img src={project.image} alt="" loading="lazy" className="w-full h-16 sm:h-20 object-cover" />
-                  <span className="block px-2 py-2 text-[10px] sm:text-xs font-semibold text-white truncate bg-[#0b111b]">{project.title}</span>
-                  {index === activeIndex && <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(0,212,255,0.8)]" />}
-                </button>
+                <SwiperSlide key={project.id} className="!h-auto !w-[142px] sm:!w-[184px]">
+                  <button
+                    type="button"
+                    onClick={() => mainSwiper?.slideToLoop(index)}
+                    aria-label={"Show " + project.title}
+                    className="group w-full overflow-hidden rounded-xl border border-white/10 bg-[#0d1725] text-left transition hover:-translate-y-1 hover:border-cyan-300/40"
+                  >
+                    <div className="relative aspect-[16/9] overflow-hidden bg-slate-900">
+                      <img src={project.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-black/15 transition group-hover:bg-transparent" />
+                    </div>
+                    <div className="flex min-h-[48px] items-center justify-between gap-2 px-3 py-2.5">
+                      <span className="truncate text-[11px] font-semibold text-slate-300 group-hover:text-white sm:text-xs">{project.title}</span>
+                      <span className="shrink-0 font-mono text-[10px] text-slate-600">{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                  </button>
+                </SwiperSlide>
               ))}
-            </div>
-          </div>
+            </Swiper>
+          </motion.div>
         )}
 
-        <div className="mt-9 text-center">
-          <a href="/projects" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]" style={{ background: "linear-gradient(135deg, #00d4ff, #0070f3)", color: "#fff" }}>
-            View All Projects <ArrowRight size={18} />
+        <div className="mt-12 text-center">
+          <a href="/projects" className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/25 bg-cyan-300/[0.07] px-6 py-3.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/[0.13]">
+            Browse complete portfolio <ArrowRight size={17} />
           </a>
         </div>
       </div>
+      <style>{".featured-project-thumbs .swiper-slide-thumb-active button{border-color:rgba(103,232,249,.9);box-shadow:0 0 0 1px rgba(103,232,249,.35),0 8px 28px rgba(34,211,238,.12)} .featured-project-thumbs .swiper-slide-thumb-active button span{color:#a5f3fc}"}</style>
     </section>
   );
 }
