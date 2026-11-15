@@ -156,4 +156,13 @@ export const projects: Project[] = [
     liveLink: "https://fun-tools.vercel.app/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20fun%20tools%20website%20like%20Fun%20Tools%20International"
   }
+  {
+    id: 17,
+    title: "Dr. Shahbaz Hussain Veterinary Clinic",
+    description: "Professional veterinary website built for Dr. Shahbaz Hussain, presenting veterinary care services and clinic information in a responsive, easy-to-use layout.",
+    tags: ["React", "Vercel", "Veterinary Website"],
+    image: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1000&q=75&auto=format&fit=crop",
+    liveLink: "https://dr-shahbaz-hussain-veterinary.vercel.app/",
+    orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20a%20professional%20veterinary%20website%20like%20Dr.%20Shahbaz%20Hussain%27s%20website"
+  },
 ];
