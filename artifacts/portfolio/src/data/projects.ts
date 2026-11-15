@@ -155,7 +155,7 @@ export const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
     liveLink: "https://fun-tools.vercel.app/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20a%20fun%20tools%20website%20like%20Fun%20Tools%20International"
-  }
+  },
   {
     id: 17,
     title: "Dr. Shahbaz Hussain Veterinary Clinic",
