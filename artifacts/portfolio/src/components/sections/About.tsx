@@ -31,7 +31,7 @@ export function About() {
             <div className="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden glass-card p-2 relative z-10 group">
               {/* about profile working on laptop */}
               <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" 
+                src="https://i.postimg.cc/prGV5Y5P/IMG-20261115-WA7787.jpg" 
                 alt="Developer working" 
                 className="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
               />
