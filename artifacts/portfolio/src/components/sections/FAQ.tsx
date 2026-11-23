@@ -64,7 +64,7 @@ function FAQItem({ faq, index }: { faq: { q: string; a: string }; index: number 
           className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
             background: open ? "rgba(0,212,255,0.15)" : "rgba(255,255,255,0.06)",
-            color: open ? "#00d4ff" : "rgba(255,255,255,0.5)"
+            color: open ? "#00d4ff" : "#111827"
           }}
         >
           {open ? <Minus size={16} /> : <Plus size={16} />}
