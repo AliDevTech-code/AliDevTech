@@ -50,42 +50,41 @@
 }
 
 :root {
-  /* DARK THEME BY DEFAULT */
-  --background: 240 10% 4%;
-  --foreground: 0 0% 100%;
-  
-  --card: 240 10% 6%;
-  --card-foreground: 0 0% 100%;
-  --card-border: 240 10% 12%;
-  
-  --popover: 240 10% 6%;
-  --popover-foreground: 0 0% 100%;
-  --popover-border: 240 10% 12%;
-  
-  /* Vibrant Cyan/Blue Accent */
-  --primary: 190 100% 50%;
-  --primary-foreground: 240 10% 4%;
-  
-  --secondary: 240 10% 15%;
-  --secondary-foreground: 0 0% 100%;
-  
-  --muted: 240 10% 12%;
-  --muted-foreground: 240 5% 65%;
-  
-  --accent: 190 100% 50%;
-  --accent-foreground: 240 10% 4%;
-  
-  --destructive: 0 84% 60%;
+  /* Clean white theme with cyan accents */
+  --background: 0 0% 100%;
+  --foreground: 215 35% 16%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 215 35% 16%;
+  --card-border: 190 35% 90%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 35% 16%;
+  --popover-border: 190 35% 90%;
+
+  --primary: 190 95% 38%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 190 45% 96%;
+  --secondary-foreground: 215 35% 18%;
+
+  --muted: 200 35% 96%;
+  --muted-foreground: 215 16% 42%;
+
+  --accent: 190 75% 93%;
+  --accent-foreground: 195 85% 28%;
+
+  --destructive: 0 75% 55%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 240 10% 15%;
-  --input: 240 10% 15%;
-  --ring: 190 100% 50%;
+  --border: 190 28% 88%;
+  --input: 190 28% 88%;
+  --ring: 190 95% 38%;
 
   --radius: 0.75rem;
 
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(8, 145, 178, .18);
+  --badge-outline: rgba(8, 145, 178, .12);
 }
 
 @layer base {
@@ -99,9 +98,9 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-image: 
-      radial-gradient(circle at 15% 50%, rgba(0, 212, 255, 0.04), transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(0, 112, 255, 0.04), transparent 25%);
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(0, 212, 255, 0.07), transparent 28%),
+      radial-gradient(circle at 88% 72%, rgba(0, 112, 255, 0.045), transparent 30%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -111,7 +110,10 @@
 }
 
 .glass-card {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(8, 145, 178, .16);
+  box-shadow: 0 12px 34px rgba(15, 70, 90, .08);
 }
 
 .text-gradient {
@@ -125,7 +127,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(8, 145, 178, 0.06);
   border-radius: 5px;
 }
 
@@ -144,5 +146,39 @@
 /* Firefox Scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #00d4ff rgba(255, 255, 255, 0.05);
+  scrollbar-color: #06b6d4 #eefbfe;
+}
+
+
+/* White + cyan theme polish for components that previously used dark utility classes. */
+body { color: #172b3a; background-color: #ffffff; }
+[class~="bg-black/40"], [class~="bg-black"] {
+  background-color: #f4fbfd !important;
+}
+[class~="bg-[#070b12]"] {
+  background-color: #f8fdff !important;
+}
+[class~="bg-[#101a29]"] {
+  background-color: #ffffff !important;
+}
+[class~="bg-slate-900"] {
+  background-color: #edf7fa !important;
+}
+[class~="text-white"], [class~="text-gray-200"], [class~="text-gray-300"] {
+  color: #183244 !important;
+}
+[class~="text-slate-300"] { color: #38566a !important; }
+[class~="text-slate-400"] { color: #536d7e !important; }
+[class~="text-slate-500"] { color: #688394 !important; }
+[class~="text-cyan-100"], [class~="text-cyan-200"] { color: #087f9f !important; }
+[class~="border-white/5"], [class~="border-white/8"], [class~="border-white/10"],
+[class~="border-white/15"], [class~="border-white/[0.07]"] {
+  border-color: rgba(8, 145, 178, .16) !important;
+}
+[class~="bg-white/5"], [class~="bg-white/10"], [class~="bg-white/[0.04]"],
+[class~="bg-white/[0.07]"] {
+  background-color: rgba(8, 145, 178, .045) !important;
+}
+a[style*="#25D366"], a[style*="linear-gradient(135deg"] {
+  color: #ffffff !important;
 }

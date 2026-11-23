@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter, Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-black py-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-slate-50 py-12 border-t border-cyan-100 relative overflow-hidden">
       {/* Decorative element */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
       
@@ -17,7 +17,7 @@ export function Footer() {
               A passionate Full Stack Web Developer dedicated to building beautiful, responsive, and high-performance web applications that help businesses grow.
             </p>
             <div className="flex gap-4">
-              <a href="https://github.com/AliDevTech-code" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <a href="https://github.com/AliDevTech-code" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cyan-50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 <Github size={18} />
               </a>
               <a href="https://www.linkedin.com/in/muhammad-ali-190204313" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300">

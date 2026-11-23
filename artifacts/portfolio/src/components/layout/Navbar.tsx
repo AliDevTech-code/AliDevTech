@@ -113,7 +113,7 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 md:hidden"
-            style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+            style={{ background: "rgba(15,35,50,0.28)", backdropFilter: "blur(4px)" }}
             onClick={close}
           />
         )}
@@ -131,10 +131,10 @@ export function Navbar() {
             className="fixed top-0 right-0 bottom-0 z-50 md:hidden flex flex-col"
             style={{
               width: "280px",
-              background: "rgba(5,10,20,0.97)",
+              background: "rgba(255,255,255,0.98)",
               backdropFilter: "blur(24px)",
-              borderLeft: "1px solid rgba(255,255,255,0.08)",
-              boxShadow: "-20px 0 60px rgba(0,0,0,0.6)"
+              borderLeft: "1px solid rgba(8,145,178,0.16)",
+              boxShadow: "-20px 0 60px rgba(15,70,90,0.14)"
             }}
           >
             {/* Drawer Header */}
