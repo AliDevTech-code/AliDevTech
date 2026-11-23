@@ -10,46 +10,36 @@
 // 8. Paste that URL in your use-contact.ts file
 
 function doPost(e) {
-  // Get the spreadsheet
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
-  
-  // If sheet doesn't exist, create it
+
   if (!sheet) {
     sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet("Sheet1");
-    // Add headers
-    sheet.appendRow(["Timestamp", "Name", "Email", "Subject", "Message"]);
   }
-  
-  // Parse the incoming data
+
+  // Keep existing columns intact and add Category as the final column.
+  var lastColumn = sheet.getLastColumn();
+  if (lastColumn === 0) {
+    sheet.appendRow(["Timestamp", "Name", "Email", "Subject", "Message", "Category"]);
+  } else {
+    var headers = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
+    if (headers.indexOf("Category") === -1) {
+      sheet.getRange(1, lastColumn + 1).setValue("Category");
+    }
+  }
+
   var data = JSON.parse(e.postData.contents);
-  
-  // Get existing headers
-  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-  
-  // If no headers, add them
-  if (headers.length === 0) {
-    sheet.appendRow(["Timestamp", "Name", "Email", "Subject", "Message"]);
-    headers = ["Timestamp", "Name", "Email", "Subject", "Message"];
-  }
-  
-  // Prepare row data
   var row = [
     data.timestamp || new Date().toISOString(),
     data.name || "",
     data.email || "",
     data.subject || "",
-    data.message || ""
+    data.message || "",
+    data.category || ""
   ];
-  
-  // Append the data
+
   sheet.appendRow(row);
-  
-  // Return success response
+
   return ContentService.createTextOutput(JSON.stringify({ success: true }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
-  return ContentService.createTextOutput("Contact Form API is working!")
-    .setMimeType(ContentService.MimeType.TEXT);
-}
