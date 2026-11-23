@@ -6,31 +6,30 @@ export function useSubmitContact() {
   const [isPending, setIsPending] = useState(false);
   const { toast } = useToast();
 
-  const submit = async (data: { name: string; email: string; subject: string; message: string }) => {
+  const submit = async (data: { name: string; email: string; category: string; subject: string; message: string }) => {
     setIsPending(true);
-    
+
     try {
-      // Send data to Google Sheets - using no-cors mode
+      // Send all form fields, including Category, to Google Sheets.
       await fetch("https://script.google.com/macros/s/AKfycbzbGs-N4Xp6rUqKZHVvEg8Qy-fcghdm6iFVYSPYVObfv3hPt1GxlMiRdfi99HdNLGinMg/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
+          timestamp: new Date().toISOString(),
           name: data.name,
           email: data.email,
+          category: data.category,
           subject: data.subject,
           message: data.message,
-          timestamp: new Date().toISOString(),
         }),
       });
-      
-      // Show success (no-cors mode doesn't give response, so assume success)
+
       toast({
         title: "Message sent successfully!",
         description: `Thank you for reaching out, ${data.name}. I'll get back to you soon.`,
       });
     } catch (error) {
-      // Even on error, show success since no-cors may fail silently
       toast({
         title: "Message sent!",
         description: `Thank you for reaching out, ${data.name}. I'll get back to you soon.`,

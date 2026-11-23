@@ -1,50 +1,41 @@
-// Google Apps Script Code - Copy this to your Google Apps Script Editor
-// Follow these steps:
-// 1. Go to https://script.google.com and create a new project
-// 2. Copy this entire code and paste it
-// 3. Click Deploy > New Deployment
-// 4. Select "Web app"
-// 5. Set "Execute as" to "Me"
-// 6. Set "Who has access" to "Anyone"
-// 7. Click Deploy and copy the Web App URL
-// 8. Paste that URL in your use-contact.ts file
+// Google Apps Script Code - Contact form to Google Sheets
+// The script maps values by header name, so Category can be placed in any column.
+// After updating this file in Apps Script, redeploy the Web App as a new version.
 
 function doPost(e) {
-  // Get the spreadsheet
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
-  
-  // If sheet doesn't exist, create it
+
   if (!sheet) {
     sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet("Sheet1");
-    // Add headers
-    sheet.appendRow(["Timestamp", "Name", "Email", "Subject", "Message"]);
+    sheet.appendRow(["Timestamp", "Name", "Email", "Category", "Subject", "Message"]);
   }
-  
-  // Parse the incoming data
-  var data = JSON.parse(e.postData.contents);
-  
-  // Get existing headers
-  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-  
-  // If no headers, add them
-  if (headers.length === 0) {
-    sheet.appendRow(["Timestamp", "Name", "Email", "Subject", "Message"]);
-    headers = ["Timestamp", "Name", "Email", "Subject", "Message"];
+
+  var data = JSON.parse((e && e.postData && e.postData.contents) || "{}");
+  var lastColumn = sheet.getLastColumn();
+
+  if (lastColumn === 0) {
+    var defaultHeaders = ["Timestamp", "Name", "Email", "Category", "Subject", "Message"];
+    sheet.getRange(1, 1, 1, defaultHeaders.length).setValues([defaultHeaders]);
+    lastColumn = defaultHeaders.length;
   }
-  
-  // Prepare row data
-  var row = [
-    data.timestamp || new Date().toISOString(),
-    data.name || "",
-    data.email || "",
-    data.subject || "",
-    data.message || ""
-  ];
-  
-  // Append the data
+
+  var headers = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
+  var valuesByHeader = {
+    "timestamp": data.timestamp || new Date().toISOString(),
+    "name": data.name || "",
+    "email": data.email || "",
+    "category": data.category || "",
+    "subject": data.subject || "",
+    "message": data.message || ""
+  };
+
+  var row = headers.map(function(header) {
+    var key = String(header || "").trim().toLowerCase();
+    return Object.prototype.hasOwnProperty.call(valuesByHeader, key) ? valuesByHeader[key] : "";
+  });
+
   sheet.appendRow(row);
-  
-  // Return success response
+
   return ContentService.createTextOutput(JSON.stringify({ success: true }))
     .setMimeType(ContentService.MimeType.JSON);
 }
