@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
+import { FaCss3Alt } from "react-icons/fa6";
 import {
   SiHtml5,
-  SiCss3,
   SiJavascript,
   SiReact,
   SiTailwindcss,
@@ -20,7 +20,7 @@ import {
 
 const skillsData = [
   { name: "HTML5", percentage: 95, icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS3", percentage: 95, icon: SiCss3, color: "#1572B6" },
+  { name: "CSS3", percentage: 95, icon: FaCss3Alt, color: "#1572B6" },
   { name: "JavaScript", percentage: 90, icon: SiJavascript, color: "#F7DF1E" },
   { name: "React.js", percentage: 92, icon: SiReact, color: "#61DAFB" },
   { name: "Tailwind CSS", percentage: 95, icon: SiTailwindcss, color: "#06B6D4" },
