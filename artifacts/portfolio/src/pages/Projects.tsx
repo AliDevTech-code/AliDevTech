@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowLeft, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowLeft } from "lucide-react";
 import { projects } from "@/data/projects";
 
 const getBuyLink = (title: string) => "https://wa.me/923063159899?text=" + encodeURIComponent("Hi, I'm interested in buying the " + title + " website/project. Could you please share the price and purchase details?");
 
 export default function Projects() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, 10);
 
   return (
     <div className="relative min-h-screen bg-[linear-gradient(180deg,#0a0a0a_0%,#111827_50%,#0a0a0a_100%)] pb-20 pt-8">
@@ -24,7 +21,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.article key={project.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (index % 10) * 0.04 }} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101a29] shadow-[0_14px_38px_rgba(0,0,0,.25)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/50">
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
                 <img src={project.image} alt={project.title + " project preview"} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
@@ -43,7 +40,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {projects.length > 10 && <div className="mt-12 text-center"><button type="button" onClick={() => setShowAll(value => !value)} className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-300/[0.08] px-7 py-3.5 text-sm font-bold text-cyan-100 transition hover:bg-cyan-300/15">{showAll ? "Show Less" : `Show All ${projects.length} Projects`} <ArrowRight size={16} /></button></div>}
+        
 
         <div className="mt-16 text-center"><a href="/#contact" className="inline-flex items-center gap-2 rounded-xl px-8 py-4 font-semibold text-white transition hover:-translate-y-1" style={{ background: "linear-gradient(135deg,#00d4ff,#0070f3)" }}>Let's Work Together →</a></div>
       </div>

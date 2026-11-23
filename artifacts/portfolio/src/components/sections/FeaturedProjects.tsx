@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
 import { featuredProjects } from "@/data/showcase";
@@ -37,8 +36,6 @@ function ProjectCard({ project, index }: { project: (typeof featuredProjects)[nu
 }
 
 export function FeaturedProjects() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? featuredProjects : featuredProjects.slice(0, 10);
 
   return (
     <section id="portfolio" className="relative overflow-hidden border-y border-white/[0.07] bg-[#070b12] py-20 md:py-28">
@@ -55,14 +52,14 @@ export function FeaturedProjects() {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleProjects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
+          {featuredProjects.slice(0, 10).map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}
         </div>
 
         {featuredProjects.length > 10 && (
           <div className="mt-12 text-center">
-            <button type="button" onClick={() => setShowAll((value) => !value)} className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-300/[0.08] px-7 py-3.5 text-sm font-bold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/15">
-              {showAll ? "Show Less" : `Show All ${featuredProjects.length} Projects`} <ArrowRight size={16} className={showAll ? "rotate-[-90deg]" : ""} />
-            </button>
+            <a href="/projects" className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-300/[0.08] px-7 py-3.5 text-sm font-bold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/15">
+              Show All Projects <ArrowRight size={16} />
+            </a>
           </div>
         )}
         <div className="mt-8 text-center"><a href="/#contact" className="text-sm font-semibold text-slate-400 transition hover:text-cyan-200">Need a website? Let's work together →</a></div>

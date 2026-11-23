@@ -144,7 +144,7 @@ export const projects: Project[] = [
     description: "Premium luxury fragrance store with white-glass UI and direct WhatsApp ordering system.",
     tags: ["HTML5", "Tailwind CSS", "JavaScript"],
     image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-    liveLink: "https://aurapk.vercel.app",
+    liveLink: "https://aura-pk.vercel.app/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali,%20I%20want%20to%20order%20the%20AuraPK%20perfume%20store%20website"
   },
   {
