@@ -143,7 +143,7 @@ export function Contact() {
                   </div>
                 </div>
                 
-                <div class                <div className="space-y-2">
+                <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-300" htmlFor="category">Category</label>
                   <select
                     id="category"
@@ -163,6 +163,7 @@ export function Contact() {
                   </select>
                 </div>
 
+                <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-300">Subject</label>
                   <input 
                     type="text" 
