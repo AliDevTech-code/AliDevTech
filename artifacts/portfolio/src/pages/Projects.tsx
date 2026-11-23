@@ -1,132 +1,49 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowLeft } from "lucide-react";
+import { ExternalLink, ArrowLeft, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 
-const WaIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L0 24l6.345-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.893 0-3.667-.518-5.188-1.418l-.371-.22-3.767.89.944-3.663-.242-.378A9.932 9.932 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-  </svg>
-);
-
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, 10);
+
   return (
-    <div className="min-h-screen pt-8 pb-20 relative" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%)' }}>
-      <img 
-        src={`${import.meta.env.BASE_URL}images/abstract-bg-2.png`}
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.03] pointer-events-none mix-blend-screen"
-      />
-      
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-12"
-        >
-          <a
-            href="/#portfolio"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-muted-foreground hover:text-white hover:bg-white/10 transition-colors"
-          >
-            <ArrowLeft size={18} />
-            Back to Home
-          </a>
+    <div className="relative min-h-screen bg-[linear-gradient(180deg,#0a0a0a_0%,#111827_50%,#0a0a0a_100%)] pb-20 pt-8">
+      <img src={`${import.meta.env.BASE_URL}images/abstract-bg-2.png`} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.03] mix-blend-screen" />
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+          <a href="/#portfolio" className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white"><ArrowLeft size={17} /> Back to Home</a>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-14 text-center">
+          <h1 className="text-4xl font-bold text-white md:text-5xl">All <span className="text-primary">Projects</span></h1>
+          <div className="mx-auto mb-6 mt-5 h-1 w-24 rounded-full bg-primary" />
+          <p className="mx-auto max-w-2xl text-base leading-7 text-slate-400">Explore my websites, stores and digital products. Open any project to view it live.</p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-slate-500">{projects.length} projects</p>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">All <span className="text-primary">Projects</span></h1>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Browse through all my projects — each one crafted with attention to detail and modern technologies.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="glass-card rounded-2xl overflow-hidden group hover:border-primary/50 transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,212,255,0.1)] flex flex-col h-full"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {(project as any).price && (
-                  <div className="absolute top-3 right-3 z-30">
-                    <span
-                      className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                      style={{
-                        background: "linear-gradient(135deg, #00d4ff, #0070f3)",
-                        boxShadow: "0 2px 12px rgba(0,212,255,0.5)"
-                      }}
-                    >
-                      {(project as any).price}
-                    </span>
-                  </div>
-                )}
-                <div className="absolute bottom-3 left-3 right-3 flex gap-2 flex-wrap z-20">
-                  {project.tags.slice(0, 2).map(tag => (
-                    <span key={tag} className="text-xs font-semibold bg-black/60 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 rounded-md">
-                      {tag}
-                    </span>
-                  ))}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleProjects.map((project, index) => (
+            <motion.article key={project.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (index % 10) * 0.04 }} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101a29] shadow-[0_14px_38px_rgba(0,0,0,.25)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/50">
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
+                <img src={project.image} alt={project.title + " project preview"} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[10px] font-semibold text-cyan-100 backdrop-blur-md">{project.tags[0]}</span>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h2 className="text-lg font-bold text-white transition-colors group-hover:text-cyan-200">{project.title}</h2>
+                <p className="mt-2 line-clamp-2 min-h-[2.75rem] text-sm leading-6 text-slate-400">{project.description}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">{project.tags.slice(0, 3).map(tag => <span key={tag} className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] text-slate-300">{tag}</span>)}</div>
+                <div className="mt-auto mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+                  <div><p className="text-[10px] uppercase tracking-wider text-slate-500">Price</p><p className="mt-1 text-sm font-semibold text-cyan-200">{project.price || "Price on request"}</p></div>
+                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-cyan-300 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-cyan-200">Live View <ExternalLink size={13} /></a>
                 </div>
               </div>
-              
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                <p className="text-muted-foreground mb-5 text-sm flex-grow line-clamp-3">
-                  {project.description}
-                </p>
-                
-                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10">
-                  <a 
-                    href={project.orderLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground font-medium text-sm transition-colors"
-                  >
-                    <WaIcon /> Order Now
-                  </a>
-                  <a 
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-white/5 text-white hover:bg-white/15 border border-white/10 font-medium text-sm transition-colors"
-                  >
-                    <ExternalLink size={15} /> Visit
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(0,212,255,0.3)]"
-            style={{ background: "linear-gradient(135deg, #00d4ff, #0070f3)", color: "#fff" }}
-          >
-            Let's Work Together →
-          </a>
-        </motion.div>
+        {projects.length > 10 && <div className="mt-12 text-center"><button type="button" onClick={() => setShowAll(value => !value)} className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-300/[0.08] px-7 py-3.5 text-sm font-bold text-cyan-100 transition hover:bg-cyan-300/15">{showAll ? "Show Less" : `Show All ${projects.length} Projects`} <ArrowRight size={16} /></button></div>}
+
+        <div className="mt-16 text-center"><a href="/#contact" className="inline-flex items-center gap-2 rounded-xl px-8 py-4 font-semibold text-white transition hover:-translate-y-1" style={{ background: "linear-gradient(135deg,#00d4ff,#0070f3)" }}>Let's Work Together →</a></div>
       </div>
     </div>
   );

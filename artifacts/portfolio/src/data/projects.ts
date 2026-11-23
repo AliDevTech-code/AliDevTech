@@ -164,5 +164,23 @@ export const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1000&q=75&auto=format&fit=crop",
     liveLink: "https://dr-shahbaz-hussain-veterinary.vercel.app/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20a%20professional%20veterinary%20website%20like%20Dr.%20Shahbaz%20Hussain%27s%20website"
+  },,
+  {
+    id: 18,
+    title: "Game Zone ALi",
+    description: "A browser-based gaming hub featuring interactive games in a clean, responsive experience.",
+    tags: ["HTML", "CSS", "JavaScript", "Gaming"],
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900&q=80",
+    liveLink: "https://game-zone-ali.vercel.app/",
+    orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20a%20gaming%20website%20like%20Game%20Zone"
   },
+  {
+    id: 19,
+    title: "NexGen E-Commerce Demo",
+    description: "A modern online shopping demo with product browsing and a responsive storefront layout.",
+    tags: ["E-Commerce", "HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=900&q=80",
+    liveLink: "https://alidevtech-code.github.io/nexgen-ecommerce-demo/",
+    orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20an%20e-commerce%20website%20like%20NexGen"
+  }
 ];

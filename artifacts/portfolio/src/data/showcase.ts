@@ -62,6 +62,8 @@ const categoriesByProjectId: Record<number, ProjectCategory[]> = {
   15: ["E-commerce Websites"], // AuraPK Perfume Store
   16: ["Calculator Websites", "AI Tools"], // Fun Tools International
   17: ["Business Websites"], // Dr. Shahbaz Hussain Veterinary Clinic
+  18: ["Business Websites"], // Game Zone ALi
+  19: ["E-commerce Websites"], // NexGen E-Commerce Demo
 };
 
 export const featuredProjects: ShowcaseProject[] = [
