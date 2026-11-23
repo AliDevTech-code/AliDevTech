@@ -6,7 +6,7 @@ export function useSubmitContact() {
   const [isPending, setIsPending] = useState(false);
   const { toast } = useToast();
 
-  const submit = async (data: { name: string; email: string; subject: string; category: string; message: string }) => {
+  const submit = async (data: { name: string; email: string; subject: string; message: string }) => {
     setIsPending(true);
     
     try {
@@ -20,7 +20,6 @@ export function useSubmitContact() {
           email: data.email,
           subject: data.subject,
           message: data.message,
-          category: data.category,
           timestamp: new Date().toISOString(),
         }),
       });

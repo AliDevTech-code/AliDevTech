@@ -1,3 +1,23 @@
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300" htmlFor="category">Category</label>
+                  <select
+                    id="category"
+                    name="category"
+                    required
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  >
+                    <option value="" disabled className="text-gray-900">Select a category</option>
+                    <option value="Website Development" className="text-gray-900">Website Development</option>
+                    <option value="E-commerce Website" className="text-gray-900">E-commerce Website</option>
+                    <option value="SEO Services" className="text-gray-900">SEO Services</option>
+                    <option value="Website Purchase" className="text-gray-900">Website Purchase</option>
+                    <option value="Collaboration" className="text-gray-900">Collaboration</option>
+                    <option value="General Inquiry" className="text-gray-900">General Inquiry</option>
+                  </select>
+                </div>
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
