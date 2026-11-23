@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
 import { featuredProjects } from "@/data/showcase";
 
+const getBuyLink = (title: string) => "https://wa.me/923063159899?text=" + encodeURIComponent("Hi, I'm interested in buying the " + title + " website/project. Could you please share the price and purchase details?");
+
 function ProjectCard({ project, index }: { project: (typeof featuredProjects)[number]; index: number }) {
   return (
     <motion.article
@@ -24,10 +26,7 @@ function ProjectCard({ project, index }: { project: (typeof featuredProjects)[nu
           {project.tech.slice(0, 3).map((tag) => <span key={tag} className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] text-slate-300">{tag}</span>)}
         </div>
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4 mt-5">
-          <div>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">Price</p>
-            <p className="mt-1 text-sm font-semibold text-cyan-200">{project.price || "Price on request"}</p>
-          </div>
+          <a href={getBuyLink(project.title)} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-400 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-300">Buy Now</a>
           <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-cyan-300 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-cyan-200">
             Live View <ExternalLink size={13} />
           </a>

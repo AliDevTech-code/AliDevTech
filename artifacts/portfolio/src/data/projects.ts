@@ -164,7 +164,7 @@ export const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1000&q=75&auto=format&fit=crop",
     liveLink: "https://dr-shahbaz-hussain-veterinary.vercel.app/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20a%20professional%20veterinary%20website%20like%20Dr.%20Shahbaz%20Hussain%27s%20website"
-  },,
+  },
   {
     id: 18,
     title: "Game Zone ALi",
