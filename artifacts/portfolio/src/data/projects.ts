@@ -11,6 +11,16 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 20,
+    title: "Royal Heights Real Estate",
+    description: "Premium real-estate agency demo with responsive layouts, searchable property filters, listing cards and WhatsApp enquiries. Includes sample property listings and demo reviews.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Real Estate"],
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    liveLink: "https://real-estate-website-blond-theta.vercel.app/",
+    orderLink: "https://wa.me/923063159899?text=" + encodeURIComponent("Hi Ali, I am interested in buying the Royal Heights Real Estate website for $99 USD. Please share the purchase details."),
+    price: "$99 USD"
+  },
 
   {
     id: 1,
@@ -184,14 +194,5 @@ export const projects: Project[] = [
     liveLink: "https://alidevtech-code.github.io/nexgen-ecommerce-demo/",
     orderLink: "https://wa.me/923063159899?text=Hi%20Ali%2C%20I%20want%20an%20e-commerce%20website%20like%20NexGen"
   }
-  {
-    id: 20,
-    title: "Royal Heights Real Estate",
-    description: "Premium real-estate agency demo with responsive layouts, searchable property filters, listing cards and WhatsApp enquiries. Includes sample property listings and demo reviews.",
-    tags: ["HTML5", "CSS3", "JavaScript", "Real Estate"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
-    liveLink: "https://real-estate-website-blond-theta.vercel.app/",
-    orderLink: "https://wa.me/923063159899?text=" + encodeURIComponent("Hi Ali, I am interested in buying the Royal Heights Real Estate website for $99 USD. Please share the purchase details."),
-    price: "$99 USD"
-  },
+
 ];
