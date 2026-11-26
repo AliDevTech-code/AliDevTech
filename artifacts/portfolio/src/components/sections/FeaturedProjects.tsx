@@ -21,11 +21,12 @@ function ProjectCard({ project, index }: { project: (typeof featuredProjects)[nu
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-cyan-700">{project.title}</h3>
         <p className="mt-2 line-clamp-2 min-h-[2.75rem] text-sm leading-6 text-slate-600">{project.description}</p>
+        {project.price && <p className="mt-3 text-sm font-bold text-emerald-700">{project.price}</p>}
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tech.slice(0, 3).map((tag) => <span key={tag} className="rounded-md border border-white/10 bg-cyan-50 px-2 py-1 text-[10px] text-slate-600">{tag}</span>)}
         </div>
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4 mt-5">
-          <a href={getBuyLink(project.title)} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-400 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-300">Buy Now</a>
+          <a href={project.orderLink || getBuyLink(project.title)} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-400 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-300">Buy Now</a>
           <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-cyan-300 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-cyan-200">
             Live View <ExternalLink size={13} />
           </a>

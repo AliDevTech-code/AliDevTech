@@ -30,9 +30,10 @@ export default function Projects() {
               <div className="flex flex-1 flex-col p-5">
                 <h2 className="text-lg font-bold text-white transition-colors group-hover:text-cyan-200">{project.title}</h2>
                 <p className="mt-2 line-clamp-2 min-h-[2.75rem] text-sm leading-6 text-slate-400">{project.description}</p>
+                {project.price && <p className="mt-3 text-sm font-bold text-emerald-700">{project.price}</p>}
                 <div className="mt-4 flex flex-wrap gap-1.5">{project.tags.slice(0, 3).map(tag => <span key={tag} className="rounded-md border border-white/10 bg-cyan-50 px-2 py-1 text-[10px] text-slate-300">{tag}</span>)}</div>
                 <div className="mt-auto mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-                  <a href={getBuyLink(project.title)} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-400 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-300">Buy Now</a>
+                  <a href={project.orderLink || getBuyLink(project.title)} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-lg border border-emerald-400/40 bg-emerald-400 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-emerald-300">Buy Now</a>
                   <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-cyan-300 px-4 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-cyan-200">Live View <ExternalLink size={13} /></a>
                 </div>
               </div>

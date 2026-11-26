@@ -64,6 +64,7 @@ const categoriesByProjectId: Record<number, ProjectCategory[]> = {
   17: ["Business Websites"], // Dr. Shahbaz Hussain Veterinary Clinic
   18: ["Business Websites"], // Game Zone ALi
   19: ["E-commerce Websites"], // NexGen E-Commerce Demo
+  20: ["Business Websites"], // Royal Heights Real Estate
 };
 
 export const featuredProjects: ShowcaseProject[] = [
